@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:55012/WebServicePais.asmx" uri="xml-resources/web-service-references/WebServicePais/wsdl/localhost_55012/WebServicePais.asmx"/>
+    <system systemId="http://localhost:55012/WebServicePais.asmx?wdsl" uri="xml-resources/web-service-references/WebServicePais_1/wsdl/localhost_55012/WebServicePais.asmx.wdsl"/>
+    <system systemId="http://localhost:55012/WebServiceAgrupacion.asmx" uri="xml-resources/web-service-references/WebServiceAgrupacion/wsdl/localhost_55012/WebServiceAgrupacion.asmx"/>
+    <system systemId="http://localhost:55012/WebServiceFamilia.asmx?wsdl" uri="xml-resources/web-service-references/WebServiceFamilia/wsdl/localhost_55012/WebServiceFamilia.asmx.wsdl"/>
+    <system systemId="http://localhost:55012/WebServicePais.asmx?WSDL" uri="xml-resources/web-service-references/WebServicePais/wsdl/localhost_55012/WebServicePais.asmx.wsdl"/>
+    <system systemId="http://fx.currencysystem.com/webservices/CurrencyServer4.asmx?wsdl" uri="xml-resources/web-service-references/CurrencyServer4/wsdl/fx.currencysystem.com/webservices/CurrencyServer4.asmx.wsdl"/>
+    <system systemId="http://localhost:55012/WebServicePais.asmx?wsdl" uri="xml-resources/web-service-references/WebServicePais/wsdl/localhost_55012/WebServicePais.asmx.wsdl"/>
+</catalog>
