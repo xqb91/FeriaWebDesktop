@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="retornaTodosLosProductores">
+        <s:complexType />
+      </s:element>
+      <s:element name="retornaTodosLosProductoresResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="retornaTodosLosProductoresResult" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="guardarProductor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="productor" type="tns:Productor" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Productor">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Contrasena" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombres" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Apaterno" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Amaterno" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Telefono" type="s1:char" />
+          <s:element minOccurs="1" maxOccurs="1" name="Celular" type="s1:char" />
+          <s:element minOccurs="1" maxOccurs="1" name="Fax" type="s1:char" />
+          <s:element minOccurs="1" maxOccurs="1" name="Agrupacion" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="guardarProductorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="guardarProductorResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="posicionProductor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="posicion" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="posicionProductorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="posicionProductorResult" type="tns:Productor" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscaProductor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idProductor" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscaProductorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="buscaProductorResult" type="tns:Productor" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="actualizaProductor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="productor" type="tns:Productor" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="actualizaProductorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="actualizaProductorResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eliminaProductor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idProductor" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eliminaProductorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eliminaProductorResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="esActivo">
+        <s:complexType />
+      </s:element>
+      <s:element name="esActivoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="esActivoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="char">
+        <s:restriction base="s:unsignedShort" />
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="retornaTodosLosProductoresSoapIn">
+    <wsdl:part name="parameters" element="tns:retornaTodosLosProductores" />
+  </wsdl:message>
+  <wsdl:message name="retornaTodosLosProductoresSoapOut">
+    <wsdl:part name="parameters" element="tns:retornaTodosLosProductoresResponse" />
+  </wsdl:message>
+  <wsdl:message name="guardarProductorSoapIn">
+    <wsdl:part name="parameters" element="tns:guardarProductor" />
+  </wsdl:message>
+  <wsdl:message name="guardarProductorSoapOut">
+    <wsdl:part name="parameters" element="tns:guardarProductorResponse" />
+  </wsdl:message>
+  <wsdl:message name="posicionProductorSoapIn">
+    <wsdl:part name="parameters" element="tns:posicionProductor" />
+  </wsdl:message>
+  <wsdl:message name="posicionProductorSoapOut">
+    <wsdl:part name="parameters" element="tns:posicionProductorResponse" />
+  </wsdl:message>
+  <wsdl:message name="buscaProductorSoapIn">
+    <wsdl:part name="parameters" element="tns:buscaProductor" />
+  </wsdl:message>
+  <wsdl:message name="buscaProductorSoapOut">
+    <wsdl:part name="parameters" element="tns:buscaProductorResponse" />
+  </wsdl:message>
+  <wsdl:message name="actualizaProductorSoapIn">
+    <wsdl:part name="parameters" element="tns:actualizaProductor" />
+  </wsdl:message>
+  <wsdl:message name="actualizaProductorSoapOut">
+    <wsdl:part name="parameters" element="tns:actualizaProductorResponse" />
+  </wsdl:message>
+  <wsdl:message name="eliminaProductorSoapIn">
+    <wsdl:part name="parameters" element="tns:eliminaProductor" />
+  </wsdl:message>
+  <wsdl:message name="eliminaProductorSoapOut">
+    <wsdl:part name="parameters" element="tns:eliminaProductorResponse" />
+  </wsdl:message>
+  <wsdl:message name="esActivoSoapIn">
+    <wsdl:part name="parameters" element="tns:esActivo" />
+  </wsdl:message>
+  <wsdl:message name="esActivoSoapOut">
+    <wsdl:part name="parameters" element="tns:esActivoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceProductorSoap">
+    <wsdl:operation name="retornaTodosLosProductores">
+      <wsdl:input message="tns:retornaTodosLosProductoresSoapIn" />
+      <wsdl:output message="tns:retornaTodosLosProductoresSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="guardarProductor">
+      <wsdl:input message="tns:guardarProductorSoapIn" />
+      <wsdl:output message="tns:guardarProductorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="posicionProductor">
+      <wsdl:input message="tns:posicionProductorSoapIn" />
+      <wsdl:output message="tns:posicionProductorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="buscaProductor">
+      <wsdl:input message="tns:buscaProductorSoapIn" />
+      <wsdl:output message="tns:buscaProductorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="actualizaProductor">
+      <wsdl:input message="tns:actualizaProductorSoapIn" />
+      <wsdl:output message="tns:actualizaProductorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="eliminaProductor">
+      <wsdl:input message="tns:eliminaProductorSoapIn" />
+      <wsdl:output message="tns:eliminaProductorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="esActivo">
+      <wsdl:input message="tns:esActivoSoapIn" />
+      <wsdl:output message="tns:esActivoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceProductorSoap" type="tns:WebServiceProductorSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="retornaTodosLosProductores">
+      <soap:operation soapAction="http://tempuri.org/retornaTodosLosProductores" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="guardarProductor">
+      <soap:operation soapAction="http://tempuri.org/guardarProductor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="posicionProductor">
+      <soap:operation soapAction="http://tempuri.org/posicionProductor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaProductor">
+      <soap:operation soapAction="http://tempuri.org/buscaProductor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizaProductor">
+      <soap:operation soapAction="http://tempuri.org/actualizaProductor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminaProductor">
+      <soap:operation soapAction="http://tempuri.org/eliminaProductor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="esActivo">
+      <soap:operation soapAction="http://tempuri.org/esActivo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceProductorSoap12" type="tns:WebServiceProductorSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="retornaTodosLosProductores">
+      <soap12:operation soapAction="http://tempuri.org/retornaTodosLosProductores" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="guardarProductor">
+      <soap12:operation soapAction="http://tempuri.org/guardarProductor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="posicionProductor">
+      <soap12:operation soapAction="http://tempuri.org/posicionProductor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaProductor">
+      <soap12:operation soapAction="http://tempuri.org/buscaProductor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizaProductor">
+      <soap12:operation soapAction="http://tempuri.org/actualizaProductor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminaProductor">
+      <soap12:operation soapAction="http://tempuri.org/eliminaProductor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="esActivo">
+      <soap12:operation soapAction="http://tempuri.org/esActivo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebServiceProductor">
+    <wsdl:port name="WebServiceProductorSoap" binding="tns:WebServiceProductorSoap">
+      <soap:address location="http://localhost:64929/WebServiceProductor.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceProductorSoap12" binding="tns:WebServiceProductorSoap12">
+      <soap12:address location="http://localhost:64929/WebServiceProductor.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

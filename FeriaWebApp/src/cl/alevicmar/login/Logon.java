@@ -12,15 +12,51 @@ import javax.swing.UIManager;
 import cl.alevicmar.tools.HR;
 import cl.alevicmar.tools.HRut;
 
+//--- IMPORTANDO WEB SERVICES
+import cl.alevicmar.services.agrupacion.*;
+import cl.alevicmar.services.categoria.*;
+import cl.alevicmar.services.cliente.*;
+import cl.alevicmar.services.comuna.*;
+import cl.alevicmar.services.egreso.*;
+import cl.alevicmar.services.familia.*;
+import cl.alevicmar.services.metodopago.*;
+import cl.alevicmar.services.ordenventa.*;
+import cl.alevicmar.services.pais.*;
+import cl.alevicmar.services.producto.*;
+import cl.alevicmar.services.productor.*;
+import cl.alevicmar.services.provincia.*;
+import cl.alevicmar.services.region.*;
+import cl.alevicmar.services.stock.*;
+import cl.alevicmar.services.ubicacionproductor.*;
+import maps.java.Geocoding;
+
 /**
  *
  * @author Victor Manuel Araya
  */
 public class Logon extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Logon
-     */
+    
+    //CREANDO OBJETOS DE WEBSERVICES
+    WebServiceAgrupacion            srvAgrupacion           = null;
+    WebServiceCategoria             srvCategoria            = null;
+    WebServiceCliente               srvCliente              = null;
+    WebServiceComuna                srvComuna               = null;
+    WebServiceEgreso                srvEgreso               = null;
+    WebServiceFamilia               srvFamilia              = null;
+    WebServiceMetodopago            srvMetodoPago           = null;
+    WebServiceOrdendeventa          srvOrdenVenta           = null;
+    WebServicePais                  srvPais                 = null;
+    WebServiceProducto              srvProducto             = null;
+    WebServiceProductor             srvProductor            = null;
+    WebServiceProvincia             srvProvincia            = null;
+    WebServiceRegion                srvRegion               = null;
+    WebServiceStock                 srvStock                = null;
+    WebServiceUbicacionProductor    srvUbicacionProductor   = null;
+    
+    //servicio de mapas
+    Geocoding                       mapa                    = null;
+    
     public Logon() {
         initComponents();
         Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/cl/alevicmar/imagenes/minilogo.png"));
@@ -28,6 +64,138 @@ public class Logon extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
+    //creando accesadores y mutadores de webservices
+
+    public WebServiceAgrupacion getSrvAgrupacion() {
+        return srvAgrupacion;
+    }
+
+    public void setSrvAgrupacion(WebServiceAgrupacion srvAgrupacion) {
+        this.srvAgrupacion = srvAgrupacion;
+    }
+
+    public WebServiceCategoria getSrvCategoria() {
+        return srvCategoria;
+    }
+
+    public void setSrvCategoria(WebServiceCategoria srvCategoria) {
+        this.srvCategoria = srvCategoria;
+    }
+
+    public WebServiceCliente getSrvCliente() {
+        return srvCliente;
+    }
+
+    public void setSrvCliente(WebServiceCliente srvCliente) {
+        this.srvCliente = srvCliente;
+    }
+
+    public WebServiceComuna getSrvComuna() {
+        return srvComuna;
+    }
+
+    public void setSrvComuna(WebServiceComuna srvComuna) {
+        this.srvComuna = srvComuna;
+    }
+
+    public WebServiceEgreso getSrvEgreso() {
+        return srvEgreso;
+    }
+
+    public void setSrvEgreso(WebServiceEgreso srvEgreso) {
+        this.srvEgreso = srvEgreso;
+    }
+
+    public WebServiceFamilia getSrvFamilia() {
+        return srvFamilia;
+    }
+
+    public void setSrvFamilia(WebServiceFamilia srvFamilia) {
+        this.srvFamilia = srvFamilia;
+    }
+
+    public WebServiceMetodopago getSrvMetodoPago() {
+        return srvMetodoPago;
+    }
+
+    public void setSrvMetodoPago(WebServiceMetodopago srvMetodoPago) {
+        this.srvMetodoPago = srvMetodoPago;
+    }
+
+    public WebServiceOrdendeventa getSrvOrdenVenta() {
+        return srvOrdenVenta;
+    }
+
+    public void setSrvOrdenVenta(WebServiceOrdendeventa srvOrdenVenta) {
+        this.srvOrdenVenta = srvOrdenVenta;
+    }
+
+    public WebServicePais getSrvPais() {
+        return srvPais;
+    }
+
+    public void setSrvPais(WebServicePais srvPais) {
+        this.srvPais = srvPais;
+    }
+
+    public WebServiceProducto getSrvProducto() {
+        return srvProducto;
+    }
+
+    public void setSrvProducto(WebServiceProducto srvProducto) {
+        this.srvProducto = srvProducto;
+    }
+
+    public WebServiceProductor getSrvProductor() {
+        return srvProductor;
+    }
+
+    public void setSrvProductor(WebServiceProductor srvProductor) {
+        this.srvProductor = srvProductor;
+    }
+
+    public WebServiceProvincia getSrvProvincia() {
+        return srvProvincia;
+    }
+
+    public void setSrvProvincia(WebServiceProvincia srvProvincia) {
+        this.srvProvincia = srvProvincia;
+    }
+
+    public WebServiceRegion getSrvRegion() {
+        return srvRegion;
+    }
+
+    public void setSrvRegion(WebServiceRegion srvRegion) {
+        this.srvRegion = srvRegion;
+    }
+
+    public WebServiceStock getSrvStock() {
+        return srvStock;
+    }
+
+    public void setSrvStock(WebServiceStock srvStock) {
+        this.srvStock = srvStock;
+    }
+
+    public WebServiceUbicacionProductor getSrvUbicacionProductor() {
+        return srvUbicacionProductor;
+    }
+
+    public void setSrvUbicacionProductor(WebServiceUbicacionProductor srvUbicacionProductor) {
+        this.srvUbicacionProductor = srvUbicacionProductor;
+    }
+
+    public Geocoding getMapa() {
+        return mapa;
+    }
+
+    public void setMapa(Geocoding mapa) {
+        this.mapa = mapa;
+    }
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

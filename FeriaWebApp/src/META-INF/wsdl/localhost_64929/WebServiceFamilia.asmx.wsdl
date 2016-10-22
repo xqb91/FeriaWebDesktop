@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="retornaTodasLasFamilias">
+        <s:complexType />
+      </s:element>
+      <s:element name="retornaTodasLasFamiliasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="retornaTodasLasFamiliasResult" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="guardarFamilia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="familia" type="tns:Familia" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Familia">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="guardarFamiliaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="guardarFamiliaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="posicionFamilia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="posicion" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="posicionFamiliaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="posicionFamiliaResult" type="tns:Familia" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscaFamilia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idFamilia" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscaFamiliaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="buscaFamiliaResult" type="tns:Familia" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="actualizaFamilia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="familia" type="tns:Familia" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="actualizaFamiliaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="actualizaFamiliaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eliminaFamilia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idFamilia" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eliminaFamiliaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eliminaFamiliaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="esActivo">
+        <s:complexType />
+      </s:element>
+      <s:element name="esActivoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="esActivoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="retornaTodasLasFamiliasSoapIn">
+    <wsdl:part name="parameters" element="tns:retornaTodasLasFamilias" />
+  </wsdl:message>
+  <wsdl:message name="retornaTodasLasFamiliasSoapOut">
+    <wsdl:part name="parameters" element="tns:retornaTodasLasFamiliasResponse" />
+  </wsdl:message>
+  <wsdl:message name="guardarFamiliaSoapIn">
+    <wsdl:part name="parameters" element="tns:guardarFamilia" />
+  </wsdl:message>
+  <wsdl:message name="guardarFamiliaSoapOut">
+    <wsdl:part name="parameters" element="tns:guardarFamiliaResponse" />
+  </wsdl:message>
+  <wsdl:message name="posicionFamiliaSoapIn">
+    <wsdl:part name="parameters" element="tns:posicionFamilia" />
+  </wsdl:message>
+  <wsdl:message name="posicionFamiliaSoapOut">
+    <wsdl:part name="parameters" element="tns:posicionFamiliaResponse" />
+  </wsdl:message>
+  <wsdl:message name="buscaFamiliaSoapIn">
+    <wsdl:part name="parameters" element="tns:buscaFamilia" />
+  </wsdl:message>
+  <wsdl:message name="buscaFamiliaSoapOut">
+    <wsdl:part name="parameters" element="tns:buscaFamiliaResponse" />
+  </wsdl:message>
+  <wsdl:message name="actualizaFamiliaSoapIn">
+    <wsdl:part name="parameters" element="tns:actualizaFamilia" />
+  </wsdl:message>
+  <wsdl:message name="actualizaFamiliaSoapOut">
+    <wsdl:part name="parameters" element="tns:actualizaFamiliaResponse" />
+  </wsdl:message>
+  <wsdl:message name="eliminaFamiliaSoapIn">
+    <wsdl:part name="parameters" element="tns:eliminaFamilia" />
+  </wsdl:message>
+  <wsdl:message name="eliminaFamiliaSoapOut">
+    <wsdl:part name="parameters" element="tns:eliminaFamiliaResponse" />
+  </wsdl:message>
+  <wsdl:message name="esActivoSoapIn">
+    <wsdl:part name="parameters" element="tns:esActivo" />
+  </wsdl:message>
+  <wsdl:message name="esActivoSoapOut">
+    <wsdl:part name="parameters" element="tns:esActivoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceFamiliaSoap">
+    <wsdl:operation name="retornaTodasLasFamilias">
+      <wsdl:input message="tns:retornaTodasLasFamiliasSoapIn" />
+      <wsdl:output message="tns:retornaTodasLasFamiliasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="guardarFamilia">
+      <wsdl:input message="tns:guardarFamiliaSoapIn" />
+      <wsdl:output message="tns:guardarFamiliaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="posicionFamilia">
+      <wsdl:input message="tns:posicionFamiliaSoapIn" />
+      <wsdl:output message="tns:posicionFamiliaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="buscaFamilia">
+      <wsdl:input message="tns:buscaFamiliaSoapIn" />
+      <wsdl:output message="tns:buscaFamiliaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="actualizaFamilia">
+      <wsdl:input message="tns:actualizaFamiliaSoapIn" />
+      <wsdl:output message="tns:actualizaFamiliaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="eliminaFamilia">
+      <wsdl:input message="tns:eliminaFamiliaSoapIn" />
+      <wsdl:output message="tns:eliminaFamiliaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="esActivo">
+      <wsdl:input message="tns:esActivoSoapIn" />
+      <wsdl:output message="tns:esActivoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceFamiliaSoap" type="tns:WebServiceFamiliaSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="retornaTodasLasFamilias">
+      <soap:operation soapAction="http://tempuri.org/retornaTodasLasFamilias" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="guardarFamilia">
+      <soap:operation soapAction="http://tempuri.org/guardarFamilia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="posicionFamilia">
+      <soap:operation soapAction="http://tempuri.org/posicionFamilia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaFamilia">
+      <soap:operation soapAction="http://tempuri.org/buscaFamilia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizaFamilia">
+      <soap:operation soapAction="http://tempuri.org/actualizaFamilia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminaFamilia">
+      <soap:operation soapAction="http://tempuri.org/eliminaFamilia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="esActivo">
+      <soap:operation soapAction="http://tempuri.org/esActivo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceFamiliaSoap12" type="tns:WebServiceFamiliaSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="retornaTodasLasFamilias">
+      <soap12:operation soapAction="http://tempuri.org/retornaTodasLasFamilias" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="guardarFamilia">
+      <soap12:operation soapAction="http://tempuri.org/guardarFamilia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="posicionFamilia">
+      <soap12:operation soapAction="http://tempuri.org/posicionFamilia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaFamilia">
+      <soap12:operation soapAction="http://tempuri.org/buscaFamilia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizaFamilia">
+      <soap12:operation soapAction="http://tempuri.org/actualizaFamilia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminaFamilia">
+      <soap12:operation soapAction="http://tempuri.org/eliminaFamilia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="esActivo">
+      <soap12:operation soapAction="http://tempuri.org/esActivo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebServiceFamilia">
+    <wsdl:port name="WebServiceFamiliaSoap" binding="tns:WebServiceFamiliaSoap">
+      <soap:address location="http://localhost:64929/WebServiceFamilia.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceFamiliaSoap12" binding="tns:WebServiceFamiliaSoap12">
+      <soap12:address location="http://localhost:64929/WebServiceFamilia.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

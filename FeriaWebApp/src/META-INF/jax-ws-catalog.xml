@@ -6,4 +6,20 @@
     <system systemId="http://localhost:55012/WebServicePais.asmx?wsdl" uri="wsdl/localhost_55012/WebServicePais.asmx.wsdl"/>
     <system systemId="http://localhost:55012/WebServicePais.asmx?WSDL" uri="wsdl/localhost_55012/WebServicePais.asmx.wsdl"/>
     <system systemId="http://fx.currencysystem.com/webservices/CurrencyServer4.asmx?wsdl" uri="wsdl/fx.currencysystem.com/webservices/CurrencyServer4.asmx.wsdl"/>
+    <system systemId="http://localhost:64929/WebServicePais.asmx?wsdl" uri="wsdl/localhost_64929/WebServicePais.asmx.wsdl"/>
+    <system systemId="http://localhost:55012/WebServiceAgrupacion.asmx" uri="wsdl/localhost_55012/WebServiceAgrupacion.asmx"/>
+    <system systemId="http://localhost:64929/WebServiceAgrupacion.asmx?wsdl" uri="wsdl/localhost_64929/WebServiceAgrupacion.asmx.wsdl"/>
+    <system systemId="http://localhost:64929/WebServiceCategoria.asmx?wsdl" uri="wsdl/localhost_64929/WebServiceCategoria.asmx.wsdl"/>
+    <system systemId="http://localhost:64929/WebServiceCliente.asmx?wsdl" uri="wsdl/localhost_64929/WebServiceCliente.asmx.wsdl"/>
+    <system systemId="http://localhost:64929/WebServiceComuna.asmx?wsdl" uri="wsdl/localhost_64929/WebServiceComuna.asmx.wsdl"/>
+    <system systemId="http://localhost:64929/WebServiceEgreso.asmx?wsdl" uri="wsdl/localhost_64929/WebServiceEgreso.asmx.wsdl"/>
+    <system systemId="http://localhost:64929/WebServiceFamilia.asmx?wsdl" uri="wsdl/localhost_64929/WebServiceFamilia.asmx.wsdl"/>
+    <system systemId="http://localhost:64929/WebServiceMetodopago.asmx?wsdl" uri="wsdl/localhost_64929/WebServiceMetodopago.asmx.wsdl"/>
+    <system systemId="http://localhost:64929/WebServiceOrdendeventa.asmx?wsdl" uri="wsdl/localhost_64929/WebServiceOrdendeventa.asmx.wsdl"/>
+    <system systemId="http://localhost:64929/WebServiceProducto.asmx?wsdl" uri="wsdl/localhost_64929/WebServiceProducto.asmx.wsdl"/>
+    <system systemId="http://localhost:64929/WebServiceProductor.asmx?wsdl" uri="wsdl/localhost_64929/WebServiceProductor.asmx.wsdl"/>
+    <system systemId="http://localhost:64929/WebServiceProvincia.asmx?wsdl" uri="wsdl/localhost_64929/WebServiceProvincia.asmx.wsdl"/>
+    <system systemId="http://localhost:64929/WebServiceRegion.asmx?wsdl" uri="wsdl/localhost_64929/WebServiceRegion.asmx.wsdl"/>
+    <system systemId="http://localhost:64929/WebServiceStock.asmx?wsdl" uri="wsdl/localhost_64929/WebServiceStock.asmx.wsdl"/>
+    <system systemId="http://localhost:64929/WebServiceUbicacionProductor.asmx?wsdl" uri="wsdl/localhost_64929/WebServiceUbicacionProductor.asmx.wsdl"/>
 </catalog>

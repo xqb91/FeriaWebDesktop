@@ -311,10 +311,10 @@
   </wsdl:binding>
   <wsdl:service name="WebServicePais">
     <wsdl:port name="WebServicePaisSoap" binding="tns:WebServicePaisSoap">
-      <soap:address location="http://localhost:55012/WebServicePais.asmx" />
+      <soap:address location="http://localhost:64929/WebServicePais.asmx" />
     </wsdl:port>
     <wsdl:port name="WebServicePaisSoap12" binding="tns:WebServicePaisSoap12">
-      <soap12:address location="http://localhost:55012/WebServicePais.asmx" />
+      <soap12:address location="http://localhost:64929/WebServicePais.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
