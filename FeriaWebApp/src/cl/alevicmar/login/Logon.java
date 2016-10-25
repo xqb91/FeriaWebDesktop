@@ -5,29 +5,27 @@
  */
 package cl.alevicmar.login;
 
+import cl.alevicmar.services.agrupacion.WebServiceAgrupacion;
+import cl.alevicmar.services.categoria.WebServiceCategoria;
+import cl.alevicmar.services.cliente.WebServiceCliente;
+import cl.alevicmar.services.comuna.WebServiceComuna;
+import cl.alevicmar.services.egreso.WebServiceEgreso;
+import cl.alevicmar.services.familia.WebServiceFamilia;
+import cl.alevicmar.services.metodopago.WebServiceMetodopago;
+import cl.alevicmar.services.ordenventa.WebServiceOrdendeventa;
+import cl.alevicmar.services.pais.WebServicePais;
+import cl.alevicmar.services.producto.WebServiceProducto;
+import cl.alevicmar.services.productor.WebServiceProductor;
+import cl.alevicmar.services.provincia.WebServiceProvincia;
+import cl.alevicmar.services.region.WebServiceRegion;
+import cl.alevicmar.services.stock.WebServiceStock;
+import cl.alevicmar.services.ubicacionproductor.WebServiceUbicacionProductor;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import cl.alevicmar.tools.HR;
 import cl.alevicmar.tools.HRut;
-
-//--- IMPORTANDO WEB SERVICES
-import cl.alevicmar.services.agrupacion.*;
-import cl.alevicmar.services.categoria.*;
-import cl.alevicmar.services.cliente.*;
-import cl.alevicmar.services.comuna.*;
-import cl.alevicmar.services.egreso.*;
-import cl.alevicmar.services.familia.*;
-import cl.alevicmar.services.metodopago.*;
-import cl.alevicmar.services.ordenventa.*;
-import cl.alevicmar.services.pais.*;
-import cl.alevicmar.services.producto.*;
-import cl.alevicmar.services.productor.*;
-import cl.alevicmar.services.provincia.*;
-import cl.alevicmar.services.region.*;
-import cl.alevicmar.services.stock.*;
-import cl.alevicmar.services.ubicacionproductor.*;
 import maps.java.Geocoding;
 
 /**
@@ -35,9 +33,7 @@ import maps.java.Geocoding;
  * @author Victor Manuel Araya
  */
 public class Logon extends javax.swing.JFrame {
-
-    
-    //CREANDO OBJETOS DE WEBSERVICES
+    //atributos de webservices
     WebServiceAgrupacion            srvAgrupacion           = null;
     WebServiceCategoria             srvCategoria            = null;
     WebServiceCliente               srvCliente              = null;
@@ -56,7 +52,8 @@ public class Logon extends javax.swing.JFrame {
     
     //servicio de mapas
     Geocoding                       mapa                    = null;
-    
+
+
     public Logon() {
         initComponents();
         Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/cl/alevicmar/imagenes/minilogo.png"));
@@ -64,9 +61,7 @@ public class Logon extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
-    //creando accesadores y mutadores de webservices
-
-    public WebServiceAgrupacion getSrvAgrupacion() {
+        public WebServiceAgrupacion getSrvAgrupacion() {
         return srvAgrupacion;
     }
 
@@ -193,6 +188,7 @@ public class Logon extends javax.swing.JFrame {
     public void setMapa(Geocoding mapa) {
         this.mapa = mapa;
     }
+    
     
     
     
