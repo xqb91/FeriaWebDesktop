@@ -452,7 +452,7 @@ public class HR {
         return ( (int) dias);
     }
     
-    public String retornaValorTabla(Integer posicion, JTable tabla) {
+    public static String retornaValorTabla(Integer posicion, JTable tabla) {
         if(tabla.getSelectedColumn() >= 0) {
             DefaultTableModel modelo = (DefaultTableModel)tabla.getModel();
             return String.valueOf(modelo.getValueAt(tabla.getSelectedRow(), posicion));
@@ -469,7 +469,7 @@ public class HR {
         }
     }*/
     
-    public String formatearFecha(Date fecha) {
+    public static String formatearFecha(Date fecha) {
         try {
             SimpleDateFormat dt = new SimpleDateFormat("dd-MM-yyyy");
             return dt.format(fecha);
@@ -478,7 +478,7 @@ public class HR {
         }
     }
     
-    public String formatearHoraDesdeFecha(Date fecha) {
+    public static String formatearHoraDesdeFecha(Date fecha) {
         try {
             SimpleDateFormat dt = new SimpleDateFormat("hh:mm");
             return dt.format(fecha);
@@ -487,7 +487,7 @@ public class HR {
         }
     }
     
-    public Date fechaHoraInicial(Date fecha) {
+    public static Date fechaHoraInicial(Date fecha) {
         Date fechaAux = fecha;
         try {
             fechaAux.setHours(00);
@@ -499,7 +499,7 @@ public class HR {
         }
     }
     
-    public Date fechaHoraFinal(Date fecha) {
+    public static Date fechaHoraFinal(Date fecha) {
         Date fechaAux = fecha;
         try {
             fechaAux.setHours(23);

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
-      <s:import namespace="http://microsoft.com/wsdl/types/" />
       <s:element name="retornaTodosLosClientes">
         <s:complexType />
       </s:element>
@@ -34,9 +33,9 @@
           <s:element minOccurs="0" maxOccurs="1" name="Apaterno" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Amaterno" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="Telefono" type="s1:char" />
-          <s:element minOccurs="1" maxOccurs="1" name="Celular" type="s1:char" />
-          <s:element minOccurs="1" maxOccurs="1" name="Fax" type="s1:char" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telefono" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Celular" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Fax" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Direccion" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="Comuna" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Longitud" type="s:string" />
@@ -64,17 +63,73 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="buscaCliente">
+      <s:element name="buscaClientePorId">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="1" maxOccurs="1" name="idCliente" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="buscaClienteResponse">
+      <s:element name="buscaClientePorIdResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="buscaClienteResult" type="tns:Clientes" />
+            <s:element minOccurs="0" maxOccurs="1" name="buscaClientePorIdResult" type="tns:Clientes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscaClientePorRun">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idCliente" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscaClientePorRunResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="buscaClientePorRunResult" type="tns:Clientes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscaClientePorNombres">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombres" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscaClientePorNombresResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="buscaClientePorNombresResult" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscaClientePorEmail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscaClientePorEmailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="buscaClientePorEmailResult" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscaClientePorComuna">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="comuna" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscaClientePorComunaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="buscaClientePorComunaResult" type="tns:ArrayOfAnyType" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -117,11 +172,6 @@
         </s:complexType>
       </s:element>
     </s:schema>
-    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
-      <s:simpleType name="char">
-        <s:restriction base="s:unsignedShort" />
-      </s:simpleType>
-    </s:schema>
   </wsdl:types>
   <wsdl:message name="retornaTodosLosClientesSoapIn">
     <wsdl:part name="parameters" element="tns:retornaTodosLosClientes" />
@@ -141,11 +191,35 @@
   <wsdl:message name="posicionPaisSoapOut">
     <wsdl:part name="parameters" element="tns:posicionPaisResponse" />
   </wsdl:message>
-  <wsdl:message name="buscaClienteSoapIn">
-    <wsdl:part name="parameters" element="tns:buscaCliente" />
+  <wsdl:message name="buscaClientePorIdSoapIn">
+    <wsdl:part name="parameters" element="tns:buscaClientePorId" />
   </wsdl:message>
-  <wsdl:message name="buscaClienteSoapOut">
-    <wsdl:part name="parameters" element="tns:buscaClienteResponse" />
+  <wsdl:message name="buscaClientePorIdSoapOut">
+    <wsdl:part name="parameters" element="tns:buscaClientePorIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="buscaClientePorRunSoapIn">
+    <wsdl:part name="parameters" element="tns:buscaClientePorRun" />
+  </wsdl:message>
+  <wsdl:message name="buscaClientePorRunSoapOut">
+    <wsdl:part name="parameters" element="tns:buscaClientePorRunResponse" />
+  </wsdl:message>
+  <wsdl:message name="buscaClientePorNombresSoapIn">
+    <wsdl:part name="parameters" element="tns:buscaClientePorNombres" />
+  </wsdl:message>
+  <wsdl:message name="buscaClientePorNombresSoapOut">
+    <wsdl:part name="parameters" element="tns:buscaClientePorNombresResponse" />
+  </wsdl:message>
+  <wsdl:message name="buscaClientePorEmailSoapIn">
+    <wsdl:part name="parameters" element="tns:buscaClientePorEmail" />
+  </wsdl:message>
+  <wsdl:message name="buscaClientePorEmailSoapOut">
+    <wsdl:part name="parameters" element="tns:buscaClientePorEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="buscaClientePorComunaSoapIn">
+    <wsdl:part name="parameters" element="tns:buscaClientePorComuna" />
+  </wsdl:message>
+  <wsdl:message name="buscaClientePorComunaSoapOut">
+    <wsdl:part name="parameters" element="tns:buscaClientePorComunaResponse" />
   </wsdl:message>
   <wsdl:message name="actualizaClienteSoapIn">
     <wsdl:part name="parameters" element="tns:actualizaCliente" />
@@ -178,9 +252,25 @@
       <wsdl:input message="tns:posicionPaisSoapIn" />
       <wsdl:output message="tns:posicionPaisSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="buscaCliente">
-      <wsdl:input message="tns:buscaClienteSoapIn" />
-      <wsdl:output message="tns:buscaClienteSoapOut" />
+    <wsdl:operation name="buscaClientePorId">
+      <wsdl:input message="tns:buscaClientePorIdSoapIn" />
+      <wsdl:output message="tns:buscaClientePorIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="buscaClientePorRun">
+      <wsdl:input message="tns:buscaClientePorRunSoapIn" />
+      <wsdl:output message="tns:buscaClientePorRunSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="buscaClientePorNombres">
+      <wsdl:input message="tns:buscaClientePorNombresSoapIn" />
+      <wsdl:output message="tns:buscaClientePorNombresSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="buscaClientePorEmail">
+      <wsdl:input message="tns:buscaClientePorEmailSoapIn" />
+      <wsdl:output message="tns:buscaClientePorEmailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="buscaClientePorComuna">
+      <wsdl:input message="tns:buscaClientePorComunaSoapIn" />
+      <wsdl:output message="tns:buscaClientePorComunaSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="actualizaCliente">
       <wsdl:input message="tns:actualizaClienteSoapIn" />
@@ -224,8 +314,44 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="buscaCliente">
-      <soap:operation soapAction="http://tempuri.org/buscaCliente" style="document" />
+    <wsdl:operation name="buscaClientePorId">
+      <soap:operation soapAction="http://tempuri.org/buscaClientePorId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaClientePorRun">
+      <soap:operation soapAction="http://tempuri.org/buscaClientePorRun" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaClientePorNombres">
+      <soap:operation soapAction="http://tempuri.org/buscaClientePorNombres" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaClientePorEmail">
+      <soap:operation soapAction="http://tempuri.org/buscaClientePorEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaClientePorComuna">
+      <soap:operation soapAction="http://tempuri.org/buscaClientePorComuna" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -290,8 +416,44 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="buscaCliente">
-      <soap12:operation soapAction="http://tempuri.org/buscaCliente" style="document" />
+    <wsdl:operation name="buscaClientePorId">
+      <soap12:operation soapAction="http://tempuri.org/buscaClientePorId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaClientePorRun">
+      <soap12:operation soapAction="http://tempuri.org/buscaClientePorRun" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaClientePorNombres">
+      <soap12:operation soapAction="http://tempuri.org/buscaClientePorNombres" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaClientePorEmail">
+      <soap12:operation soapAction="http://tempuri.org/buscaClientePorEmail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaClientePorComuna">
+      <soap12:operation soapAction="http://tempuri.org/buscaClientePorComuna" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

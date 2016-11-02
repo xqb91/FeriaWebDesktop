@@ -2,13 +2,49 @@ package cl.alevicmar.main;
 
 import cl.alevicmar.login.LockWindow;
 import cl.alevicmar.menuArchivo.VerificaConectividad;
+import cl.alevicmar.menuClientes.AdministrarClientes;
+import cl.alevicmar.services.agrupacion.WebServiceAgrupacion;
+import cl.alevicmar.services.categoria.WebServiceCategoria;
+import cl.alevicmar.services.cliente.WebServiceCliente;
+import cl.alevicmar.services.comuna.WebServiceComuna;
+import cl.alevicmar.services.egreso.WebServiceEgreso;
+import cl.alevicmar.services.familia.WebServiceFamilia;
+import cl.alevicmar.services.metodopago.WebServiceMetodopago;
+import cl.alevicmar.services.ordenventa.WebServiceOrdendeventa;
+import cl.alevicmar.services.pais.WebServicePais;
+import cl.alevicmar.services.producto.WebServiceProducto;
+import cl.alevicmar.services.productor.WebServiceProductor;
+import cl.alevicmar.services.provincia.WebServiceProvincia;
+import cl.alevicmar.services.region.WebServiceRegion;
+import cl.alevicmar.services.stock.WebServiceStock;
+import cl.alevicmar.services.ubicacionproductor.WebServiceUbicacionProductor;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import maps.java.Geocoding;
 
 public class Principal extends javax.swing.JFrame {
-
+    //atributos de webservices
+    WebServiceAgrupacion            srvAgrupacion           = null;
+    WebServiceCategoria             srvCategoria            = null;
+    WebServiceCliente               srvCliente              = null;
+    WebServiceComuna                srvComuna               = null;
+    WebServiceEgreso                srvEgreso               = null;
+    WebServiceFamilia               srvFamilia              = null;
+    WebServiceMetodopago            srvMetodoPago           = null;
+    WebServiceOrdendeventa          srvOrdenVenta           = null;
+    WebServicePais                  srvPais                 = null;
+    WebServiceProducto              srvProducto             = null;
+    WebServiceProductor             srvProductor            = null;
+    WebServiceProvincia             srvProvincia            = null;
+    WebServiceRegion                srvRegion               = null;
+    WebServiceStock                 srvStock                = null;
+    WebServiceUbicacionProductor    srvUbicacionProductor   = null;
+    
+    //servicio de mapas
+    Geocoding                       mapa                    = null;
+    
 
     public Principal() {
         initComponents();
@@ -17,8 +53,157 @@ public class Principal extends javax.swing.JFrame {
         //seteando el logotipo de la ventana de la aplicacion
         Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/cl/alevicmar/imagenes/icono.png"));
         setIconImage(icon);
+        
+        //inicializacion manual
+        srvAgrupacion           = new WebServiceAgrupacion();
+        srvCategoria            = new WebServiceCategoria();
+        srvCliente              = new WebServiceCliente();
+        srvComuna               = new WebServiceComuna();
+        srvEgreso               = new WebServiceEgreso();
+        srvFamilia              = new WebServiceFamilia();
+        srvMetodoPago           = new WebServiceMetodopago();
+        srvOrdenVenta           = new WebServiceOrdendeventa();
+        srvPais                 = new WebServicePais();
+        srvProducto             = new WebServiceProducto();
+        srvProductor            = new WebServiceProductor();
+        srvProvincia            = new WebServiceProvincia();
+        srvRegion               = new WebServiceRegion();
+        srvStock                = new WebServiceStock();
+        srvUbicacionProductor   = new WebServiceUbicacionProductor();
+    
+    //servicio de mapas
+    Geocoding                       mapa                    = null;
     }
 
+    public WebServiceAgrupacion getSrvAgrupacion() {
+        return srvAgrupacion;
+    }
+
+    public void setSrvAgrupacion(WebServiceAgrupacion srvAgrupacion) {
+        this.srvAgrupacion = srvAgrupacion;
+    }
+
+    public WebServiceCategoria getSrvCategoria() {
+        return srvCategoria;
+    }
+
+    public void setSrvCategoria(WebServiceCategoria srvCategoria) {
+        this.srvCategoria = srvCategoria;
+    }
+
+    public WebServiceCliente getSrvCliente() {
+        return srvCliente;
+    }
+
+    public void setSrvCliente(WebServiceCliente srvCliente) {
+        this.srvCliente = srvCliente;
+    }
+
+    public WebServiceComuna getSrvComuna() {
+        return srvComuna;
+    }
+
+    public void setSrvComuna(WebServiceComuna srvComuna) {
+        this.srvComuna = srvComuna;
+    }
+
+    public WebServiceEgreso getSrvEgreso() {
+        return srvEgreso;
+    }
+
+    public void setSrvEgreso(WebServiceEgreso srvEgreso) {
+        this.srvEgreso = srvEgreso;
+    }
+
+    public WebServiceFamilia getSrvFamilia() {
+        return srvFamilia;
+    }
+
+    public void setSrvFamilia(WebServiceFamilia srvFamilia) {
+        this.srvFamilia = srvFamilia;
+    }
+
+    public WebServiceMetodopago getSrvMetodoPago() {
+        return srvMetodoPago;
+    }
+
+    public void setSrvMetodoPago(WebServiceMetodopago srvMetodoPago) {
+        this.srvMetodoPago = srvMetodoPago;
+    }
+
+    public WebServiceOrdendeventa getSrvOrdenVenta() {
+        return srvOrdenVenta;
+    }
+
+    public void setSrvOrdenVenta(WebServiceOrdendeventa srvOrdenVenta) {
+        this.srvOrdenVenta = srvOrdenVenta;
+    }
+
+    public WebServicePais getSrvPais() {
+        return srvPais;
+    }
+
+    public void setSrvPais(WebServicePais srvPais) {
+        this.srvPais = srvPais;
+    }
+
+    public WebServiceProducto getSrvProducto() {
+        return srvProducto;
+    }
+
+    public void setSrvProducto(WebServiceProducto srvProducto) {
+        this.srvProducto = srvProducto;
+    }
+
+    public WebServiceProductor getSrvProductor() {
+        return srvProductor;
+    }
+
+    public void setSrvProductor(WebServiceProductor srvProductor) {
+        this.srvProductor = srvProductor;
+    }
+
+    public WebServiceProvincia getSrvProvincia() {
+        return srvProvincia;
+    }
+
+    public void setSrvProvincia(WebServiceProvincia srvProvincia) {
+        this.srvProvincia = srvProvincia;
+    }
+
+    public WebServiceRegion getSrvRegion() {
+        return srvRegion;
+    }
+
+    public void setSrvRegion(WebServiceRegion srvRegion) {
+        this.srvRegion = srvRegion;
+    }
+
+    public WebServiceStock getSrvStock() {
+        return srvStock;
+    }
+
+    public void setSrvStock(WebServiceStock srvStock) {
+        this.srvStock = srvStock;
+    }
+
+    public WebServiceUbicacionProductor getSrvUbicacionProductor() {
+        return srvUbicacionProductor;
+    }
+
+    public void setSrvUbicacionProductor(WebServiceUbicacionProductor srvUbicacionProductor) {
+        this.srvUbicacionProductor = srvUbicacionProductor;
+    }
+
+    public Geocoding getMapa() {
+        return mapa;
+    }
+
+    public void setMapa(Geocoding mapa) {
+        this.mapa = mapa;
+    }
+
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -36,7 +221,7 @@ public class Principal extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         archivoSalir = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        clientesAdminClientes = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
         jMenuItem6 = new javax.swing.JMenuItem();
@@ -106,9 +291,14 @@ public class Principal extends javax.swing.JFrame {
 
         jMenu2.setText("Clientes");
 
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/group_link.png"))); // NOI18N
-        jMenuItem1.setText("Administración de Clientes");
-        jMenu2.add(jMenuItem1);
+        clientesAdminClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/group_link.png"))); // NOI18N
+        clientesAdminClientes.setText("Administración de Clientes");
+        clientesAdminClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clientesAdminClientesActionPerformed(evt);
+            }
+        });
+        jMenu2.add(clientesAdminClientes);
 
         jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/map_magnify.png"))); // NOI18N
         jMenuItem2.setText("Administración de Ubicación de Clientes");
@@ -185,6 +375,12 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_archivoVerificarConexionActionPerformed
 
+    private void clientesAdminClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientesAdminClientesActionPerformed
+        AdministrarClientes admCli = new AdministrarClientes(srvCliente, srvComuna, this);
+        admCli.setIconImage(this.getIconImage());
+        admCli.setVisible(true);
+    }//GEN-LAST:event_clientesAdminClientesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -224,6 +420,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem archivoBloquearTerminal;
     private javax.swing.JMenuItem archivoSalir;
     private javax.swing.JMenuItem archivoVerificarConexion;
+    private javax.swing.JMenuItem clientesAdminClientes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -234,7 +431,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
