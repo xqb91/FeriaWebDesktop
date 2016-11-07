@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="retornaTodasLasOrdendenesVentas">
+        <s:complexType />
+      </s:element>
+      <s:element name="retornaTodasLasOrdendenesVentasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="retornaTodasLasOrdendenesVentasResult" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="guardarOrdendeventa">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ordendeventa" type="tns:Ordendeventa" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Ordendeventa">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Fecha" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Cliente" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Metodopago" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Cuotas" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Subtotal" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Impuesto" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Total" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Confirmada" type="s1:char" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="guardarOrdendeventaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="guardarOrdendeventaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="posicionOrdendeventa">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="posicion" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="posicionOrdendeventaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="posicionOrdendeventaResult" type="tns:Ordendeventa" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscaOrdendeveta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idOrden" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscaOrdendevetaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="buscaOrdendevetaResult" type="tns:Ordendeventa" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="actualizaOrdendeventa">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="orden" type="tns:Ordendeventa" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="actualizaOrdendeventaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="actualizaOrdendeventaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eliminaOrdendeventa">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idOrden" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eliminaOrdendeventaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eliminaOrdendeventaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="esActivo">
+        <s:complexType />
+      </s:element>
+      <s:element name="esActivoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="esActivoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="char">
+        <s:restriction base="s:unsignedShort" />
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="retornaTodasLasOrdendenesVentasSoapIn">
+    <wsdl:part name="parameters" element="tns:retornaTodasLasOrdendenesVentas" />
+  </wsdl:message>
+  <wsdl:message name="retornaTodasLasOrdendenesVentasSoapOut">
+    <wsdl:part name="parameters" element="tns:retornaTodasLasOrdendenesVentasResponse" />
+  </wsdl:message>
+  <wsdl:message name="guardarOrdendeventaSoapIn">
+    <wsdl:part name="parameters" element="tns:guardarOrdendeventa" />
+  </wsdl:message>
+  <wsdl:message name="guardarOrdendeventaSoapOut">
+    <wsdl:part name="parameters" element="tns:guardarOrdendeventaResponse" />
+  </wsdl:message>
+  <wsdl:message name="posicionOrdendeventaSoapIn">
+    <wsdl:part name="parameters" element="tns:posicionOrdendeventa" />
+  </wsdl:message>
+  <wsdl:message name="posicionOrdendeventaSoapOut">
+    <wsdl:part name="parameters" element="tns:posicionOrdendeventaResponse" />
+  </wsdl:message>
+  <wsdl:message name="buscaOrdendevetaSoapIn">
+    <wsdl:part name="parameters" element="tns:buscaOrdendeveta" />
+  </wsdl:message>
+  <wsdl:message name="buscaOrdendevetaSoapOut">
+    <wsdl:part name="parameters" element="tns:buscaOrdendevetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="actualizaOrdendeventaSoapIn">
+    <wsdl:part name="parameters" element="tns:actualizaOrdendeventa" />
+  </wsdl:message>
+  <wsdl:message name="actualizaOrdendeventaSoapOut">
+    <wsdl:part name="parameters" element="tns:actualizaOrdendeventaResponse" />
+  </wsdl:message>
+  <wsdl:message name="eliminaOrdendeventaSoapIn">
+    <wsdl:part name="parameters" element="tns:eliminaOrdendeventa" />
+  </wsdl:message>
+  <wsdl:message name="eliminaOrdendeventaSoapOut">
+    <wsdl:part name="parameters" element="tns:eliminaOrdendeventaResponse" />
+  </wsdl:message>
+  <wsdl:message name="esActivoSoapIn">
+    <wsdl:part name="parameters" element="tns:esActivo" />
+  </wsdl:message>
+  <wsdl:message name="esActivoSoapOut">
+    <wsdl:part name="parameters" element="tns:esActivoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceOrdendeventaSoap">
+    <wsdl:operation name="retornaTodasLasOrdendenesVentas">
+      <wsdl:input message="tns:retornaTodasLasOrdendenesVentasSoapIn" />
+      <wsdl:output message="tns:retornaTodasLasOrdendenesVentasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="guardarOrdendeventa">
+      <wsdl:input message="tns:guardarOrdendeventaSoapIn" />
+      <wsdl:output message="tns:guardarOrdendeventaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="posicionOrdendeventa">
+      <wsdl:input message="tns:posicionOrdendeventaSoapIn" />
+      <wsdl:output message="tns:posicionOrdendeventaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="buscaOrdendeveta">
+      <wsdl:input message="tns:buscaOrdendevetaSoapIn" />
+      <wsdl:output message="tns:buscaOrdendevetaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="actualizaOrdendeventa">
+      <wsdl:input message="tns:actualizaOrdendeventaSoapIn" />
+      <wsdl:output message="tns:actualizaOrdendeventaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="eliminaOrdendeventa">
+      <wsdl:input message="tns:eliminaOrdendeventaSoapIn" />
+      <wsdl:output message="tns:eliminaOrdendeventaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="esActivo">
+      <wsdl:input message="tns:esActivoSoapIn" />
+      <wsdl:output message="tns:esActivoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceOrdendeventaSoap" type="tns:WebServiceOrdendeventaSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="retornaTodasLasOrdendenesVentas">
+      <soap:operation soapAction="http://tempuri.org/retornaTodasLasOrdendenesVentas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="guardarOrdendeventa">
+      <soap:operation soapAction="http://tempuri.org/guardarOrdendeventa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="posicionOrdendeventa">
+      <soap:operation soapAction="http://tempuri.org/posicionOrdendeventa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaOrdendeveta">
+      <soap:operation soapAction="http://tempuri.org/buscaOrdendeveta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizaOrdendeventa">
+      <soap:operation soapAction="http://tempuri.org/actualizaOrdendeventa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminaOrdendeventa">
+      <soap:operation soapAction="http://tempuri.org/eliminaOrdendeventa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="esActivo">
+      <soap:operation soapAction="http://tempuri.org/esActivo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceOrdendeventaSoap12" type="tns:WebServiceOrdendeventaSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="retornaTodasLasOrdendenesVentas">
+      <soap12:operation soapAction="http://tempuri.org/retornaTodasLasOrdendenesVentas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="guardarOrdendeventa">
+      <soap12:operation soapAction="http://tempuri.org/guardarOrdendeventa" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="posicionOrdendeventa">
+      <soap12:operation soapAction="http://tempuri.org/posicionOrdendeventa" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaOrdendeveta">
+      <soap12:operation soapAction="http://tempuri.org/buscaOrdendeveta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizaOrdendeventa">
+      <soap12:operation soapAction="http://tempuri.org/actualizaOrdendeventa" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminaOrdendeventa">
+      <soap12:operation soapAction="http://tempuri.org/eliminaOrdendeventa" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="esActivo">
+      <soap12:operation soapAction="http://tempuri.org/esActivo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebServiceOrdendeventa">
+    <wsdl:port name="WebServiceOrdendeventaSoap" binding="tns:WebServiceOrdendeventaSoap">
+      <soap:address location="http://feriaweb.ddns.net:1992/WebServiceOrdendeventa.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceOrdendeventaSoap12" binding="tns:WebServiceOrdendeventaSoap12">
+      <soap12:address location="http://feriaweb.ddns.net:1992/WebServiceOrdendeventa.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

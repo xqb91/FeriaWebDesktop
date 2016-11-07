@@ -8,6 +8,7 @@ package cl.alevicmar.tools;
 //import com.toedter.calendar.JCalendar;
 //import com.toedter.calendar.JDateChooser;
 import java.awt.Label;
+import java.awt.event.KeyEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -510,5 +511,12 @@ public class HR {
             return null;
         }
     }
-
+    
+    public static boolean haPresionadoEnter(java.awt.event.KeyEvent evt) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

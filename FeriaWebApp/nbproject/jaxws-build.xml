@@ -18,8 +18,8 @@
     </target>
     <target name="wsimport-client-WebServiceAgrupacion" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/WebServiceAgrupacion"/>
-        <property name="wsdl-WebServiceAgrupacion" location="xml-resources/web-service-references/WebServiceAgrupacion/wsdl/localhost_64929/WebServiceAgrupacion.asmx.wsdl"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebServiceAgrupacion" destdir="${build.generated.dir}/jax-wsCache/WebServiceAgrupacion" wsdl="${wsdl-WebServiceAgrupacion}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:64929/WebServiceAgrupacion.asmx?wsdl" xnocompile="true" xendorsed="true" package="cl.alevicmar.services.agrupacion">
+        <property name="wsdl-WebServiceAgrupacion" location="xml-resources/web-service-references/WebServiceAgrupacion/wsdl/feriaweb.ddns.net_1992/WebServiceAgrupacion.asmx.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebServiceAgrupacion" destdir="${build.generated.dir}/jax-wsCache/WebServiceAgrupacion" wsdl="${wsdl-WebServiceAgrupacion}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://feriaweb.ddns.net:1992/WebServiceAgrupacion.asmx?wsdl" xnocompile="true" xendorsed="true" package="cl.alevicmar.services.agrupacion">
             <depends file="${wsdl-WebServiceAgrupacion}"/>
             <produces dir="${build.generated.dir}/jax-wsCache/WebServiceAgrupacion"/>
         </wsimport>
@@ -35,8 +35,8 @@
     </target>
     <target name="wsimport-client-WebServicePais" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/WebServicePais"/>
-        <property name="wsdl-WebServicePais" location="xml-resources/web-service-references/WebServicePais/wsdl/localhost_64929/WebServicePais.asmx.wsdl"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebServicePais" destdir="${build.generated.dir}/jax-wsCache/WebServicePais" wsdl="${wsdl-WebServicePais}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:64929/WebServicePais.asmx?wsdl" xnocompile="true" xendorsed="true" package="cl.alevicmar.services.pais">
+        <property name="wsdl-WebServicePais" location="xml-resources/web-service-references/WebServicePais/wsdl/feriaweb.ddns.net_1992/WebServicePais.asmx.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebServicePais" destdir="${build.generated.dir}/jax-wsCache/WebServicePais" wsdl="${wsdl-WebServicePais}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://feriaweb.ddns.net:1992/WebServicePais.asmx?wsdl" xnocompile="true" xendorsed="true" package="cl.alevicmar.services.pais">
             <depends file="${wsdl-WebServicePais}"/>
             <produces dir="${build.generated.dir}/jax-wsCache/WebServicePais"/>
         </wsimport>
@@ -52,8 +52,8 @@
     </target>
     <target name="wsimport-client-WebServiceCategoria" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/WebServiceCategoria"/>
-        <property name="wsdl-WebServiceCategoria" location="xml-resources/web-service-references/WebServiceCategoria/wsdl/localhost_64929/WebServiceCategoria.asmx.wsdl"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebServiceCategoria" destdir="${build.generated.dir}/jax-wsCache/WebServiceCategoria" wsdl="${wsdl-WebServiceCategoria}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:64929/WebServiceCategoria.asmx?wsdl" xnocompile="true" xendorsed="true" package="cl.alevicmar.services.categoria">
+        <property name="wsdl-WebServiceCategoria" location="xml-resources/web-service-references/WebServiceCategoria/wsdl/feriaweb.ddns.net_1992/WebServiceCategoria.asmx.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebServiceCategoria" destdir="${build.generated.dir}/jax-wsCache/WebServiceCategoria" wsdl="${wsdl-WebServiceCategoria}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://feriaweb.ddns.net:1992/WebServiceCategoria.asmx?wsdl" xnocompile="true" xendorsed="true" package="cl.alevicmar.services.categoria">
             <depends file="${wsdl-WebServiceCategoria}"/>
             <produces dir="${build.generated.dir}/jax-wsCache/WebServiceCategoria"/>
         </wsimport>
@@ -69,8 +69,8 @@
     </target>
     <target name="wsimport-client-WebServiceCliente" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/WebServiceCliente"/>
-        <property name="wsdl-WebServiceCliente" location="xml-resources/web-service-references/WebServiceCliente/wsdl/localhost_64929/WebServiceCliente.asmx.wsdl"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebServiceCliente" destdir="${build.generated.dir}/jax-wsCache/WebServiceCliente" wsdl="${wsdl-WebServiceCliente}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:64929/WebServiceCliente.asmx?wsdl" xnocompile="true" xendorsed="true" package="cl.alevicmar.services.cliente">
+        <property name="wsdl-WebServiceCliente" location="xml-resources/web-service-references/WebServiceCliente/wsdl/feriaweb.ddns.net_1992/WebServiceCliente.asmx.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebServiceCliente" destdir="${build.generated.dir}/jax-wsCache/WebServiceCliente" wsdl="${wsdl-WebServiceCliente}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://feriaweb.ddns.net:1992/WebServiceCliente.asmx?wsdl" xnocompile="true" xendorsed="true" package="cl.alevicmar.services.cliente">
             <depends file="${wsdl-WebServiceCliente}"/>
             <produces dir="${build.generated.dir}/jax-wsCache/WebServiceCliente"/>
         </wsimport>
@@ -86,8 +86,8 @@
     </target>
     <target name="wsimport-client-WebServiceComuna" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/WebServiceComuna"/>
-        <property name="wsdl-WebServiceComuna" location="xml-resources/web-service-references/WebServiceComuna/wsdl/localhost_64929/WebServiceComuna.asmx.wsdl"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebServiceComuna" destdir="${build.generated.dir}/jax-wsCache/WebServiceComuna" wsdl="${wsdl-WebServiceComuna}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:64929/WebServiceComuna.asmx?wsdl" xnocompile="true" xendorsed="true" package="cl.alevicmar.services.comuna">
+        <property name="wsdl-WebServiceComuna" location="xml-resources/web-service-references/WebServiceComuna/wsdl/feriaweb.ddns.net_1992/WebServiceComuna.asmx.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebServiceComuna" destdir="${build.generated.dir}/jax-wsCache/WebServiceComuna" wsdl="${wsdl-WebServiceComuna}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://feriaweb.ddns.net:1992/WebServiceComuna.asmx?wsdl" xnocompile="true" xendorsed="true" package="cl.alevicmar.services.comuna">
             <depends file="${wsdl-WebServiceComuna}"/>
             <produces dir="${build.generated.dir}/jax-wsCache/WebServiceComuna"/>
         </wsimport>
@@ -103,8 +103,8 @@
     </target>
     <target name="wsimport-client-WebServiceEgreso" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/WebServiceEgreso"/>
-        <property name="wsdl-WebServiceEgreso" location="xml-resources/web-service-references/WebServiceEgreso/wsdl/localhost_64929/WebServiceEgreso.asmx.wsdl"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebServiceEgreso" destdir="${build.generated.dir}/jax-wsCache/WebServiceEgreso" wsdl="${wsdl-WebServiceEgreso}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:64929/WebServiceEgreso.asmx?wsdl" xnocompile="true" xendorsed="true" package="cl.alevicmar.services.egreso">
+        <property name="wsdl-WebServiceEgreso" location="xml-resources/web-service-references/WebServiceEgreso/wsdl/feriaweb.ddns.net_1992/WebServiceEgreso.asmx.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebServiceEgreso" destdir="${build.generated.dir}/jax-wsCache/WebServiceEgreso" wsdl="${wsdl-WebServiceEgreso}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://feriaweb.ddns.net:1992/WebServiceEgreso.asmx?wsdl" xnocompile="true" xendorsed="true" package="cl.alevicmar.services.egreso">
             <depends file="${wsdl-WebServiceEgreso}"/>
             <produces dir="${build.generated.dir}/jax-wsCache/WebServiceEgreso"/>
         </wsimport>
@@ -120,8 +120,8 @@
     </target>
     <target name="wsimport-client-WebServiceFamilia" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/WebServiceFamilia"/>
-        <property name="wsdl-WebServiceFamilia" location="xml-resources/web-service-references/WebServiceFamilia/wsdl/localhost_64929/WebServiceFamilia.asmx.wsdl"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebServiceFamilia" destdir="${build.generated.dir}/jax-wsCache/WebServiceFamilia" wsdl="${wsdl-WebServiceFamilia}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:64929/WebServiceFamilia.asmx?wsdl" xnocompile="true" xendorsed="true" package="cl.alevicmar.services.familia">
+        <property name="wsdl-WebServiceFamilia" location="xml-resources/web-service-references/WebServiceFamilia/wsdl/feriaweb.ddns.net_1992/WebServiceFamilia.asmx.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebServiceFamilia" destdir="${build.generated.dir}/jax-wsCache/WebServiceFamilia" wsdl="${wsdl-WebServiceFamilia}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://feriaweb.ddns.net:1992/WebServiceFamilia.asmx?wsdl" xnocompile="true" xendorsed="true" package="cl.alevicmar.services.familia">
             <depends file="${wsdl-WebServiceFamilia}"/>
             <produces dir="${build.generated.dir}/jax-wsCache/WebServiceFamilia"/>
         </wsimport>
@@ -137,8 +137,8 @@
     </target>
     <target name="wsimport-client-WebServiceMetodopago" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/WebServiceMetodopago"/>
-        <property name="wsdl-WebServiceMetodopago" location="xml-resources/web-service-references/WebServiceMetodopago/wsdl/localhost_64929/WebServiceMetodopago.asmx.wsdl"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebServiceMetodopago" destdir="${build.generated.dir}/jax-wsCache/WebServiceMetodopago" wsdl="${wsdl-WebServiceMetodopago}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:64929/WebServiceMetodopago.asmx?wsdl" xnocompile="true" xendorsed="true" package="cl.alevicmar.services.metodopago">
+        <property name="wsdl-WebServiceMetodopago" location="xml-resources/web-service-references/WebServiceMetodopago/wsdl/feriaweb.ddns.net_1992/WebServiceMetodopago.asmx.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebServiceMetodopago" destdir="${build.generated.dir}/jax-wsCache/WebServiceMetodopago" wsdl="${wsdl-WebServiceMetodopago}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://feriaweb.ddns.net:1992/WebServiceMetodopago.asmx?wsdl" xnocompile="true" xendorsed="true" package="cl.alevicmar.services.metodopago">
             <depends file="${wsdl-WebServiceMetodopago}"/>
             <produces dir="${build.generated.dir}/jax-wsCache/WebServiceMetodopago"/>
         </wsimport>
@@ -154,8 +154,8 @@
     </target>
     <target name="wsimport-client-WebServiceOrdendeventa" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/WebServiceOrdendeventa"/>
-        <property name="wsdl-WebServiceOrdendeventa" location="xml-resources/web-service-references/WebServiceOrdendeventa/wsdl/localhost_64929/WebServiceOrdendeventa.asmx.wsdl"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebServiceOrdendeventa" destdir="${build.generated.dir}/jax-wsCache/WebServiceOrdendeventa" wsdl="${wsdl-WebServiceOrdendeventa}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:64929/WebServiceOrdendeventa.asmx?wsdl" xnocompile="true" xendorsed="true" package="cl.alevicmar.services.ordenventa">
+        <property name="wsdl-WebServiceOrdendeventa" location="xml-resources/web-service-references/WebServiceOrdendeventa/wsdl/feriaweb.ddns.net_1992/WebServiceOrdendeventa.asmx.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebServiceOrdendeventa" destdir="${build.generated.dir}/jax-wsCache/WebServiceOrdendeventa" wsdl="${wsdl-WebServiceOrdendeventa}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://feriaweb.ddns.net:1992/WebServiceOrdendeventa.asmx?wsdl" xnocompile="true" xendorsed="true" package="cl.alevicmar.services.ordenventa">
             <depends file="${wsdl-WebServiceOrdendeventa}"/>
             <produces dir="${build.generated.dir}/jax-wsCache/WebServiceOrdendeventa"/>
         </wsimport>
@@ -171,8 +171,8 @@
     </target>
     <target name="wsimport-client-WebServiceProducto" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/WebServiceProducto"/>
-        <property name="wsdl-WebServiceProducto" location="xml-resources/web-service-references/WebServiceProducto/wsdl/localhost_64929/WebServiceProducto.asmx.wsdl"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebServiceProducto" destdir="${build.generated.dir}/jax-wsCache/WebServiceProducto" wsdl="${wsdl-WebServiceProducto}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:64929/WebServiceProducto.asmx?wsdl" xnocompile="true" xendorsed="true" package="cl.alevicmar.services.producto">
+        <property name="wsdl-WebServiceProducto" location="xml-resources/web-service-references/WebServiceProducto/wsdl/feriaweb.ddns.net_1992/WebServiceProducto.asmx.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebServiceProducto" destdir="${build.generated.dir}/jax-wsCache/WebServiceProducto" wsdl="${wsdl-WebServiceProducto}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://feriaweb.ddns.net:1992/WebServiceProducto.asmx?wsdl" xnocompile="true" xendorsed="true" package="cl.alevicmar.services.producto">
             <depends file="${wsdl-WebServiceProducto}"/>
             <produces dir="${build.generated.dir}/jax-wsCache/WebServiceProducto"/>
         </wsimport>
@@ -188,8 +188,8 @@
     </target>
     <target name="wsimport-client-WebServiceProductor" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/WebServiceProductor"/>
-        <property name="wsdl-WebServiceProductor" location="xml-resources/web-service-references/WebServiceProductor/wsdl/localhost_64929/WebServiceProductor.asmx.wsdl"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebServiceProductor" destdir="${build.generated.dir}/jax-wsCache/WebServiceProductor" wsdl="${wsdl-WebServiceProductor}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:64929/WebServiceProductor.asmx?wsdl" xnocompile="true" xendorsed="true" package="cl.alevicmar.services.productor">
+        <property name="wsdl-WebServiceProductor" location="xml-resources/web-service-references/WebServiceProductor/wsdl/feriaweb.ddns.net_1992/WebServiceProductor.asmx.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebServiceProductor" destdir="${build.generated.dir}/jax-wsCache/WebServiceProductor" wsdl="${wsdl-WebServiceProductor}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://feriaweb.ddns.net:1992/WebServiceProductor.asmx?wsdl" xnocompile="true" xendorsed="true" package="cl.alevicmar.services.productor">
             <depends file="${wsdl-WebServiceProductor}"/>
             <produces dir="${build.generated.dir}/jax-wsCache/WebServiceProductor"/>
         </wsimport>
@@ -205,8 +205,8 @@
     </target>
     <target name="wsimport-client-WebServiceProvincia" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/WebServiceProvincia"/>
-        <property name="wsdl-WebServiceProvincia" location="xml-resources/web-service-references/WebServiceProvincia/wsdl/localhost_64929/WebServiceProvincia.asmx.wsdl"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebServiceProvincia" destdir="${build.generated.dir}/jax-wsCache/WebServiceProvincia" wsdl="${wsdl-WebServiceProvincia}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:64929/WebServiceProvincia.asmx?wsdl" xnocompile="true" xendorsed="true" package="cl.alevicmar.services.provincia">
+        <property name="wsdl-WebServiceProvincia" location="xml-resources/web-service-references/WebServiceProvincia/wsdl/feriaweb.ddns.net_1992/WebServiceProvincia.asmx.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebServiceProvincia" destdir="${build.generated.dir}/jax-wsCache/WebServiceProvincia" wsdl="${wsdl-WebServiceProvincia}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://feriaweb.ddns.net:1992/WebServiceProvincia.asmx?wsdl" xnocompile="true" xendorsed="true" package="cl.alevicmar.services.provincia">
             <depends file="${wsdl-WebServiceProvincia}"/>
             <produces dir="${build.generated.dir}/jax-wsCache/WebServiceProvincia"/>
         </wsimport>
@@ -222,8 +222,8 @@
     </target>
     <target name="wsimport-client-WebServiceRegion" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/WebServiceRegion"/>
-        <property name="wsdl-WebServiceRegion" location="xml-resources/web-service-references/WebServiceRegion/wsdl/localhost_64929/WebServiceRegion.asmx.wsdl"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebServiceRegion" destdir="${build.generated.dir}/jax-wsCache/WebServiceRegion" wsdl="${wsdl-WebServiceRegion}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:64929/WebServiceRegion.asmx?wsdl" xnocompile="true" xendorsed="true" package="cl.alevicmar.services.region">
+        <property name="wsdl-WebServiceRegion" location="xml-resources/web-service-references/WebServiceRegion/wsdl/feriaweb.ddns.net_1992/WebServiceRegion.asmx.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebServiceRegion" destdir="${build.generated.dir}/jax-wsCache/WebServiceRegion" wsdl="${wsdl-WebServiceRegion}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://feriaweb.ddns.net:1992/WebServiceRegion.asmx?wsdl" xnocompile="true" xendorsed="true" package="cl.alevicmar.services.region">
             <depends file="${wsdl-WebServiceRegion}"/>
             <produces dir="${build.generated.dir}/jax-wsCache/WebServiceRegion"/>
         </wsimport>
@@ -239,8 +239,8 @@
     </target>
     <target name="wsimport-client-WebServiceStock" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/WebServiceStock"/>
-        <property name="wsdl-WebServiceStock" location="xml-resources/web-service-references/WebServiceStock/wsdl/localhost_64929/WebServiceStock.asmx.wsdl"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebServiceStock" destdir="${build.generated.dir}/jax-wsCache/WebServiceStock" wsdl="${wsdl-WebServiceStock}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:64929/WebServiceStock.asmx?wsdl" xnocompile="true" xendorsed="true" package="cl.alevicmar.services.stock">
+        <property name="wsdl-WebServiceStock" location="xml-resources/web-service-references/WebServiceStock/wsdl/feriaweb.ddns.net_1992/WebServiceStock.asmx.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebServiceStock" destdir="${build.generated.dir}/jax-wsCache/WebServiceStock" wsdl="${wsdl-WebServiceStock}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://feriaweb.ddns.net:1992/WebServiceStock.asmx?wsdl" xnocompile="true" xendorsed="true" package="cl.alevicmar.services.stock">
             <depends file="${wsdl-WebServiceStock}"/>
             <produces dir="${build.generated.dir}/jax-wsCache/WebServiceStock"/>
         </wsimport>
@@ -256,8 +256,8 @@
     </target>
     <target name="wsimport-client-WebServiceUbicacionProductor" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/WebServiceUbicacionProductor"/>
-        <property name="wsdl-WebServiceUbicacionProductor" location="xml-resources/web-service-references/WebServiceUbicacionProductor/wsdl/localhost_64929/WebServiceUbicacionProductor.asmx.wsdl"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebServiceUbicacionProductor" destdir="${build.generated.dir}/jax-wsCache/WebServiceUbicacionProductor" wsdl="${wsdl-WebServiceUbicacionProductor}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:64929/WebServiceUbicacionProductor.asmx?wsdl" xnocompile="true" xendorsed="true" package="cl.alevicmar.services.ubicacionproductor">
+        <property name="wsdl-WebServiceUbicacionProductor" location="xml-resources/web-service-references/WebServiceUbicacionProductor/wsdl/feriaweb.ddns.net_1992/WebServiceUbicacionProductor.asmx.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebServiceUbicacionProductor" destdir="${build.generated.dir}/jax-wsCache/WebServiceUbicacionProductor" wsdl="${wsdl-WebServiceUbicacionProductor}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://feriaweb.ddns.net:1992/WebServiceUbicacionProductor.asmx?wsdl" xnocompile="true" xendorsed="true" package="cl.alevicmar.services.ubicacionproductor">
             <depends file="${wsdl-WebServiceUbicacionProductor}"/>
             <produces dir="${build.generated.dir}/jax-wsCache/WebServiceUbicacionProductor"/>
         </wsimport>
@@ -271,5 +271,22 @@
         <delete dir="${build.generated.dir}/jax-wsCache/WebServiceUbicacionProductor"/>
         <delete dir="${build.generated.sources.dir}/jax-ws/cl/alevicmar/services/ubicacionproductor"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-WebServiceAgrupacion, wsimport-client-WebServicePais, wsimport-client-WebServiceCategoria, wsimport-client-WebServiceCliente, wsimport-client-WebServiceComuna, wsimport-client-WebServiceEgreso, wsimport-client-WebServiceFamilia, wsimport-client-WebServiceMetodopago, wsimport-client-WebServiceOrdendeventa, wsimport-client-WebServiceProducto, wsimport-client-WebServiceProductor, wsimport-client-WebServiceProvincia, wsimport-client-WebServiceRegion, wsimport-client-WebServiceStock, wsimport-client-WebServiceUbicacionProductor"/>
+    <target name="wsimport-client-WebServiceAdministrador" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/WebServiceAdministrador"/>
+        <property name="wsdl-WebServiceAdministrador" location="xml-resources/web-service-references/WebServiceAdministrador/wsdl/feriaweb.ddns.net_1992/WebServiceAdministrador.asmx.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebServiceAdministrador" destdir="${build.generated.dir}/jax-wsCache/WebServiceAdministrador" wsdl="${wsdl-WebServiceAdministrador}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://feriaweb.ddns.net:1992/WebServiceAdministrador.asmx?wsdl" xnocompile="true" xendorsed="true" package="cl.alevicmar.services.administrador">
+            <depends file="${wsdl-WebServiceAdministrador}"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/WebServiceAdministrador"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/WebServiceAdministrador">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-WebServiceAdministrador" depends="-init-project">
+        <delete dir="${build.generated.dir}/jax-wsCache/WebServiceAdministrador"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/cl/alevicmar/services/administrador"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-WebServiceAgrupacion, wsimport-client-WebServicePais, wsimport-client-WebServiceCategoria, wsimport-client-WebServiceCliente, wsimport-client-WebServiceComuna, wsimport-client-WebServiceEgreso, wsimport-client-WebServiceFamilia, wsimport-client-WebServiceMetodopago, wsimport-client-WebServiceOrdendeventa, wsimport-client-WebServiceProducto, wsimport-client-WebServiceProductor, wsimport-client-WebServiceProvincia, wsimport-client-WebServiceRegion, wsimport-client-WebServiceStock, wsimport-client-WebServiceUbicacionProductor, wsimport-client-WebServiceAdministrador"/>
 </project>

@@ -1,8 +1,11 @@
 package cl.alevicmar.main;
 
 import cl.alevicmar.login.LockWindow;
-import cl.alevicmar.menuArchivo.VerificaConectividad;
+import cl.alevicmar.login.Logon;
+import cl.alevicmar.menuArchivo.Perfil;
 import cl.alevicmar.menuClientes.AdministrarClientes;
+import cl.alevicmar.services.administrador.Administrador;
+import cl.alevicmar.services.administrador.WebServiceAdministrador;
 import cl.alevicmar.services.agrupacion.WebServiceAgrupacion;
 import cl.alevicmar.services.categoria.WebServiceCategoria;
 import cl.alevicmar.services.cliente.WebServiceCliente;
@@ -18,6 +21,8 @@ import cl.alevicmar.services.provincia.WebServiceProvincia;
 import cl.alevicmar.services.region.WebServiceRegion;
 import cl.alevicmar.services.stock.WebServiceStock;
 import cl.alevicmar.services.ubicacionproductor.WebServiceUbicacionProductor;
+import java.awt.Component;
+import java.awt.Dialog;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
@@ -26,6 +31,7 @@ import maps.java.Geocoding;
 
 public class Principal extends javax.swing.JFrame {
     //atributos de webservices
+    WebServiceAdministrador         srvAdministrador        = null;
     WebServiceAgrupacion            srvAgrupacion           = null;
     WebServiceCategoria             srvCategoria            = null;
     WebServiceCliente               srvCliente              = null;
@@ -45,6 +51,9 @@ public class Principal extends javax.swing.JFrame {
     //servicio de mapas
     Geocoding                       mapa                    = null;
     
+    //Usuario Logueado
+    Administrador                   user                    = null;
+    
 
     public Principal() {
         initComponents();
@@ -55,6 +64,7 @@ public class Principal extends javax.swing.JFrame {
         setIconImage(icon);
         
         //inicializacion manual
+        srvAdministrador        = new WebServiceAdministrador();
         srvAgrupacion           = new WebServiceAgrupacion();
         srvCategoria            = new WebServiceCategoria();
         srvCliente              = new WebServiceCliente();
@@ -71,8 +81,50 @@ public class Principal extends javax.swing.JFrame {
         srvStock                = new WebServiceStock();
         srvUbicacionProductor   = new WebServiceUbicacionProductor();
     
-    //servicio de mapas
-    Geocoding                       mapa                    = null;
+        //servicio de mapas
+        mapa                    = new Geocoding();
+        
+        user                    = new Administrador();
+        user.setUsuario("00.000.000-0");
+        user.setNombres("Usuario");
+        user.setApaterno("de");
+        user.setAmaterno("prueba");
+        
+        this.setTitle("Feria Web Desktop Client - Conectado como: "+user.getUsuario()+"@feriaweb ("+user.getNombres()+" "+user.getApaterno()+" "+user.getAmaterno()+")");
+    }
+    
+    public Principal(Component com, WebServiceAdministrador srvAdministrador, WebServiceAgrupacion srvAgrupacion, WebServiceCategoria srvCategoria, WebServiceCliente srvCliente, WebServiceComuna srvComuna, WebServiceEgreso srvEgreso, WebServiceFamilia srvFamilia, WebServiceMetodopago srvMetodoPago, WebServiceOrdendeventa srvOrdenVenta, WebServicePais srvPais, WebServiceProducto srvProducto, WebServiceProductor srvProductor, WebServiceProvincia srvProvincia, WebServiceRegion srvRegion, WebServiceStock srvStock, WebServiceUbicacionProductor srvUbicacionProductor, Geocoding mapa, Administrador user) {
+        initComponents();
+        //centrando ventana
+        this.setLocationRelativeTo(null);
+        //seteando el logotipo de la ventana de la aplicacion
+        Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/cl/alevicmar/imagenes/icono.png"));
+        setIconImage(icon);
+        
+        //inicializacion manual
+        this.srvAdministrador        = srvAdministrador;
+        this.srvAgrupacion           = srvAgrupacion;
+        this.srvCategoria            = srvCategoria;
+        this.srvCliente              = srvCliente;
+        this.srvComuna               = srvComuna;
+        this.srvEgreso               = srvEgreso;
+        this.srvFamilia              = srvFamilia;
+        this.srvMetodoPago           = srvMetodoPago;
+        this.srvOrdenVenta           = srvOrdenVenta;
+        this.srvPais                 = srvPais;
+        this.srvProducto             = srvProducto;
+        this.srvProductor            = srvProductor;
+        this.srvProvincia            = srvProvincia;
+        this.srvRegion               = srvRegion;
+        this.srvStock                = srvStock;
+        this.srvUbicacionProductor   = srvUbicacionProductor;
+    
+        //servicio de mapas
+        this.mapa                    =  mapa;
+        
+        this.user                    =  user;
+        
+        this.setTitle("Feria Web Desktop Client - Conectado como: "+user.getUsuario()+"@feriaweb ("+user.getNombres()+" "+user.getApaterno()+" "+user.getAmaterno()+")");
     }
 
     public WebServiceAgrupacion getSrvAgrupacion() {
@@ -203,7 +255,25 @@ public class Principal extends javax.swing.JFrame {
         this.mapa = mapa;
     }
 
+    public WebServiceAdministrador getSrvAdministrador() {
+        return srvAdministrador;
+    }
+
+    public void setSrvAdministrador(WebServiceAdministrador srvAdministrador) {
+        this.srvAdministrador = srvAdministrador;
+    }
+
+    public Administrador getUser() {
+        return user;
+    }
+
+    public void setUser(Administrador user) {
+        this.user = user;
+    }
     
+    public void setModalVentana(Dialog.ModalExclusionType opcion) {
+        this.setModalExclusionType(opcion);
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -212,11 +282,10 @@ public class Principal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        archivoVerificarConexion = new javax.swing.JMenuItem();
         archivoBloquearTerminal = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        archivoLogout = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        archivoPerfil = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         archivoSalir = new javax.swing.JMenuItem();
@@ -242,16 +311,6 @@ public class Principal extends javax.swing.JFrame {
 
         jMenu1.setText("Archivo");
 
-        archivoVerificarConexion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        archivoVerificarConexion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/server_link.png"))); // NOI18N
-        archivoVerificarConexion.setText("Verificar Conexión con el servidor");
-        archivoVerificarConexion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                archivoVerificarConexionActionPerformed(evt);
-            }
-        });
-        jMenu1.add(archivoVerificarConexion);
-
         archivoBloquearTerminal.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_K, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         archivoBloquearTerminal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/lock_go.png"))); // NOI18N
         archivoBloquearTerminal.setText("Bloquear Terminal");
@@ -262,15 +321,25 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu1.add(archivoBloquearTerminal);
 
-        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/door_out.png"))); // NOI18N
-        jMenuItem3.setText("Cerrar Sesión");
-        jMenu1.add(jMenuItem3);
+        archivoLogout.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        archivoLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/door_out.png"))); // NOI18N
+        archivoLogout.setText("Cerrar Sesión");
+        archivoLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                archivoLogoutActionPerformed(evt);
+            }
+        });
+        jMenu1.add(archivoLogout);
         jMenu1.add(jSeparator1);
 
-        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/vcard.png"))); // NOI18N
-        jMenuItem5.setText("Mi Perfil");
-        jMenu1.add(jMenuItem5);
+        archivoPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/vcard.png"))); // NOI18N
+        archivoPerfil.setText("Mi Perfil");
+        archivoPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                archivoPerfilActionPerformed(evt);
+            }
+        });
+        jMenu1.add(archivoPerfil);
 
         jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/key.png"))); // NOI18N
         jMenuItem4.setText("Cambiar mi contraseña");
@@ -361,25 +430,50 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_archivoSalirActionPerformed
 
     private void archivoBloquearTerminalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_archivoBloquearTerminalActionPerformed
-        new LockWindow().setVisible(true);
+        new LockWindow(this, srvAdministrador, srvAgrupacion, srvCategoria, srvCliente, srvComuna, srvEgreso, srvFamilia, srvMetodoPago, srvOrdenVenta, srvPais, srvProducto, srvProductor, srvProvincia, srvRegion, srvStock, srvUbicacionProductor, mapa, user).setVisible(true);
+        this.setModalVentana(Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
+        this.setEnabled(false);
     }//GEN-LAST:event_archivoBloquearTerminalActionPerformed
-
-    private void archivoVerificarConexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_archivoVerificarConexionActionPerformed
-        try 
-        {
-            VerificaConectividad vf = new VerificaConectividad();
-            vf.comprobar();
-            vf.setVisible(true);
-        }catch(Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage(), "Feria Web Desktop Client", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_archivoVerificarConexionActionPerformed
 
     private void clientesAdminClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientesAdminClientesActionPerformed
         AdministrarClientes admCli = new AdministrarClientes(srvCliente, srvComuna, this);
         admCli.setIconImage(this.getIconImage());
         admCli.setVisible(true);
     }//GEN-LAST:event_clientesAdminClientesActionPerformed
+
+    private void archivoLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_archivoLogoutActionPerformed
+        user = null;
+        Logon logon = new Logon();
+        //entregando webservices
+        logon.setSrvAdministrador(srvAdministrador);
+        logon.setSrvAgrupacion(srvAgrupacion);
+        logon.setSrvCategoria(srvCategoria);
+        logon.setSrvCliente(srvCliente);
+        logon.setSrvComuna(srvComuna);
+        logon.setSrvEgreso(srvEgreso);
+        logon.setSrvFamilia(srvFamilia);
+        logon.setSrvMetodoPago(srvMetodoPago);
+        logon.setSrvOrdenVenta(srvOrdenVenta);
+        logon.setSrvPais(srvPais);
+        logon.setSrvProducto(srvProducto);
+        logon.setSrvProductor(srvProductor);
+        logon.setSrvProvincia(srvProvincia);
+        logon.setSrvRegion(srvRegion);
+        logon.setSrvStock(srvStock);
+        logon.setSrvUbicacionProductor(srvUbicacionProductor);
+
+        logon.setMapa(mapa);
+
+        logon.setVisible(true);
+        this.dispose();
+        System.gc();
+    }//GEN-LAST:event_archivoLogoutActionPerformed
+
+    private void archivoPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_archivoPerfilActionPerformed
+        Perfil perfil = new Perfil(this, srvAdministrador, user);
+        perfil.setIconImage(this.getIconImage());
+        perfil.setVisible(true);
+    }//GEN-LAST:event_archivoPerfilActionPerformed
 
     /**
      * @param args the command line arguments
@@ -418,8 +512,9 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem archivoBloquearTerminal;
+    private javax.swing.JMenuItem archivoLogout;
+    private javax.swing.JMenuItem archivoPerfil;
     private javax.swing.JMenuItem archivoSalir;
-    private javax.swing.JMenuItem archivoVerificarConexion;
     private javax.swing.JMenuItem clientesAdminClientes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
@@ -432,9 +527,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;

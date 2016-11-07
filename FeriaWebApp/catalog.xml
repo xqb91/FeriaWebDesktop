@@ -22,4 +22,20 @@
     <system systemId="http://localhost:64929/WebServiceUbicacionProductor.asmx?wsdl" uri="xml-resources/web-service-references/WebServiceUbicacionProductor/wsdl/localhost_64929/WebServiceUbicacionProductor.asmx.wsdl"/>
     <system systemId="http://localhost:64929/WebServiceCliente.asmx?wsdl" uri="xml-resources/web-service-references/WebServiceCliente/wsdl/localhost_64929/WebServiceCliente.asmx.wsdl"/>
     <system systemId="http://localhost:64929/WebServiceComuna.asmx?wsdl" uri="xml-resources/web-service-references/WebServiceComuna/wsdl/localhost_64929/WebServiceComuna.asmx.wsdl"/>
+    <system systemId="http://feriaweb.ddns.net:1992/WebServiceAgrupacion.asmx?wsdl" uri="xml-resources/web-service-references/WebServiceAgrupacion/wsdl/feriaweb.ddns.net_1992/WebServiceAgrupacion.asmx.wsdl"/>
+    <system systemId="http://feriaweb.ddns.net:1992/WebServicePais.asmx?wsdl" uri="xml-resources/web-service-references/WebServicePais/wsdl/feriaweb.ddns.net_1992/WebServicePais.asmx.wsdl"/>
+    <system systemId="http://feriaweb.ddns.net:1992/WebServiceCategoria.asmx?wsdl" uri="xml-resources/web-service-references/WebServiceCategoria/wsdl/feriaweb.ddns.net_1992/WebServiceCategoria.asmx.wsdl"/>
+    <system systemId="http://feriaweb.ddns.net:1992/WebServiceCliente.asmx?wsdl" uri="xml-resources/web-service-references/WebServiceCliente/wsdl/feriaweb.ddns.net_1992/WebServiceCliente.asmx.wsdl"/>
+    <system systemId="http://feriaweb.ddns.net:1992/WebServiceComuna.asmx?wsdl" uri="xml-resources/web-service-references/WebServiceComuna/wsdl/feriaweb.ddns.net_1992/WebServiceComuna.asmx.wsdl"/>
+    <system systemId="http://feriaweb.ddns.net:1992/WebServiceEgreso.asmx?wsdl" uri="xml-resources/web-service-references/WebServiceEgreso/wsdl/feriaweb.ddns.net_1992/WebServiceEgreso.asmx.wsdl"/>
+    <system systemId="http://feriaweb.ddns.net:1992/WebServiceFamilia.asmx?wsdl" uri="xml-resources/web-service-references/WebServiceFamilia/wsdl/feriaweb.ddns.net_1992/WebServiceFamilia.asmx.wsdl"/>
+    <system systemId="http://feriaweb.ddns.net:1992/WebServiceMetodopago.asmx?wsdl" uri="xml-resources/web-service-references/WebServiceMetodopago/wsdl/feriaweb.ddns.net_1992/WebServiceMetodopago.asmx.wsdl"/>
+    <system systemId="http://feriaweb.ddns.net:1992/WebServiceOrdendeventa.asmx?wsdl" uri="xml-resources/web-service-references/WebServiceOrdendeventa/wsdl/feriaweb.ddns.net_1992/WebServiceOrdendeventa.asmx.wsdl"/>
+    <system systemId="http://feriaweb.ddns.net:1992/WebServiceProducto.asmx?wsdl" uri="xml-resources/web-service-references/WebServiceProducto/wsdl/feriaweb.ddns.net_1992/WebServiceProducto.asmx.wsdl"/>
+    <system systemId="http://feriaweb.ddns.net:1992/WebServiceProductor.asmx?wsdl" uri="xml-resources/web-service-references/WebServiceProductor/wsdl/feriaweb.ddns.net_1992/WebServiceProductor.asmx.wsdl"/>
+    <system systemId="http://feriaweb.ddns.net:1992/WebServiceProvincia.asmx?wsdl" uri="xml-resources/web-service-references/WebServiceProvincia/wsdl/feriaweb.ddns.net_1992/WebServiceProvincia.asmx.wsdl"/>
+    <system systemId="http://feriaweb.ddns.net:1992/WebServiceRegion.asmx?wsdl" uri="xml-resources/web-service-references/WebServiceRegion/wsdl/feriaweb.ddns.net_1992/WebServiceRegion.asmx.wsdl"/>
+    <system systemId="http://feriaweb.ddns.net:1992/WebServiceStock.asmx?wsdl" uri="xml-resources/web-service-references/WebServiceStock/wsdl/feriaweb.ddns.net_1992/WebServiceStock.asmx.wsdl"/>
+    <system systemId="http://feriaweb.ddns.net:1992/WebServiceUbicacionProductor.asmx?wsdl" uri="xml-resources/web-service-references/WebServiceUbicacionProductor/wsdl/feriaweb.ddns.net_1992/WebServiceUbicacionProductor.asmx.wsdl"/>
+    <system systemId="http://feriaweb.ddns.net:1992/WebServiceAdministrador.asmx?wsdl" uri="xml-resources/web-service-references/WebServiceAdministrador/wsdl/feriaweb.ddns.net_1992/WebServiceAdministrador.asmx.wsdl"/>
 </catalog>

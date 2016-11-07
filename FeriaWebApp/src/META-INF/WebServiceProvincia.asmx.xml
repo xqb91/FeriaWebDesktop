@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="retornaTodasLasProvincias">
+        <s:complexType />
+      </s:element>
+      <s:element name="retornaTodasLasProvinciasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="retornaTodasLasProvinciasResult" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="guardarProvincia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="provincia" type="tns:Provincia" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Provincia">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Region" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="guardarProvinciaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="guardarProvinciaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="posicionProvincia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="posicion" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="posicionProvinciaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="posicionProvinciaResult" type="tns:Provincia" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscarProvincia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idProvincia" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscarProvinciaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="buscarProvinciaResult" type="tns:Provincia" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="actualizaProvincia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="provincia" type="tns:Provincia" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="actualizaProvinciaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="actualizaProvinciaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eliminaProvincia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idProvincia" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eliminaProvinciaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eliminaProvinciaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="esActivo">
+        <s:complexType />
+      </s:element>
+      <s:element name="esActivoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="esActivoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="retornaTodasLasProvinciasSoapIn">
+    <wsdl:part name="parameters" element="tns:retornaTodasLasProvincias" />
+  </wsdl:message>
+  <wsdl:message name="retornaTodasLasProvinciasSoapOut">
+    <wsdl:part name="parameters" element="tns:retornaTodasLasProvinciasResponse" />
+  </wsdl:message>
+  <wsdl:message name="guardarProvinciaSoapIn">
+    <wsdl:part name="parameters" element="tns:guardarProvincia" />
+  </wsdl:message>
+  <wsdl:message name="guardarProvinciaSoapOut">
+    <wsdl:part name="parameters" element="tns:guardarProvinciaResponse" />
+  </wsdl:message>
+  <wsdl:message name="posicionProvinciaSoapIn">
+    <wsdl:part name="parameters" element="tns:posicionProvincia" />
+  </wsdl:message>
+  <wsdl:message name="posicionProvinciaSoapOut">
+    <wsdl:part name="parameters" element="tns:posicionProvinciaResponse" />
+  </wsdl:message>
+  <wsdl:message name="buscarProvinciaSoapIn">
+    <wsdl:part name="parameters" element="tns:buscarProvincia" />
+  </wsdl:message>
+  <wsdl:message name="buscarProvinciaSoapOut">
+    <wsdl:part name="parameters" element="tns:buscarProvinciaResponse" />
+  </wsdl:message>
+  <wsdl:message name="actualizaProvinciaSoapIn">
+    <wsdl:part name="parameters" element="tns:actualizaProvincia" />
+  </wsdl:message>
+  <wsdl:message name="actualizaProvinciaSoapOut">
+    <wsdl:part name="parameters" element="tns:actualizaProvinciaResponse" />
+  </wsdl:message>
+  <wsdl:message name="eliminaProvinciaSoapIn">
+    <wsdl:part name="parameters" element="tns:eliminaProvincia" />
+  </wsdl:message>
+  <wsdl:message name="eliminaProvinciaSoapOut">
+    <wsdl:part name="parameters" element="tns:eliminaProvinciaResponse" />
+  </wsdl:message>
+  <wsdl:message name="esActivoSoapIn">
+    <wsdl:part name="parameters" element="tns:esActivo" />
+  </wsdl:message>
+  <wsdl:message name="esActivoSoapOut">
+    <wsdl:part name="parameters" element="tns:esActivoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceProvinciaSoap">
+    <wsdl:operation name="retornaTodasLasProvincias">
+      <wsdl:input message="tns:retornaTodasLasProvinciasSoapIn" />
+      <wsdl:output message="tns:retornaTodasLasProvinciasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="guardarProvincia">
+      <wsdl:input message="tns:guardarProvinciaSoapIn" />
+      <wsdl:output message="tns:guardarProvinciaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="posicionProvincia">
+      <wsdl:input message="tns:posicionProvinciaSoapIn" />
+      <wsdl:output message="tns:posicionProvinciaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="buscarProvincia">
+      <wsdl:input message="tns:buscarProvinciaSoapIn" />
+      <wsdl:output message="tns:buscarProvinciaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="actualizaProvincia">
+      <wsdl:input message="tns:actualizaProvinciaSoapIn" />
+      <wsdl:output message="tns:actualizaProvinciaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="eliminaProvincia">
+      <wsdl:input message="tns:eliminaProvinciaSoapIn" />
+      <wsdl:output message="tns:eliminaProvinciaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="esActivo">
+      <wsdl:input message="tns:esActivoSoapIn" />
+      <wsdl:output message="tns:esActivoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceProvinciaSoap" type="tns:WebServiceProvinciaSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="retornaTodasLasProvincias">
+      <soap:operation soapAction="http://tempuri.org/retornaTodasLasProvincias" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="guardarProvincia">
+      <soap:operation soapAction="http://tempuri.org/guardarProvincia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="posicionProvincia">
+      <soap:operation soapAction="http://tempuri.org/posicionProvincia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarProvincia">
+      <soap:operation soapAction="http://tempuri.org/buscarProvincia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizaProvincia">
+      <soap:operation soapAction="http://tempuri.org/actualizaProvincia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminaProvincia">
+      <soap:operation soapAction="http://tempuri.org/eliminaProvincia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="esActivo">
+      <soap:operation soapAction="http://tempuri.org/esActivo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceProvinciaSoap12" type="tns:WebServiceProvinciaSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="retornaTodasLasProvincias">
+      <soap12:operation soapAction="http://tempuri.org/retornaTodasLasProvincias" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="guardarProvincia">
+      <soap12:operation soapAction="http://tempuri.org/guardarProvincia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="posicionProvincia">
+      <soap12:operation soapAction="http://tempuri.org/posicionProvincia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarProvincia">
+      <soap12:operation soapAction="http://tempuri.org/buscarProvincia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizaProvincia">
+      <soap12:operation soapAction="http://tempuri.org/actualizaProvincia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminaProvincia">
+      <soap12:operation soapAction="http://tempuri.org/eliminaProvincia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="esActivo">
+      <soap12:operation soapAction="http://tempuri.org/esActivo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebServiceProvincia">
+    <wsdl:port name="WebServiceProvinciaSoap" binding="tns:WebServiceProvinciaSoap">
+      <soap:address location="http://feriaweb.ddns.net:1992/WebServiceProvincia.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceProvinciaSoap12" binding="tns:WebServiceProvinciaSoap12">
+      <soap12:address location="http://feriaweb.ddns.net:1992/WebServiceProvincia.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -5,6 +5,9 @@
  */
 package cl.alevicmar.login;
 
+import cl.alevicmar.main.Principal;
+import cl.alevicmar.services.administrador.Administrador;
+import cl.alevicmar.services.administrador.WebServiceAdministrador;
 import cl.alevicmar.services.agrupacion.WebServiceAgrupacion;
 import cl.alevicmar.services.categoria.WebServiceCategoria;
 import cl.alevicmar.services.cliente.WebServiceCliente;
@@ -26,6 +29,7 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import cl.alevicmar.tools.HR;
 import cl.alevicmar.tools.HRut;
+import java.awt.event.KeyEvent;
 import maps.java.Geocoding;
 
 /**
@@ -34,6 +38,7 @@ import maps.java.Geocoding;
  */
 public class Logon extends javax.swing.JFrame {
     //atributos de webservices
+    WebServiceAdministrador         srvAdministrador        = null;
     WebServiceAgrupacion            srvAgrupacion           = null;
     WebServiceCategoria             srvCategoria            = null;
     WebServiceCliente               srvCliente              = null;
@@ -190,7 +195,14 @@ public class Logon extends javax.swing.JFrame {
     public void setMapa(Geocoding mapa) {
         this.mapa = mapa;
     }
-    
+
+    public WebServiceAdministrador getSrvAdministrador() {
+        return srvAdministrador;
+    }
+
+    public void setSrvAdministrador(WebServiceAdministrador srvAdministrador) {
+        this.srvAdministrador = srvAdministrador;
+    }
     
     
     
@@ -240,7 +252,15 @@ public class Logon extends javax.swing.JFrame {
 
         lblPassword.setText("Contraseña");
 
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPasswordActionPerformed(evt);
+            }
+        });
         txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPasswordKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtPasswordKeyTyped(evt);
             }
@@ -343,9 +363,46 @@ public class Logon extends javax.swing.JFrame {
         if(!HR.esVacio(txtRun)) {
             if(!HR.esVacio(txtPassword)) {
                 //realizar las acciones de login
+                String usuario = HR.contenido(txtRun);
+                String password = HR.contenido(txtPassword);
+                
+                if(srvAdministrador.getWebServiceAdministradorSoap().esActivo()) {
+                    try {
+                        Administrador aux = srvAdministrador.getWebServiceAdministradorSoap().buscaAdministradorPorRun(usuario);
+                        if(aux.getId() == 0) {
+                            HR.mostrarError("Usuario "+usuario+" no existe!");
+                            HR.seleccionarTodo(txtRun);
+                            HR.focus(txtRun);
+                        }else{
+                            if(aux.getContrasena().compareTo(password) == 0) {
+                                Principal main = new Principal(this, srvAdministrador, srvAgrupacion, srvCategoria, srvCliente, srvComuna, srvEgreso, srvFamilia, srvMetodoPago, srvOrdenVenta, srvPais, srvProducto, srvProductor, srvProvincia, srvRegion, srvStock, srvUbicacionProductor, mapa, aux);
+                                main.setVisible(true);
+                                this.dispose();
+                            }else{
+                                HR.mostrarError("Contraseña incorrecta");
+                                HR.seleccionarTodo(txtPassword);
+                                HR.focus(txtPassword);
+                            }
+                        }
+                    }catch(Exception e) {
+                        HR.mostrarError("Ocurrió el siguiente problema en el proceso de inicio de sesión: "+e.getMessage());
+                    }
+                }else{
+                    HR.mostrarError("No se pudo contactar con el servicio de cuentas administradoras de Feria Web... Intentelo más tarde (Service no pudo conectarse)");
+                }
             }
         }
     }//GEN-LAST:event_btnAccionActionPerformed
+
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+        
+    }//GEN-LAST:event_txtPasswordActionPerformed
+
+    private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed
+        if(HR.haPresionadoEnter(evt)) {
+            btnAccionActionPerformed(null);
+        }
+    }//GEN-LAST:event_txtPasswordKeyPressed
 
     /**
      * @param args the command line arguments

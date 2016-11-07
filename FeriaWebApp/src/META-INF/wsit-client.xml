@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+ <definitions 
+ xmlns="http://schemas.xmlsoap.org/wsdl/" 
+ xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+ xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="mainclientconfig" 
+ >
+    <import location="WebServiceAgrupacion.asmx.xml" namespace="http://tempuri.org/"/>
+    <import location="WebServicePais.asmx.xml" namespace="http://tempuri.org/"/>
+    <import location="WebServiceCategoria.asmx.xml" namespace="http://tempuri.org/"/>
+    <import location="WebServiceCliente.asmx.xml" namespace="http://tempuri.org/"/>
+    <import location="WebServiceComuna.asmx.xml" namespace="http://tempuri.org/"/>
+    <import location="WebServiceEgreso.asmx.xml" namespace="http://tempuri.org/"/>
+    <import location="WebServiceFamilia.asmx.xml" namespace="http://tempuri.org/"/>
+    <import location="WebServiceMetodopago.asmx.xml" namespace="http://tempuri.org/"/>
+    <import location="WebServiceOrdendeventa.asmx.xml" namespace="http://tempuri.org/"/>
+    <import location="WebServiceProducto.asmx.xml" namespace="http://tempuri.org/"/>
+    <import location="WebServiceProductor.asmx.xml" namespace="http://tempuri.org/"/>
+    <import location="WebServiceProvincia.asmx.xml" namespace="http://tempuri.org/"/>
+    <import location="WebServiceRegion.asmx.xml" namespace="http://tempuri.org/"/>
+    <import location="WebServiceStock.asmx.xml" namespace="http://tempuri.org/"/>
+    <import location="WebServiceUbicacionProductor.asmx.xml" namespace="http://tempuri.org/"/>
+</definitions>

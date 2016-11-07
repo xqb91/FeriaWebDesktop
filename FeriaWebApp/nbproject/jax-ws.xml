@@ -3,8 +3,8 @@
   <services/>
   <clients>
     <client name="WebServiceAgrupacion">
-      <wsdl-url>http://localhost:64929/WebServiceAgrupacion.asmx?wsdl</wsdl-url>
-      <local-wsdl-file>localhost_64929/WebServiceAgrupacion.asmx.wsdl</local-wsdl-file>
+      <wsdl-url>http://feriaweb.ddns.net:1992/WebServiceAgrupacion.asmx?wsdl</wsdl-url>
+      <local-wsdl-file>feriaweb.ddns.net_1992/WebServiceAgrupacion.asmx.wsdl</local-wsdl-file>
       <package-name forceReplace="true">cl.alevicmar.services.agrupacion</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
@@ -22,7 +22,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:64929/WebServiceAgrupacion.asmx?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://feriaweb.ddns.net:1992/WebServiceAgrupacion.asmx?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -39,8 +39,8 @@
       </wsimport-options>
     </client>
     <client name="WebServicePais">
-      <wsdl-url>http://localhost:64929/WebServicePais.asmx?wsdl</wsdl-url>
-      <local-wsdl-file>localhost_64929/WebServicePais.asmx.wsdl</local-wsdl-file>
+      <wsdl-url>http://feriaweb.ddns.net:1992/WebServicePais.asmx?wsdl</wsdl-url>
+      <local-wsdl-file>feriaweb.ddns.net_1992/WebServicePais.asmx.wsdl</local-wsdl-file>
       <package-name forceReplace="true">cl.alevicmar.services.pais</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
@@ -58,7 +58,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:64929/WebServicePais.asmx?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://feriaweb.ddns.net:1992/WebServicePais.asmx?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -75,8 +75,8 @@
       </wsimport-options>
     </client>
     <client name="WebServiceCategoria">
-      <wsdl-url>http://localhost:64929/WebServiceCategoria.asmx?wsdl</wsdl-url>
-      <local-wsdl-file>localhost_64929/WebServiceCategoria.asmx.wsdl</local-wsdl-file>
+      <wsdl-url>http://feriaweb.ddns.net:1992/WebServiceCategoria.asmx?wsdl</wsdl-url>
+      <local-wsdl-file>feriaweb.ddns.net_1992/WebServiceCategoria.asmx.wsdl</local-wsdl-file>
       <package-name forceReplace="true">cl.alevicmar.services.categoria</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
@@ -94,7 +94,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:64929/WebServiceCategoria.asmx?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://feriaweb.ddns.net:1992/WebServiceCategoria.asmx?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -111,8 +111,8 @@
       </wsimport-options>
     </client>
     <client name="WebServiceCliente">
-      <wsdl-url>http://localhost:64929/WebServiceCliente.asmx?wsdl</wsdl-url>
-      <local-wsdl-file>localhost_64929/WebServiceCliente.asmx.wsdl</local-wsdl-file>
+      <wsdl-url>http://feriaweb.ddns.net:1992/WebServiceCliente.asmx?wsdl</wsdl-url>
+      <local-wsdl-file>feriaweb.ddns.net_1992/WebServiceCliente.asmx.wsdl</local-wsdl-file>
       <package-name forceReplace="true">cl.alevicmar.services.cliente</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
@@ -130,7 +130,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:64929/WebServiceCliente.asmx?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://feriaweb.ddns.net:1992/WebServiceCliente.asmx?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -147,8 +147,8 @@
       </wsimport-options>
     </client>
     <client name="WebServiceComuna">
-      <wsdl-url>http://localhost:64929/WebServiceComuna.asmx?wsdl</wsdl-url>
-      <local-wsdl-file>localhost_64929/WebServiceComuna.asmx.wsdl</local-wsdl-file>
+      <wsdl-url>http://feriaweb.ddns.net:1992/WebServiceComuna.asmx?wsdl</wsdl-url>
+      <local-wsdl-file>feriaweb.ddns.net_1992/WebServiceComuna.asmx.wsdl</local-wsdl-file>
       <package-name forceReplace="true">cl.alevicmar.services.comuna</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
@@ -166,7 +166,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:64929/WebServiceComuna.asmx?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://feriaweb.ddns.net:1992/WebServiceComuna.asmx?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -183,8 +183,8 @@
       </wsimport-options>
     </client>
     <client name="WebServiceEgreso">
-      <wsdl-url>http://localhost:64929/WebServiceEgreso.asmx?wsdl</wsdl-url>
-      <local-wsdl-file>localhost_64929/WebServiceEgreso.asmx.wsdl</local-wsdl-file>
+      <wsdl-url>http://feriaweb.ddns.net:1992/WebServiceEgreso.asmx?wsdl</wsdl-url>
+      <local-wsdl-file>feriaweb.ddns.net_1992/WebServiceEgreso.asmx.wsdl</local-wsdl-file>
       <package-name forceReplace="true">cl.alevicmar.services.egreso</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
@@ -202,7 +202,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:64929/WebServiceEgreso.asmx?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://feriaweb.ddns.net:1992/WebServiceEgreso.asmx?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -219,8 +219,8 @@
       </wsimport-options>
     </client>
     <client name="WebServiceFamilia">
-      <wsdl-url>http://localhost:64929/WebServiceFamilia.asmx?wsdl</wsdl-url>
-      <local-wsdl-file>localhost_64929/WebServiceFamilia.asmx.wsdl</local-wsdl-file>
+      <wsdl-url>http://feriaweb.ddns.net:1992/WebServiceFamilia.asmx?wsdl</wsdl-url>
+      <local-wsdl-file>feriaweb.ddns.net_1992/WebServiceFamilia.asmx.wsdl</local-wsdl-file>
       <package-name forceReplace="true">cl.alevicmar.services.familia</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
@@ -238,7 +238,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:64929/WebServiceFamilia.asmx?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://feriaweb.ddns.net:1992/WebServiceFamilia.asmx?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -255,8 +255,8 @@
       </wsimport-options>
     </client>
     <client name="WebServiceMetodopago">
-      <wsdl-url>http://localhost:64929/WebServiceMetodopago.asmx?wsdl</wsdl-url>
-      <local-wsdl-file>localhost_64929/WebServiceMetodopago.asmx.wsdl</local-wsdl-file>
+      <wsdl-url>http://feriaweb.ddns.net:1992/WebServiceMetodopago.asmx?wsdl</wsdl-url>
+      <local-wsdl-file>feriaweb.ddns.net_1992/WebServiceMetodopago.asmx.wsdl</local-wsdl-file>
       <package-name forceReplace="true">cl.alevicmar.services.metodopago</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
@@ -274,7 +274,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:64929/WebServiceMetodopago.asmx?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://feriaweb.ddns.net:1992/WebServiceMetodopago.asmx?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -291,8 +291,8 @@
       </wsimport-options>
     </client>
     <client name="WebServiceOrdendeventa">
-      <wsdl-url>http://localhost:64929/WebServiceOrdendeventa.asmx?wsdl</wsdl-url>
-      <local-wsdl-file>localhost_64929/WebServiceOrdendeventa.asmx.wsdl</local-wsdl-file>
+      <wsdl-url>http://feriaweb.ddns.net:1992/WebServiceOrdendeventa.asmx?wsdl</wsdl-url>
+      <local-wsdl-file>feriaweb.ddns.net_1992/WebServiceOrdendeventa.asmx.wsdl</local-wsdl-file>
       <package-name forceReplace="true">cl.alevicmar.services.ordenventa</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
@@ -310,7 +310,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:64929/WebServiceOrdendeventa.asmx?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://feriaweb.ddns.net:1992/WebServiceOrdendeventa.asmx?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -327,8 +327,8 @@
       </wsimport-options>
     </client>
     <client name="WebServiceProducto">
-      <wsdl-url>http://localhost:64929/WebServiceProducto.asmx?wsdl</wsdl-url>
-      <local-wsdl-file>localhost_64929/WebServiceProducto.asmx.wsdl</local-wsdl-file>
+      <wsdl-url>http://feriaweb.ddns.net:1992/WebServiceProducto.asmx?wsdl</wsdl-url>
+      <local-wsdl-file>feriaweb.ddns.net_1992/WebServiceProducto.asmx.wsdl</local-wsdl-file>
       <package-name forceReplace="true">cl.alevicmar.services.producto</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
@@ -346,7 +346,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:64929/WebServiceProducto.asmx?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://feriaweb.ddns.net:1992/WebServiceProducto.asmx?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -363,8 +363,8 @@
       </wsimport-options>
     </client>
     <client name="WebServiceProductor">
-      <wsdl-url>http://localhost:64929/WebServiceProductor.asmx?wsdl</wsdl-url>
-      <local-wsdl-file>localhost_64929/WebServiceProductor.asmx.wsdl</local-wsdl-file>
+      <wsdl-url>http://feriaweb.ddns.net:1992/WebServiceProductor.asmx?wsdl</wsdl-url>
+      <local-wsdl-file>feriaweb.ddns.net_1992/WebServiceProductor.asmx.wsdl</local-wsdl-file>
       <package-name forceReplace="true">cl.alevicmar.services.productor</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
@@ -382,7 +382,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:64929/WebServiceProductor.asmx?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://feriaweb.ddns.net:1992/WebServiceProductor.asmx?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -399,8 +399,8 @@
       </wsimport-options>
     </client>
     <client name="WebServiceProvincia">
-      <wsdl-url>http://localhost:64929/WebServiceProvincia.asmx?wsdl</wsdl-url>
-      <local-wsdl-file>localhost_64929/WebServiceProvincia.asmx.wsdl</local-wsdl-file>
+      <wsdl-url>http://feriaweb.ddns.net:1992/WebServiceProvincia.asmx?wsdl</wsdl-url>
+      <local-wsdl-file>feriaweb.ddns.net_1992/WebServiceProvincia.asmx.wsdl</local-wsdl-file>
       <package-name forceReplace="true">cl.alevicmar.services.provincia</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
@@ -418,7 +418,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:64929/WebServiceProvincia.asmx?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://feriaweb.ddns.net:1992/WebServiceProvincia.asmx?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -435,8 +435,8 @@
       </wsimport-options>
     </client>
     <client name="WebServiceRegion">
-      <wsdl-url>http://localhost:64929/WebServiceRegion.asmx?wsdl</wsdl-url>
-      <local-wsdl-file>localhost_64929/WebServiceRegion.asmx.wsdl</local-wsdl-file>
+      <wsdl-url>http://feriaweb.ddns.net:1992/WebServiceRegion.asmx?wsdl</wsdl-url>
+      <local-wsdl-file>feriaweb.ddns.net_1992/WebServiceRegion.asmx.wsdl</local-wsdl-file>
       <package-name forceReplace="true">cl.alevicmar.services.region</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
@@ -454,7 +454,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:64929/WebServiceRegion.asmx?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://feriaweb.ddns.net:1992/WebServiceRegion.asmx?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -471,8 +471,8 @@
       </wsimport-options>
     </client>
     <client name="WebServiceStock">
-      <wsdl-url>http://localhost:64929/WebServiceStock.asmx?wsdl</wsdl-url>
-      <local-wsdl-file>localhost_64929/WebServiceStock.asmx.wsdl</local-wsdl-file>
+      <wsdl-url>http://feriaweb.ddns.net:1992/WebServiceStock.asmx?wsdl</wsdl-url>
+      <local-wsdl-file>feriaweb.ddns.net_1992/WebServiceStock.asmx.wsdl</local-wsdl-file>
       <package-name forceReplace="true">cl.alevicmar.services.stock</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
@@ -490,7 +490,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:64929/WebServiceStock.asmx?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://feriaweb.ddns.net:1992/WebServiceStock.asmx?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -507,8 +507,8 @@
       </wsimport-options>
     </client>
     <client name="WebServiceUbicacionProductor">
-      <wsdl-url>http://localhost:64929/WebServiceUbicacionProductor.asmx?wsdl</wsdl-url>
-      <local-wsdl-file>localhost_64929/WebServiceUbicacionProductor.asmx.wsdl</local-wsdl-file>
+      <wsdl-url>http://feriaweb.ddns.net:1992/WebServiceUbicacionProductor.asmx?wsdl</wsdl-url>
+      <local-wsdl-file>feriaweb.ddns.net_1992/WebServiceUbicacionProductor.asmx.wsdl</local-wsdl-file>
       <package-name forceReplace="true">cl.alevicmar.services.ubicacionproductor</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
@@ -526,7 +526,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:64929/WebServiceUbicacionProductor.asmx?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://feriaweb.ddns.net:1992/WebServiceUbicacionProductor.asmx?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -539,6 +539,42 @@
         <wsimport-option>
           <wsimport-option-name>package</wsimport-option-name>
           <wsimport-option-value>cl.alevicmar.services.ubicacionproductor</wsimport-option-value>
+        </wsimport-option>
+      </wsimport-options>
+    </client>
+    <client name="WebServiceAdministrador">
+      <wsdl-url>http://feriaweb.ddns.net:1992/WebServiceAdministrador.asmx?wsdl</wsdl-url>
+      <local-wsdl-file>feriaweb.ddns.net_1992/WebServiceAdministrador.asmx.wsdl</local-wsdl-file>
+      <package-name forceReplace="true">cl.alevicmar.services.administrador</package-name>
+      <catalog-file>catalog.xml</catalog-file>
+      <wsimport-options>
+        <wsimport-option>
+          <wsimport-option-name>extension</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>verbose</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>fork</wsimport-option-name>
+          <wsimport-option-value>false</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>wsdlLocation</wsimport-option-name>
+          <wsimport-option-value>http://feriaweb.ddns.net:1992/WebServiceAdministrador.asmx?wsdl</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>xnocompile</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>xendorsed</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>package</wsimport-option-name>
+          <wsimport-option-value>cl.alevicmar.services.administrador</wsimport-option-value>
         </wsimport-option>
       </wsimport-options>
     </client>

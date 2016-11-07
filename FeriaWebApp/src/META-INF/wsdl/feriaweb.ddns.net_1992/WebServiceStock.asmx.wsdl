@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="retornaTodosLosStock">
+        <s:complexType />
+      </s:element>
+      <s:element name="retornaTodosLosStockResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="retornaTodosLosStockResult" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="guardarStock">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="stock" type="tns:Stock" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Stock">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Cantidad" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Producto" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="guardarStockResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="guardarStockResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="posicionStock">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="posicion" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="posicionStockResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="posicionStockResult" type="tns:Stock" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscaStock">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idStock" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscaStockResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="buscaStockResult" type="tns:Stock" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="actualizaStock">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="stock" type="tns:Stock" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="actualizaStockResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="actualizaStockResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eliminaStock">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idStock" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eliminaStockResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eliminaStockResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="esActivo">
+        <s:complexType />
+      </s:element>
+      <s:element name="esActivoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="esActivoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="retornaTodosLosStockSoapIn">
+    <wsdl:part name="parameters" element="tns:retornaTodosLosStock" />
+  </wsdl:message>
+  <wsdl:message name="retornaTodosLosStockSoapOut">
+    <wsdl:part name="parameters" element="tns:retornaTodosLosStockResponse" />
+  </wsdl:message>
+  <wsdl:message name="guardarStockSoapIn">
+    <wsdl:part name="parameters" element="tns:guardarStock" />
+  </wsdl:message>
+  <wsdl:message name="guardarStockSoapOut">
+    <wsdl:part name="parameters" element="tns:guardarStockResponse" />
+  </wsdl:message>
+  <wsdl:message name="posicionStockSoapIn">
+    <wsdl:part name="parameters" element="tns:posicionStock" />
+  </wsdl:message>
+  <wsdl:message name="posicionStockSoapOut">
+    <wsdl:part name="parameters" element="tns:posicionStockResponse" />
+  </wsdl:message>
+  <wsdl:message name="buscaStockSoapIn">
+    <wsdl:part name="parameters" element="tns:buscaStock" />
+  </wsdl:message>
+  <wsdl:message name="buscaStockSoapOut">
+    <wsdl:part name="parameters" element="tns:buscaStockResponse" />
+  </wsdl:message>
+  <wsdl:message name="actualizaStockSoapIn">
+    <wsdl:part name="parameters" element="tns:actualizaStock" />
+  </wsdl:message>
+  <wsdl:message name="actualizaStockSoapOut">
+    <wsdl:part name="parameters" element="tns:actualizaStockResponse" />
+  </wsdl:message>
+  <wsdl:message name="eliminaStockSoapIn">
+    <wsdl:part name="parameters" element="tns:eliminaStock" />
+  </wsdl:message>
+  <wsdl:message name="eliminaStockSoapOut">
+    <wsdl:part name="parameters" element="tns:eliminaStockResponse" />
+  </wsdl:message>
+  <wsdl:message name="esActivoSoapIn">
+    <wsdl:part name="parameters" element="tns:esActivo" />
+  </wsdl:message>
+  <wsdl:message name="esActivoSoapOut">
+    <wsdl:part name="parameters" element="tns:esActivoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceStockSoap">
+    <wsdl:operation name="retornaTodosLosStock">
+      <wsdl:input message="tns:retornaTodosLosStockSoapIn" />
+      <wsdl:output message="tns:retornaTodosLosStockSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="guardarStock">
+      <wsdl:input message="tns:guardarStockSoapIn" />
+      <wsdl:output message="tns:guardarStockSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="posicionStock">
+      <wsdl:input message="tns:posicionStockSoapIn" />
+      <wsdl:output message="tns:posicionStockSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="buscaStock">
+      <wsdl:input message="tns:buscaStockSoapIn" />
+      <wsdl:output message="tns:buscaStockSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="actualizaStock">
+      <wsdl:input message="tns:actualizaStockSoapIn" />
+      <wsdl:output message="tns:actualizaStockSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="eliminaStock">
+      <wsdl:input message="tns:eliminaStockSoapIn" />
+      <wsdl:output message="tns:eliminaStockSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="esActivo">
+      <wsdl:input message="tns:esActivoSoapIn" />
+      <wsdl:output message="tns:esActivoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceStockSoap" type="tns:WebServiceStockSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="retornaTodosLosStock">
+      <soap:operation soapAction="http://tempuri.org/retornaTodosLosStock" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="guardarStock">
+      <soap:operation soapAction="http://tempuri.org/guardarStock" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="posicionStock">
+      <soap:operation soapAction="http://tempuri.org/posicionStock" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaStock">
+      <soap:operation soapAction="http://tempuri.org/buscaStock" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizaStock">
+      <soap:operation soapAction="http://tempuri.org/actualizaStock" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminaStock">
+      <soap:operation soapAction="http://tempuri.org/eliminaStock" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="esActivo">
+      <soap:operation soapAction="http://tempuri.org/esActivo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceStockSoap12" type="tns:WebServiceStockSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="retornaTodosLosStock">
+      <soap12:operation soapAction="http://tempuri.org/retornaTodosLosStock" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="guardarStock">
+      <soap12:operation soapAction="http://tempuri.org/guardarStock" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="posicionStock">
+      <soap12:operation soapAction="http://tempuri.org/posicionStock" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaStock">
+      <soap12:operation soapAction="http://tempuri.org/buscaStock" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizaStock">
+      <soap12:operation soapAction="http://tempuri.org/actualizaStock" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminaStock">
+      <soap12:operation soapAction="http://tempuri.org/eliminaStock" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="esActivo">
+      <soap12:operation soapAction="http://tempuri.org/esActivo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebServiceStock">
+    <wsdl:port name="WebServiceStockSoap" binding="tns:WebServiceStockSoap">
+      <soap:address location="http://feriaweb.ddns.net:1992/WebServiceStock.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceStockSoap12" binding="tns:WebServiceStockSoap12">
+      <soap12:address location="http://feriaweb.ddns.net:1992/WebServiceStock.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

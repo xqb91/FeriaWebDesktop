@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="retornaTodosLosEgresos">
+        <s:complexType />
+      </s:element>
+      <s:element name="retornaTodosLosEgresosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="retornaTodosLosEgresosResult" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="guardarEgreso">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="egreso" type="tns:Egreso" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Egreso">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Fecha" type="tns:TimeSpan" />
+          <s:element minOccurs="1" maxOccurs="1" name="Cantidad" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Ingreso" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Orden" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TimeSpan" />
+      <s:element name="guardarEgresoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="guardarEgresoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="posicionEgreso">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="posicion" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="posicionEgresoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="posicionEgresoResult" type="tns:Egreso" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscaEgreso">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idEgreso" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscaEgresoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="buscaEgresoResult" type="tns:Egreso" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="actualizaEgreso">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="egreso" type="tns:Egreso" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="actualizaEgresoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="actualizaEgresoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eliminaEgreso">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idEgreso" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eliminaEgresoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eliminaEgresoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="esActivo">
+        <s:complexType />
+      </s:element>
+      <s:element name="esActivoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="esActivoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="retornaTodosLosEgresosSoapIn">
+    <wsdl:part name="parameters" element="tns:retornaTodosLosEgresos" />
+  </wsdl:message>
+  <wsdl:message name="retornaTodosLosEgresosSoapOut">
+    <wsdl:part name="parameters" element="tns:retornaTodosLosEgresosResponse" />
+  </wsdl:message>
+  <wsdl:message name="guardarEgresoSoapIn">
+    <wsdl:part name="parameters" element="tns:guardarEgreso" />
+  </wsdl:message>
+  <wsdl:message name="guardarEgresoSoapOut">
+    <wsdl:part name="parameters" element="tns:guardarEgresoResponse" />
+  </wsdl:message>
+  <wsdl:message name="posicionEgresoSoapIn">
+    <wsdl:part name="parameters" element="tns:posicionEgreso" />
+  </wsdl:message>
+  <wsdl:message name="posicionEgresoSoapOut">
+    <wsdl:part name="parameters" element="tns:posicionEgresoResponse" />
+  </wsdl:message>
+  <wsdl:message name="buscaEgresoSoapIn">
+    <wsdl:part name="parameters" element="tns:buscaEgreso" />
+  </wsdl:message>
+  <wsdl:message name="buscaEgresoSoapOut">
+    <wsdl:part name="parameters" element="tns:buscaEgresoResponse" />
+  </wsdl:message>
+  <wsdl:message name="actualizaEgresoSoapIn">
+    <wsdl:part name="parameters" element="tns:actualizaEgreso" />
+  </wsdl:message>
+  <wsdl:message name="actualizaEgresoSoapOut">
+    <wsdl:part name="parameters" element="tns:actualizaEgresoResponse" />
+  </wsdl:message>
+  <wsdl:message name="eliminaEgresoSoapIn">
+    <wsdl:part name="parameters" element="tns:eliminaEgreso" />
+  </wsdl:message>
+  <wsdl:message name="eliminaEgresoSoapOut">
+    <wsdl:part name="parameters" element="tns:eliminaEgresoResponse" />
+  </wsdl:message>
+  <wsdl:message name="esActivoSoapIn">
+    <wsdl:part name="parameters" element="tns:esActivo" />
+  </wsdl:message>
+  <wsdl:message name="esActivoSoapOut">
+    <wsdl:part name="parameters" element="tns:esActivoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceEgresoSoap">
+    <wsdl:operation name="retornaTodosLosEgresos">
+      <wsdl:input message="tns:retornaTodosLosEgresosSoapIn" />
+      <wsdl:output message="tns:retornaTodosLosEgresosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="guardarEgreso">
+      <wsdl:input message="tns:guardarEgresoSoapIn" />
+      <wsdl:output message="tns:guardarEgresoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="posicionEgreso">
+      <wsdl:input message="tns:posicionEgresoSoapIn" />
+      <wsdl:output message="tns:posicionEgresoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="buscaEgreso">
+      <wsdl:input message="tns:buscaEgresoSoapIn" />
+      <wsdl:output message="tns:buscaEgresoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="actualizaEgreso">
+      <wsdl:input message="tns:actualizaEgresoSoapIn" />
+      <wsdl:output message="tns:actualizaEgresoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="eliminaEgreso">
+      <wsdl:input message="tns:eliminaEgresoSoapIn" />
+      <wsdl:output message="tns:eliminaEgresoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="esActivo">
+      <wsdl:input message="tns:esActivoSoapIn" />
+      <wsdl:output message="tns:esActivoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceEgresoSoap" type="tns:WebServiceEgresoSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="retornaTodosLosEgresos">
+      <soap:operation soapAction="http://tempuri.org/retornaTodosLosEgresos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="guardarEgreso">
+      <soap:operation soapAction="http://tempuri.org/guardarEgreso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="posicionEgreso">
+      <soap:operation soapAction="http://tempuri.org/posicionEgreso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaEgreso">
+      <soap:operation soapAction="http://tempuri.org/buscaEgreso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizaEgreso">
+      <soap:operation soapAction="http://tempuri.org/actualizaEgreso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminaEgreso">
+      <soap:operation soapAction="http://tempuri.org/eliminaEgreso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="esActivo">
+      <soap:operation soapAction="http://tempuri.org/esActivo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceEgresoSoap12" type="tns:WebServiceEgresoSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="retornaTodosLosEgresos">
+      <soap12:operation soapAction="http://tempuri.org/retornaTodosLosEgresos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="guardarEgreso">
+      <soap12:operation soapAction="http://tempuri.org/guardarEgreso" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="posicionEgreso">
+      <soap12:operation soapAction="http://tempuri.org/posicionEgreso" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaEgreso">
+      <soap12:operation soapAction="http://tempuri.org/buscaEgreso" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizaEgreso">
+      <soap12:operation soapAction="http://tempuri.org/actualizaEgreso" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminaEgreso">
+      <soap12:operation soapAction="http://tempuri.org/eliminaEgreso" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="esActivo">
+      <soap12:operation soapAction="http://tempuri.org/esActivo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebServiceEgreso">
+    <wsdl:port name="WebServiceEgresoSoap" binding="tns:WebServiceEgresoSoap">
+      <soap:address location="http://feriaweb.ddns.net:1992/WebServiceEgreso.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceEgresoSoap12" binding="tns:WebServiceEgresoSoap12">
+      <soap12:address location="http://feriaweb.ddns.net:1992/WebServiceEgreso.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

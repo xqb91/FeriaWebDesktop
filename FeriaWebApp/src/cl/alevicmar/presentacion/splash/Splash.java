@@ -6,6 +6,7 @@
 package cl.alevicmar.presentacion.splash;
 
 import cl.alevicmar.login.Logon;
+import cl.alevicmar.services.administrador.WebServiceAdministrador;
 
 //importando webservices
 import cl.alevicmar.services.agrupacion.*;
@@ -45,6 +46,7 @@ import maps.java.Geocoding;
 public class Splash extends javax.swing.JPanel {
 
     //atributos de webservices
+    WebServiceAdministrador         srvAdministrador        = null;
     WebServiceAgrupacion            srvAgrupacion           = null;
     WebServiceCategoria             srvCategoria            = null;
     WebServiceCliente               srvCliente              = null;
@@ -244,6 +246,16 @@ public class Splash extends javax.swing.JPanel {
                     barCarga.setValue(i);
                     Thread.sleep(2000);
                     
+                    //google maps -----------------------------------------------------------------------------
+                    lblEstado.setText("Enlazando Desktop Client Admin...");
+                    error = "0x00000022: No pudo conectarse al sistema de administración";
+                    srvAdministrador = new WebServiceAdministrador();
+                    error = "0x00000023: Se estableció conexión con el servidor pero el servicio de administradores no está activo";
+                    srvAdministrador.getWebServiceAdministradorSoap().esActivo();
+                    i = 75;
+                    barCarga.setValue(i);
+                    Thread.sleep(2000);
+                    
                 }catch(Exception e) {
                     String mensaje = "<html><body><div width='300px' align='justify'>Feria Web Desktop Client ha detectado un problema mientras intentaba inicarse: <br /><br /><em>"+e.getMessage()+"<br /><b>Error "+error+"</b></em><br /><br />Por favor verifique su conexión a internet o bien contacte a Alevicmar Software Chile para obtener soporte técnico.</div></body></html>";
                     JLabel mensajeLabel = new JLabel(mensaje);
@@ -264,6 +276,7 @@ public class Splash extends javax.swing.JPanel {
                 //instanciando logon
                 Logon logon = new Logon();
                 //entregando webservices
+                logon.setSrvAdministrador(srvAdministrador);
                 logon.setSrvAgrupacion(srvAgrupacion);
                 logon.setSrvCategoria(srvCategoria);
                 logon.setSrvCliente(srvCliente);
