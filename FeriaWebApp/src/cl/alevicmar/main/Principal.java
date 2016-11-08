@@ -4,6 +4,7 @@ import cl.alevicmar.login.LockWindow;
 import cl.alevicmar.login.Logon;
 import cl.alevicmar.menuArchivo.Perfil;
 import cl.alevicmar.menuClientes.AdministrarClientes;
+import cl.alevicmar.menuClientes.RegistrarCliente;
 import cl.alevicmar.services.administrador.Administrador;
 import cl.alevicmar.services.administrador.WebServiceAdministrador;
 import cl.alevicmar.services.agrupacion.WebServiceAgrupacion;
@@ -291,6 +292,7 @@ public class Principal extends javax.swing.JFrame {
         archivoSalir = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         clientesAdminClientes = new javax.swing.JMenuItem();
+        clienteRegistrar = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
         jMenuItem6 = new javax.swing.JMenuItem();
@@ -368,6 +370,15 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         jMenu2.add(clientesAdminClientes);
+
+        clienteRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/user_add.png"))); // NOI18N
+        clienteRegistrar.setText("Registrar Cliente");
+        clienteRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clienteRegistrarActionPerformed(evt);
+            }
+        });
+        jMenu2.add(clienteRegistrar);
 
         jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/map_magnify.png"))); // NOI18N
         jMenuItem2.setText("Administración de Ubicación de Clientes");
@@ -475,6 +486,11 @@ public class Principal extends javax.swing.JFrame {
         perfil.setVisible(true);
     }//GEN-LAST:event_archivoPerfilActionPerformed
 
+    private void clienteRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteRegistrarActionPerformed
+        RegistrarCliente regCli = new RegistrarCliente(this, srvCliente, srvComuna);
+        regCli.setVisible(true);
+    }//GEN-LAST:event_clienteRegistrarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -515,6 +531,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem archivoLogout;
     private javax.swing.JMenuItem archivoPerfil;
     private javax.swing.JMenuItem archivoSalir;
+    private javax.swing.JMenuItem clienteRegistrar;
     private javax.swing.JMenuItem clientesAdminClientes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;

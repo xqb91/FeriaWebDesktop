@@ -134,7 +134,7 @@ public class Splash extends javax.swing.JPanel {
                     error = "0x00000003: No se pudo conectar servicios geográficos de provincia";
                     srvProvincia    = new WebServiceProvincia();
                     error = "0x00000004: No se pudo conectar servicios geográficos de comuna";
-                    WebServiceComuna srvComuna          = new WebServiceComuna();
+                    srvComuna          = new WebServiceComuna();
                     
                     //comprobando servicios geograficos ------------------------------------------------
                     error = "0x00000005: No se pudo verificar conectividad con servicio de paises";
