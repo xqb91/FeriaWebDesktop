@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="retornaTodasLasCategoria">
+        <s:complexType />
+      </s:element>
+      <s:element name="retornaTodasLasCategoriaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="retornaTodasLasCategoriaResult" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="guardarCategoria">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="categoria" type="tns:Categoria" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Categoria">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="guardarCategoriaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="guardarCategoriaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="posicionCategoria">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="posicion" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="posicionCategoriaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="posicionCategoriaResult" type="tns:Categoria" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscaCategoria">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idCategoria" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscaCategoriaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="buscaCategoriaResult" type="tns:Categoria" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="actualizaCategoria">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="categoria" type="tns:Categoria" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="actualizaCategoriaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="actualizaCategoriaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eliminaCategoria">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idCategoria" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eliminaCategoriaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eliminaCategoriaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="esActivo">
+        <s:complexType />
+      </s:element>
+      <s:element name="esActivoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="esActivoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="retornaTodasLasCategoriaSoapIn">
+    <wsdl:part name="parameters" element="tns:retornaTodasLasCategoria" />
+  </wsdl:message>
+  <wsdl:message name="retornaTodasLasCategoriaSoapOut">
+    <wsdl:part name="parameters" element="tns:retornaTodasLasCategoriaResponse" />
+  </wsdl:message>
+  <wsdl:message name="guardarCategoriaSoapIn">
+    <wsdl:part name="parameters" element="tns:guardarCategoria" />
+  </wsdl:message>
+  <wsdl:message name="guardarCategoriaSoapOut">
+    <wsdl:part name="parameters" element="tns:guardarCategoriaResponse" />
+  </wsdl:message>
+  <wsdl:message name="posicionCategoriaSoapIn">
+    <wsdl:part name="parameters" element="tns:posicionCategoria" />
+  </wsdl:message>
+  <wsdl:message name="posicionCategoriaSoapOut">
+    <wsdl:part name="parameters" element="tns:posicionCategoriaResponse" />
+  </wsdl:message>
+  <wsdl:message name="buscaCategoriaSoapIn">
+    <wsdl:part name="parameters" element="tns:buscaCategoria" />
+  </wsdl:message>
+  <wsdl:message name="buscaCategoriaSoapOut">
+    <wsdl:part name="parameters" element="tns:buscaCategoriaResponse" />
+  </wsdl:message>
+  <wsdl:message name="actualizaCategoriaSoapIn">
+    <wsdl:part name="parameters" element="tns:actualizaCategoria" />
+  </wsdl:message>
+  <wsdl:message name="actualizaCategoriaSoapOut">
+    <wsdl:part name="parameters" element="tns:actualizaCategoriaResponse" />
+  </wsdl:message>
+  <wsdl:message name="eliminaCategoriaSoapIn">
+    <wsdl:part name="parameters" element="tns:eliminaCategoria" />
+  </wsdl:message>
+  <wsdl:message name="eliminaCategoriaSoapOut">
+    <wsdl:part name="parameters" element="tns:eliminaCategoriaResponse" />
+  </wsdl:message>
+  <wsdl:message name="esActivoSoapIn">
+    <wsdl:part name="parameters" element="tns:esActivo" />
+  </wsdl:message>
+  <wsdl:message name="esActivoSoapOut">
+    <wsdl:part name="parameters" element="tns:esActivoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceCategoriaSoap">
+    <wsdl:operation name="retornaTodasLasCategoria">
+      <wsdl:input message="tns:retornaTodasLasCategoriaSoapIn" />
+      <wsdl:output message="tns:retornaTodasLasCategoriaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="guardarCategoria">
+      <wsdl:input message="tns:guardarCategoriaSoapIn" />
+      <wsdl:output message="tns:guardarCategoriaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="posicionCategoria">
+      <wsdl:input message="tns:posicionCategoriaSoapIn" />
+      <wsdl:output message="tns:posicionCategoriaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="buscaCategoria">
+      <wsdl:input message="tns:buscaCategoriaSoapIn" />
+      <wsdl:output message="tns:buscaCategoriaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="actualizaCategoria">
+      <wsdl:input message="tns:actualizaCategoriaSoapIn" />
+      <wsdl:output message="tns:actualizaCategoriaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="eliminaCategoria">
+      <wsdl:input message="tns:eliminaCategoriaSoapIn" />
+      <wsdl:output message="tns:eliminaCategoriaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="esActivo">
+      <wsdl:input message="tns:esActivoSoapIn" />
+      <wsdl:output message="tns:esActivoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceCategoriaSoap" type="tns:WebServiceCategoriaSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="retornaTodasLasCategoria">
+      <soap:operation soapAction="http://tempuri.org/retornaTodasLasCategoria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="guardarCategoria">
+      <soap:operation soapAction="http://tempuri.org/guardarCategoria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="posicionCategoria">
+      <soap:operation soapAction="http://tempuri.org/posicionCategoria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaCategoria">
+      <soap:operation soapAction="http://tempuri.org/buscaCategoria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizaCategoria">
+      <soap:operation soapAction="http://tempuri.org/actualizaCategoria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminaCategoria">
+      <soap:operation soapAction="http://tempuri.org/eliminaCategoria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="esActivo">
+      <soap:operation soapAction="http://tempuri.org/esActivo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceCategoriaSoap12" type="tns:WebServiceCategoriaSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="retornaTodasLasCategoria">
+      <soap12:operation soapAction="http://tempuri.org/retornaTodasLasCategoria" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="guardarCategoria">
+      <soap12:operation soapAction="http://tempuri.org/guardarCategoria" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="posicionCategoria">
+      <soap12:operation soapAction="http://tempuri.org/posicionCategoria" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaCategoria">
+      <soap12:operation soapAction="http://tempuri.org/buscaCategoria" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizaCategoria">
+      <soap12:operation soapAction="http://tempuri.org/actualizaCategoria" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminaCategoria">
+      <soap12:operation soapAction="http://tempuri.org/eliminaCategoria" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="esActivo">
+      <soap12:operation soapAction="http://tempuri.org/esActivo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebServiceCategoria">
+    <wsdl:port name="WebServiceCategoriaSoap" binding="tns:WebServiceCategoriaSoap">
+      <soap:address location="http://feriaweb.ddns.net:2095/WebServiceCategoria.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceCategoriaSoap12" binding="tns:WebServiceCategoriaSoap12">
+      <soap12:address location="http://feriaweb.ddns.net:2095/WebServiceCategoria.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

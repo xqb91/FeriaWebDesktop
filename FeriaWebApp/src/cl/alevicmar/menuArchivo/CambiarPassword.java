@@ -7,6 +7,7 @@ package cl.alevicmar.menuArchivo;
 
 import cl.alevicmar.services.administrador.Administrador;
 import cl.alevicmar.services.administrador.WebServiceAdministrador;
+import cl.alevicmar.tools.HR;
 import java.awt.Component;
 
 /**
@@ -21,16 +22,18 @@ public class CambiarPassword extends javax.swing.JFrame {
     
     public CambiarPassword() {
         initComponents();
-        String mensaje = "<html><body><div width='260px' align='justify'><p style='font-size: 15px;'><b>Cambio de Contraseña</b></p><br />Si usted cambia la contraseña de su cuenta y la olvida tenga en cuenta que deberá ponerse en contacto con el equipo de Alevicmar para realizar las modificaciones pertinentes y asi recuperar el control de su cuenta. <br />Para cambiar la contraseña de su cuenta rellene los campos a continuación con la información solicitada.</div></body></html>";
+        this.setLocationRelativeTo(null);
+        String mensaje = "<html><body><div width='340px' align='justify'><p style='font-size: 15px;'><b>Cambio de Contraseña</b></p><br />Si usted cambia la contraseña de su cuenta y la olvida tenga en cuenta que deberá ponerse en contacto con el equipo de Alevicmar para realizar las modificaciones pertinentes y asi recuperar el control de su cuenta. <br />Para cambiar la Contraseña sirvase de rellenar todos los campos solicitados.</div></body></html>";
         lblInstrucciones.setText(mensaje);
     }
     
     public CambiarPassword(Component com, WebServiceAdministrador srvAdministrador, Administrador user) {
         initComponents();
         this.com = com;
+        this.setLocationRelativeTo(com);
         this.srvAdministrador = srvAdministrador;
         this.user = user;
-        String mensaje = "<html><body><div width='200px' align='justify'><p style='font-size: 15px;'><b>Terminal Bloqueado</b></p><br />El terminal de Feria Web Desktop Client se encuentra bloqueado. Para poder desbloquear utilice las credenciales del usuario que ha iniciado sesión en el sistema. Los datos del usuario con sesión activa se proporcionan a continuación:<br /><br /><b>usuario (<em>nombre del usuario</em>)</b><br /><br />Desbloquee la terminal con la contraseña de dicho usuario.</div></body></html>";
+        String mensaje = "<html><body><div width='340px' align='justify'><p style='font-size: 15px;'><b>Cambio de Contraseña</b></p><br />Si usted cambia la contraseña de su cuenta y la olvida tenga en cuenta que deberá ponerse en contacto con el equipo de Alevicmar para realizar las modificaciones pertinentes y asi recuperar el control de su cuenta. <br />Para cambiar la Contraseña sirvase de rellenar todos los campos solicitados.</div></body></html>";
         lblInstrucciones.setText(mensaje);
     }
 
@@ -44,6 +47,14 @@ public class CambiarPassword extends javax.swing.JFrame {
     private void initComponents() {
 
         lblInstrucciones = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        btnAccion = new javax.swing.JButton();
+        txtPasswordActual = new javax.swing.JPasswordField();
+        txtPasswordNueva = new javax.swing.JPasswordField();
+        txtPasswordNueva2 = new javax.swing.JPasswordField();
+        btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cambiar Contraseña");
@@ -51,25 +62,153 @@ public class CambiarPassword extends javax.swing.JFrame {
 
         lblInstrucciones.setText("jLabel1");
 
+        jLabel1.setText("Contraseña actual: ");
+
+        jLabel2.setText("Contraseña Nueva:");
+
+        jLabel3.setText("Reiterar Nueva Contraseña");
+
+        btnAccion.setText("Cambiar Contraseña");
+        btnAccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAccionActionPerformed(evt);
+            }
+        });
+
+        txtPasswordActual.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPasswordActualKeyTyped(evt);
+            }
+        });
+
+        txtPasswordNueva.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPasswordNuevaKeyTyped(evt);
+            }
+        });
+
+        txtPasswordNueva2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPasswordNueva2KeyTyped(evt);
+            }
+        });
+
+        btnCancelar.setText("Cancelar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblInstrucciones)
-                .addContainerGap(308, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblInstrucciones)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btnCancelar)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnAccion))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(6, 6, 6)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel1)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel3))
+                            .addGap(24, 24, 24)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtPasswordNueva, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                                .addComponent(txtPasswordActual, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtPasswordNueva2)))))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblInstrucciones)
-                .addContainerGap(275, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtPasswordActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtPasswordNueva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtPasswordNueva2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAccion)
+                    .addComponent(btnCancelar))
+                .addGap(9, 9, 9))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtPasswordActualKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordActualKeyTyped
+        HR.largoMaximo(txtPasswordActual, 150, evt);
+    }//GEN-LAST:event_txtPasswordActualKeyTyped
+
+    private void txtPasswordNuevaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordNuevaKeyTyped
+        HR.largoMaximo(txtPasswordNueva, 150, evt);
+    }//GEN-LAST:event_txtPasswordNuevaKeyTyped
+
+    private void txtPasswordNueva2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordNueva2KeyTyped
+        HR.largoMaximo(txtPasswordNueva, 150, evt);
+    }//GEN-LAST:event_txtPasswordNueva2KeyTyped
+
+    private void btnAccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccionActionPerformed
+        try {
+            if(HR.contenido(txtPasswordActual).isEmpty()) {
+                HR.mostrarError("El campo de contraseña actual esta vacío. Debe especificar su contraseña actual para poder cambiarla.");
+                HR.focus(txtPasswordActual);
+            }else{
+                if(HR.contenido(txtPasswordNueva).isEmpty()) {
+                    HR.mostrarError("El campo de contraseña nueva está vacío. Si desea cambiar su contraseña debe rellenar este campo.");
+                    HR.focus(txtPasswordNueva);
+                }else{
+                    if(HR.contenido(txtPasswordNueva2).isEmpty()) {
+                        HR.mostrarError("Debe reescribir su nueva contraseña");
+                        HR.focus(txtPasswordNueva2);
+                    }else{
+                        if(HR.contenido(txtPasswordNueva).compareTo(HR.contenido(txtPasswordNueva2)) != 0) {
+                            HR.mostrarError("Las contraseñas nuevas no coinciden");
+                            HR.insertarTexto(txtPasswordNueva, "");
+                            HR.insertarTexto(txtPasswordNueva2, "");
+                            HR.focus(txtPasswordNueva);
+                        }else{
+                            if(HR.contenido(txtPasswordNueva).compareTo(HR.contenido(txtPasswordActual)) == 0) {
+                                HR.mostrarError("Su contraseña nueva no puede ser identica a su contraseña actual");
+                                HR.insertarTexto(txtPasswordNueva, "");
+                                HR.insertarTexto(txtPasswordNueva2, "");
+                                HR.focus(txtPasswordNueva);
+                            }else{
+                                if(HR.contenido(txtPasswordActual).compareTo(user.getContrasena()) == 0) {
+                                    user.setContrasena(HR.contenido(txtPasswordNueva));
+                                    srvAdministrador.getWebServiceAdministradorSoap().actualizaAdministrador(user);
+                                    HR.mostrarMensaje("Contraseña Actualizada");
+                                    this.dispose();
+                                    System.gc();
+                                }else{
+                                    HR.mostrarError("La contraseña del usuario no es válida");
+                                    HR.insertarTexto(txtPasswordActual, "");
+                                    HR.focus(txtPasswordActual);
+                                    HR.insertarTexto(txtPasswordNueva, "");
+                                    HR.insertarTexto(txtPasswordNueva2, "");
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }catch(Exception e) {
+            HR.mostrarError("Ha ocurrido un problema durante el tiempo de ejecución: "+e.getMessage());
+        }
+    }//GEN-LAST:event_btnAccionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -107,6 +246,14 @@ public class CambiarPassword extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAccion;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblInstrucciones;
+    private javax.swing.JPasswordField txtPasswordActual;
+    private javax.swing.JPasswordField txtPasswordNueva;
+    private javax.swing.JPasswordField txtPasswordNueva2;
     // End of variables declaration//GEN-END:variables
 }

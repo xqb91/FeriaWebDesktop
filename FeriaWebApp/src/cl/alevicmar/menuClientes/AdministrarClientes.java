@@ -72,15 +72,17 @@ public class AdministrarClientes extends javax.swing.JFrame {
             DefaultTableModel modelo = new DefaultTableModel(new Object [][] { }, new String [] { "Usuario", "Nombre", "Dirección", "Comuna" });    
 
             List<Object> array = srvCliente.getWebServiceClienteSoap().retornaTodosLosClientes().getAnyType();
-            for(Object o : array) {
-                Clientes p = ((Clientes)o);
-                Object[] obj = new Object[4];
-                obj[0] = p.getUsuario();
-                obj[1] = p.getApaterno()+" "+p.getAmaterno()+" "+p.getNombres();
-                obj[2] = p.getDireccion();
-                obj[3] = srvComuna.getWebServiceComunaSoap().buscaComuna(p.getComuna()).getNombre();
-                modelo.addRow(obj);
-            } 
+            if(array != null) {
+                for(Object o : array) {
+                    Clientes p = ((Clientes)o);
+                    Object[] obj = new Object[4];
+                    obj[0] = p.getUsuario();
+                    obj[1] = p.getApaterno()+" "+p.getAmaterno()+" "+p.getNombres();
+                    obj[2] = p.getDireccion();
+                    obj[3] = srvComuna.getWebServiceComunaSoap().buscaComuna(p.getComuna()).getNombre();
+                    modelo.addRow(obj);
+                } 
+            }
             tablaResultados.setModel(modelo);
             tablaResultados.getColumnModel().getColumn(0).setResizable(false);
             tablaResultados.getColumnModel().getColumn(0).setMaxWidth(75);

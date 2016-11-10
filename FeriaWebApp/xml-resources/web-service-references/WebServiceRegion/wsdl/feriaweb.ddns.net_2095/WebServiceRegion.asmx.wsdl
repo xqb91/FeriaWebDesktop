@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="retornaTodasLasRegiones">
+        <s:complexType />
+      </s:element>
+      <s:element name="retornaTodasLasRegionesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="retornaTodasLasRegionesResult" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="guardarRegion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="region" type="tns:Region" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Region">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Pais" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="guardarRegionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="guardarRegionResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="posicionRegion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="posicion" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="posicionRegionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="posicionRegionResult" type="tns:Region" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscaRegion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idRegion" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscaRegionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="buscaRegionResult" type="tns:Region" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="actualizaRegion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="region" type="tns:Region" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="actualizaRegionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="actualizaRegionResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eliminaRegion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idRegion" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eliminaRegionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eliminaRegionResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="esActivo">
+        <s:complexType />
+      </s:element>
+      <s:element name="esActivoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="esActivoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="retornaTodasLasRegionesSoapIn">
+    <wsdl:part name="parameters" element="tns:retornaTodasLasRegiones" />
+  </wsdl:message>
+  <wsdl:message name="retornaTodasLasRegionesSoapOut">
+    <wsdl:part name="parameters" element="tns:retornaTodasLasRegionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="guardarRegionSoapIn">
+    <wsdl:part name="parameters" element="tns:guardarRegion" />
+  </wsdl:message>
+  <wsdl:message name="guardarRegionSoapOut">
+    <wsdl:part name="parameters" element="tns:guardarRegionResponse" />
+  </wsdl:message>
+  <wsdl:message name="posicionRegionSoapIn">
+    <wsdl:part name="parameters" element="tns:posicionRegion" />
+  </wsdl:message>
+  <wsdl:message name="posicionRegionSoapOut">
+    <wsdl:part name="parameters" element="tns:posicionRegionResponse" />
+  </wsdl:message>
+  <wsdl:message name="buscaRegionSoapIn">
+    <wsdl:part name="parameters" element="tns:buscaRegion" />
+  </wsdl:message>
+  <wsdl:message name="buscaRegionSoapOut">
+    <wsdl:part name="parameters" element="tns:buscaRegionResponse" />
+  </wsdl:message>
+  <wsdl:message name="actualizaRegionSoapIn">
+    <wsdl:part name="parameters" element="tns:actualizaRegion" />
+  </wsdl:message>
+  <wsdl:message name="actualizaRegionSoapOut">
+    <wsdl:part name="parameters" element="tns:actualizaRegionResponse" />
+  </wsdl:message>
+  <wsdl:message name="eliminaRegionSoapIn">
+    <wsdl:part name="parameters" element="tns:eliminaRegion" />
+  </wsdl:message>
+  <wsdl:message name="eliminaRegionSoapOut">
+    <wsdl:part name="parameters" element="tns:eliminaRegionResponse" />
+  </wsdl:message>
+  <wsdl:message name="esActivoSoapIn">
+    <wsdl:part name="parameters" element="tns:esActivo" />
+  </wsdl:message>
+  <wsdl:message name="esActivoSoapOut">
+    <wsdl:part name="parameters" element="tns:esActivoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceRegionSoap">
+    <wsdl:operation name="retornaTodasLasRegiones">
+      <wsdl:input message="tns:retornaTodasLasRegionesSoapIn" />
+      <wsdl:output message="tns:retornaTodasLasRegionesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="guardarRegion">
+      <wsdl:input message="tns:guardarRegionSoapIn" />
+      <wsdl:output message="tns:guardarRegionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="posicionRegion">
+      <wsdl:input message="tns:posicionRegionSoapIn" />
+      <wsdl:output message="tns:posicionRegionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="buscaRegion">
+      <wsdl:input message="tns:buscaRegionSoapIn" />
+      <wsdl:output message="tns:buscaRegionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="actualizaRegion">
+      <wsdl:input message="tns:actualizaRegionSoapIn" />
+      <wsdl:output message="tns:actualizaRegionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="eliminaRegion">
+      <wsdl:input message="tns:eliminaRegionSoapIn" />
+      <wsdl:output message="tns:eliminaRegionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="esActivo">
+      <wsdl:input message="tns:esActivoSoapIn" />
+      <wsdl:output message="tns:esActivoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceRegionSoap" type="tns:WebServiceRegionSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="retornaTodasLasRegiones">
+      <soap:operation soapAction="http://tempuri.org/retornaTodasLasRegiones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="guardarRegion">
+      <soap:operation soapAction="http://tempuri.org/guardarRegion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="posicionRegion">
+      <soap:operation soapAction="http://tempuri.org/posicionRegion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaRegion">
+      <soap:operation soapAction="http://tempuri.org/buscaRegion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizaRegion">
+      <soap:operation soapAction="http://tempuri.org/actualizaRegion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminaRegion">
+      <soap:operation soapAction="http://tempuri.org/eliminaRegion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="esActivo">
+      <soap:operation soapAction="http://tempuri.org/esActivo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceRegionSoap12" type="tns:WebServiceRegionSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="retornaTodasLasRegiones">
+      <soap12:operation soapAction="http://tempuri.org/retornaTodasLasRegiones" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="guardarRegion">
+      <soap12:operation soapAction="http://tempuri.org/guardarRegion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="posicionRegion">
+      <soap12:operation soapAction="http://tempuri.org/posicionRegion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaRegion">
+      <soap12:operation soapAction="http://tempuri.org/buscaRegion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizaRegion">
+      <soap12:operation soapAction="http://tempuri.org/actualizaRegion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminaRegion">
+      <soap12:operation soapAction="http://tempuri.org/eliminaRegion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="esActivo">
+      <soap12:operation soapAction="http://tempuri.org/esActivo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebServiceRegion">
+    <wsdl:port name="WebServiceRegionSoap" binding="tns:WebServiceRegionSoap">
+      <soap:address location="http://feriaweb.ddns.net:2095/WebServiceRegion.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceRegionSoap12" binding="tns:WebServiceRegionSoap12">
+      <soap12:address location="http://feriaweb.ddns.net:2095/WebServiceRegion.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

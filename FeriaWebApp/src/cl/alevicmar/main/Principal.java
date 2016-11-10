@@ -2,6 +2,7 @@ package cl.alevicmar.main;
 
 import cl.alevicmar.login.LockWindow;
 import cl.alevicmar.login.Logon;
+import cl.alevicmar.menuArchivo.CambiarPassword;
 import cl.alevicmar.menuArchivo.Perfil;
 import cl.alevicmar.menuClientes.AdministrarClientes;
 import cl.alevicmar.menuClientes.RegistrarCliente;
@@ -287,7 +288,7 @@ public class Principal extends javax.swing.JFrame {
         archivoLogout = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         archivoPerfil = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        archivoCambiarContrasena = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         archivoSalir = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -343,9 +344,14 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu1.add(archivoPerfil);
 
-        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/key.png"))); // NOI18N
-        jMenuItem4.setText("Cambiar mi contraseña");
-        jMenu1.add(jMenuItem4);
+        archivoCambiarContrasena.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/key.png"))); // NOI18N
+        archivoCambiarContrasena.setText("Cambiar mi contraseña");
+        archivoCambiarContrasena.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                archivoCambiarContrasenaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(archivoCambiarContrasena);
         jMenu1.add(jSeparator2);
 
         archivoSalir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK));
@@ -491,6 +497,10 @@ public class Principal extends javax.swing.JFrame {
         regCli.setVisible(true);
     }//GEN-LAST:event_clienteRegistrarActionPerformed
 
+    private void archivoCambiarContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_archivoCambiarContrasenaActionPerformed
+        new CambiarPassword(this, srvAdministrador, user).setVisible(true);
+    }//GEN-LAST:event_archivoCambiarContrasenaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -528,6 +538,7 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem archivoBloquearTerminal;
+    private javax.swing.JMenuItem archivoCambiarContrasena;
     private javax.swing.JMenuItem archivoLogout;
     private javax.swing.JMenuItem archivoPerfil;
     private javax.swing.JMenuItem archivoSalir;
@@ -544,7 +555,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;

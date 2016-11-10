@@ -20,4 +20,5 @@
     <import location="WebServiceRegion.asmx.xml" namespace="http://tempuri.org/"/>
     <import location="WebServiceStock.asmx.xml" namespace="http://tempuri.org/"/>
     <import location="WebServiceUbicacionProductor.asmx.xml" namespace="http://tempuri.org/"/>
+    <import location="WebServiceAdministrador.asmx.xml" namespace="http://tempuri.org/"/>
 </definitions>

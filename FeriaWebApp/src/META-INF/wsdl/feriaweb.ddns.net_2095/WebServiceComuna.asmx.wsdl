@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="retornaTodasLasComunas">
+        <s:complexType />
+      </s:element>
+      <s:element name="retornaTodasLasComunasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="retornaTodasLasComunasResult" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="guardarComuna">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="comuna" type="tns:Comuna" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Comuna">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Provincia" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="guardarComunaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="guardarComunaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="posicionComuna">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="posicion" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="posicionComunaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="posicionComunaResult" type="tns:Comuna" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscaComuna">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idComuna" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscaComunaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="buscaComunaResult" type="tns:Comuna" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscaComunaPorNombre">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscaComunaPorNombreResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="buscaComunaPorNombreResult" type="tns:Comuna" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="actualizaComuna">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="comuna" type="tns:Comuna" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="actualizaComunaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="actualizaComunaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eliminaComuna">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idComuna" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eliminaComunaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eliminaComunaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="esActivo">
+        <s:complexType />
+      </s:element>
+      <s:element name="esActivoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="esActivoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="retornaTodasLasComunasSoapIn">
+    <wsdl:part name="parameters" element="tns:retornaTodasLasComunas" />
+  </wsdl:message>
+  <wsdl:message name="retornaTodasLasComunasSoapOut">
+    <wsdl:part name="parameters" element="tns:retornaTodasLasComunasResponse" />
+  </wsdl:message>
+  <wsdl:message name="guardarComunaSoapIn">
+    <wsdl:part name="parameters" element="tns:guardarComuna" />
+  </wsdl:message>
+  <wsdl:message name="guardarComunaSoapOut">
+    <wsdl:part name="parameters" element="tns:guardarComunaResponse" />
+  </wsdl:message>
+  <wsdl:message name="posicionComunaSoapIn">
+    <wsdl:part name="parameters" element="tns:posicionComuna" />
+  </wsdl:message>
+  <wsdl:message name="posicionComunaSoapOut">
+    <wsdl:part name="parameters" element="tns:posicionComunaResponse" />
+  </wsdl:message>
+  <wsdl:message name="buscaComunaSoapIn">
+    <wsdl:part name="parameters" element="tns:buscaComuna" />
+  </wsdl:message>
+  <wsdl:message name="buscaComunaSoapOut">
+    <wsdl:part name="parameters" element="tns:buscaComunaResponse" />
+  </wsdl:message>
+  <wsdl:message name="buscaComunaPorNombreSoapIn">
+    <wsdl:part name="parameters" element="tns:buscaComunaPorNombre" />
+  </wsdl:message>
+  <wsdl:message name="buscaComunaPorNombreSoapOut">
+    <wsdl:part name="parameters" element="tns:buscaComunaPorNombreResponse" />
+  </wsdl:message>
+  <wsdl:message name="actualizaComunaSoapIn">
+    <wsdl:part name="parameters" element="tns:actualizaComuna" />
+  </wsdl:message>
+  <wsdl:message name="actualizaComunaSoapOut">
+    <wsdl:part name="parameters" element="tns:actualizaComunaResponse" />
+  </wsdl:message>
+  <wsdl:message name="eliminaComunaSoapIn">
+    <wsdl:part name="parameters" element="tns:eliminaComuna" />
+  </wsdl:message>
+  <wsdl:message name="eliminaComunaSoapOut">
+    <wsdl:part name="parameters" element="tns:eliminaComunaResponse" />
+  </wsdl:message>
+  <wsdl:message name="esActivoSoapIn">
+    <wsdl:part name="parameters" element="tns:esActivo" />
+  </wsdl:message>
+  <wsdl:message name="esActivoSoapOut">
+    <wsdl:part name="parameters" element="tns:esActivoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceComunaSoap">
+    <wsdl:operation name="retornaTodasLasComunas">
+      <wsdl:input message="tns:retornaTodasLasComunasSoapIn" />
+      <wsdl:output message="tns:retornaTodasLasComunasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="guardarComuna">
+      <wsdl:input message="tns:guardarComunaSoapIn" />
+      <wsdl:output message="tns:guardarComunaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="posicionComuna">
+      <wsdl:input message="tns:posicionComunaSoapIn" />
+      <wsdl:output message="tns:posicionComunaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="buscaComuna">
+      <wsdl:input message="tns:buscaComunaSoapIn" />
+      <wsdl:output message="tns:buscaComunaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="buscaComunaPorNombre">
+      <wsdl:input message="tns:buscaComunaPorNombreSoapIn" />
+      <wsdl:output message="tns:buscaComunaPorNombreSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="actualizaComuna">
+      <wsdl:input message="tns:actualizaComunaSoapIn" />
+      <wsdl:output message="tns:actualizaComunaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="eliminaComuna">
+      <wsdl:input message="tns:eliminaComunaSoapIn" />
+      <wsdl:output message="tns:eliminaComunaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="esActivo">
+      <wsdl:input message="tns:esActivoSoapIn" />
+      <wsdl:output message="tns:esActivoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceComunaSoap" type="tns:WebServiceComunaSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="retornaTodasLasComunas">
+      <soap:operation soapAction="http://tempuri.org/retornaTodasLasComunas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="guardarComuna">
+      <soap:operation soapAction="http://tempuri.org/guardarComuna" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="posicionComuna">
+      <soap:operation soapAction="http://tempuri.org/posicionComuna" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaComuna">
+      <soap:operation soapAction="http://tempuri.org/buscaComuna" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaComunaPorNombre">
+      <soap:operation soapAction="http://tempuri.org/buscaComunaPorNombre" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizaComuna">
+      <soap:operation soapAction="http://tempuri.org/actualizaComuna" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminaComuna">
+      <soap:operation soapAction="http://tempuri.org/eliminaComuna" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="esActivo">
+      <soap:operation soapAction="http://tempuri.org/esActivo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceComunaSoap12" type="tns:WebServiceComunaSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="retornaTodasLasComunas">
+      <soap12:operation soapAction="http://tempuri.org/retornaTodasLasComunas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="guardarComuna">
+      <soap12:operation soapAction="http://tempuri.org/guardarComuna" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="posicionComuna">
+      <soap12:operation soapAction="http://tempuri.org/posicionComuna" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaComuna">
+      <soap12:operation soapAction="http://tempuri.org/buscaComuna" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaComunaPorNombre">
+      <soap12:operation soapAction="http://tempuri.org/buscaComunaPorNombre" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizaComuna">
+      <soap12:operation soapAction="http://tempuri.org/actualizaComuna" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminaComuna">
+      <soap12:operation soapAction="http://tempuri.org/eliminaComuna" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="esActivo">
+      <soap12:operation soapAction="http://tempuri.org/esActivo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebServiceComuna">
+    <wsdl:port name="WebServiceComunaSoap" binding="tns:WebServiceComunaSoap">
+      <soap:address location="http://feriaweb.ddns.net:2095/WebServiceComuna.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceComunaSoap12" binding="tns:WebServiceComunaSoap12">
+      <soap12:address location="http://feriaweb.ddns.net:2095/WebServiceComuna.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

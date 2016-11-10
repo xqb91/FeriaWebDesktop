@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="retornaTodosLosClientes">
+        <s:complexType />
+      </s:element>
+      <s:element name="retornaTodosLosClientesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="retornaTodosLosClientesResult" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="guardarAdministrador">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="admin" type="tns:Administrador" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Administrador">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Contrasena" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombres" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Apaterno" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Amaterno" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telefono" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Celular" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Fax" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="guardarAdministradorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="guardarAdministradorResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="posicionAdmin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="posicion" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="posicionAdminResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="posicionAdminResult" type="tns:Administrador" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscaAdministradorPorId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idCliente" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscaAdministradorPorIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="buscaAdministradorPorIdResult" type="tns:Administrador" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscaAdministradorPorRun">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idCliente" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscaAdministradorPorRunResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="buscaAdministradorPorRunResult" type="tns:Administrador" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscaAdministradorPorNombres">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombres" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscaAdministradorPorNombresResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="buscaAdministradorPorNombresResult" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscaAdministradorPorEmail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscaAdministradorPorEmailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="buscaAdministradorPorEmailResult" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="actualizaAdministrador">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cliente" type="tns:Administrador" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="actualizaAdministradorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="actualizaAdministradorResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eliminaCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idCliente" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eliminaClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eliminaClienteResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="esActivo">
+        <s:complexType />
+      </s:element>
+      <s:element name="esActivoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="esActivoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="retornaTodosLosClientesSoapIn">
+    <wsdl:part name="parameters" element="tns:retornaTodosLosClientes" />
+  </wsdl:message>
+  <wsdl:message name="retornaTodosLosClientesSoapOut">
+    <wsdl:part name="parameters" element="tns:retornaTodosLosClientesResponse" />
+  </wsdl:message>
+  <wsdl:message name="guardarAdministradorSoapIn">
+    <wsdl:part name="parameters" element="tns:guardarAdministrador" />
+  </wsdl:message>
+  <wsdl:message name="guardarAdministradorSoapOut">
+    <wsdl:part name="parameters" element="tns:guardarAdministradorResponse" />
+  </wsdl:message>
+  <wsdl:message name="posicionAdminSoapIn">
+    <wsdl:part name="parameters" element="tns:posicionAdmin" />
+  </wsdl:message>
+  <wsdl:message name="posicionAdminSoapOut">
+    <wsdl:part name="parameters" element="tns:posicionAdminResponse" />
+  </wsdl:message>
+  <wsdl:message name="buscaAdministradorPorIdSoapIn">
+    <wsdl:part name="parameters" element="tns:buscaAdministradorPorId" />
+  </wsdl:message>
+  <wsdl:message name="buscaAdministradorPorIdSoapOut">
+    <wsdl:part name="parameters" element="tns:buscaAdministradorPorIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="buscaAdministradorPorRunSoapIn">
+    <wsdl:part name="parameters" element="tns:buscaAdministradorPorRun" />
+  </wsdl:message>
+  <wsdl:message name="buscaAdministradorPorRunSoapOut">
+    <wsdl:part name="parameters" element="tns:buscaAdministradorPorRunResponse" />
+  </wsdl:message>
+  <wsdl:message name="buscaAdministradorPorNombresSoapIn">
+    <wsdl:part name="parameters" element="tns:buscaAdministradorPorNombres" />
+  </wsdl:message>
+  <wsdl:message name="buscaAdministradorPorNombresSoapOut">
+    <wsdl:part name="parameters" element="tns:buscaAdministradorPorNombresResponse" />
+  </wsdl:message>
+  <wsdl:message name="buscaAdministradorPorEmailSoapIn">
+    <wsdl:part name="parameters" element="tns:buscaAdministradorPorEmail" />
+  </wsdl:message>
+  <wsdl:message name="buscaAdministradorPorEmailSoapOut">
+    <wsdl:part name="parameters" element="tns:buscaAdministradorPorEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="actualizaAdministradorSoapIn">
+    <wsdl:part name="parameters" element="tns:actualizaAdministrador" />
+  </wsdl:message>
+  <wsdl:message name="actualizaAdministradorSoapOut">
+    <wsdl:part name="parameters" element="tns:actualizaAdministradorResponse" />
+  </wsdl:message>
+  <wsdl:message name="eliminaClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:eliminaCliente" />
+  </wsdl:message>
+  <wsdl:message name="eliminaClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:eliminaClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="esActivoSoapIn">
+    <wsdl:part name="parameters" element="tns:esActivo" />
+  </wsdl:message>
+  <wsdl:message name="esActivoSoapOut">
+    <wsdl:part name="parameters" element="tns:esActivoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceAdministradorSoap">
+    <wsdl:operation name="retornaTodosLosClientes">
+      <wsdl:input message="tns:retornaTodosLosClientesSoapIn" />
+      <wsdl:output message="tns:retornaTodosLosClientesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="guardarAdministrador">
+      <wsdl:input message="tns:guardarAdministradorSoapIn" />
+      <wsdl:output message="tns:guardarAdministradorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="posicionAdmin">
+      <wsdl:input message="tns:posicionAdminSoapIn" />
+      <wsdl:output message="tns:posicionAdminSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="buscaAdministradorPorId">
+      <wsdl:input message="tns:buscaAdministradorPorIdSoapIn" />
+      <wsdl:output message="tns:buscaAdministradorPorIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="buscaAdministradorPorRun">
+      <wsdl:input message="tns:buscaAdministradorPorRunSoapIn" />
+      <wsdl:output message="tns:buscaAdministradorPorRunSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="buscaAdministradorPorNombres">
+      <wsdl:input message="tns:buscaAdministradorPorNombresSoapIn" />
+      <wsdl:output message="tns:buscaAdministradorPorNombresSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="buscaAdministradorPorEmail">
+      <wsdl:input message="tns:buscaAdministradorPorEmailSoapIn" />
+      <wsdl:output message="tns:buscaAdministradorPorEmailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="actualizaAdministrador">
+      <wsdl:input message="tns:actualizaAdministradorSoapIn" />
+      <wsdl:output message="tns:actualizaAdministradorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="eliminaCliente">
+      <wsdl:input message="tns:eliminaClienteSoapIn" />
+      <wsdl:output message="tns:eliminaClienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="esActivo">
+      <wsdl:input message="tns:esActivoSoapIn" />
+      <wsdl:output message="tns:esActivoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceAdministradorSoap" type="tns:WebServiceAdministradorSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="retornaTodosLosClientes">
+      <soap:operation soapAction="http://tempuri.org/retornaTodosLosClientes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="guardarAdministrador">
+      <soap:operation soapAction="http://tempuri.org/guardarAdministrador" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="posicionAdmin">
+      <soap:operation soapAction="http://tempuri.org/posicionAdmin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaAdministradorPorId">
+      <soap:operation soapAction="http://tempuri.org/buscaAdministradorPorId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaAdministradorPorRun">
+      <soap:operation soapAction="http://tempuri.org/buscaAdministradorPorRun" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaAdministradorPorNombres">
+      <soap:operation soapAction="http://tempuri.org/buscaAdministradorPorNombres" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaAdministradorPorEmail">
+      <soap:operation soapAction="http://tempuri.org/buscaAdministradorPorEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizaAdministrador">
+      <soap:operation soapAction="http://tempuri.org/actualizaAdministrador" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminaCliente">
+      <soap:operation soapAction="http://tempuri.org/eliminaCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="esActivo">
+      <soap:operation soapAction="http://tempuri.org/esActivo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceAdministradorSoap12" type="tns:WebServiceAdministradorSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="retornaTodosLosClientes">
+      <soap12:operation soapAction="http://tempuri.org/retornaTodosLosClientes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="guardarAdministrador">
+      <soap12:operation soapAction="http://tempuri.org/guardarAdministrador" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="posicionAdmin">
+      <soap12:operation soapAction="http://tempuri.org/posicionAdmin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaAdministradorPorId">
+      <soap12:operation soapAction="http://tempuri.org/buscaAdministradorPorId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaAdministradorPorRun">
+      <soap12:operation soapAction="http://tempuri.org/buscaAdministradorPorRun" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaAdministradorPorNombres">
+      <soap12:operation soapAction="http://tempuri.org/buscaAdministradorPorNombres" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaAdministradorPorEmail">
+      <soap12:operation soapAction="http://tempuri.org/buscaAdministradorPorEmail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizaAdministrador">
+      <soap12:operation soapAction="http://tempuri.org/actualizaAdministrador" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminaCliente">
+      <soap12:operation soapAction="http://tempuri.org/eliminaCliente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="esActivo">
+      <soap12:operation soapAction="http://tempuri.org/esActivo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebServiceAdministrador">
+    <wsdl:port name="WebServiceAdministradorSoap" binding="tns:WebServiceAdministradorSoap">
+      <soap:address location="http://feriaweb.ddns.net:2095/WebServiceAdministrador.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceAdministradorSoap12" binding="tns:WebServiceAdministradorSoap12">
+      <soap12:address location="http://feriaweb.ddns.net:2095/WebServiceAdministrador.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

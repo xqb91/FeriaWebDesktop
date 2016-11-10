@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="retornaTodasUbicacionProductores">
+        <s:complexType />
+      </s:element>
+      <s:element name="retornaTodasUbicacionProductoresResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="retornaTodasUbicacionProductoresResult" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="guardarUbicacionProductor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ubicacionPro" type="tns:UbicacionProductor" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UbicacionProductor">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Longitud" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Latitud" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Direccion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Comuna" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Referencia" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Productor" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="guardarUbicacionProductorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="guardarUbicacionProductorResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="posicionStock">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="posicion" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="posicionStockResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="posicionStockResult" type="tns:UbicacionProductor" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscaUbicacionProductor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idUbicacionPro" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscaUbicacionProductorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="buscaUbicacionProductorResult" type="tns:UbicacionProductor" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="actualizaUbicacionProductor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ubicacionPro" type="tns:UbicacionProductor" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="actualizaUbicacionProductorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="actualizaUbicacionProductorResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eliminaUbicacionProductor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idUbicacionPro" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eliminaUbicacionProductorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eliminaUbicacionProductorResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="esActivo">
+        <s:complexType />
+      </s:element>
+      <s:element name="esActivoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="esActivoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="retornaTodasUbicacionProductoresSoapIn">
+    <wsdl:part name="parameters" element="tns:retornaTodasUbicacionProductores" />
+  </wsdl:message>
+  <wsdl:message name="retornaTodasUbicacionProductoresSoapOut">
+    <wsdl:part name="parameters" element="tns:retornaTodasUbicacionProductoresResponse" />
+  </wsdl:message>
+  <wsdl:message name="guardarUbicacionProductorSoapIn">
+    <wsdl:part name="parameters" element="tns:guardarUbicacionProductor" />
+  </wsdl:message>
+  <wsdl:message name="guardarUbicacionProductorSoapOut">
+    <wsdl:part name="parameters" element="tns:guardarUbicacionProductorResponse" />
+  </wsdl:message>
+  <wsdl:message name="posicionStockSoapIn">
+    <wsdl:part name="parameters" element="tns:posicionStock" />
+  </wsdl:message>
+  <wsdl:message name="posicionStockSoapOut">
+    <wsdl:part name="parameters" element="tns:posicionStockResponse" />
+  </wsdl:message>
+  <wsdl:message name="buscaUbicacionProductorSoapIn">
+    <wsdl:part name="parameters" element="tns:buscaUbicacionProductor" />
+  </wsdl:message>
+  <wsdl:message name="buscaUbicacionProductorSoapOut">
+    <wsdl:part name="parameters" element="tns:buscaUbicacionProductorResponse" />
+  </wsdl:message>
+  <wsdl:message name="actualizaUbicacionProductorSoapIn">
+    <wsdl:part name="parameters" element="tns:actualizaUbicacionProductor" />
+  </wsdl:message>
+  <wsdl:message name="actualizaUbicacionProductorSoapOut">
+    <wsdl:part name="parameters" element="tns:actualizaUbicacionProductorResponse" />
+  </wsdl:message>
+  <wsdl:message name="eliminaUbicacionProductorSoapIn">
+    <wsdl:part name="parameters" element="tns:eliminaUbicacionProductor" />
+  </wsdl:message>
+  <wsdl:message name="eliminaUbicacionProductorSoapOut">
+    <wsdl:part name="parameters" element="tns:eliminaUbicacionProductorResponse" />
+  </wsdl:message>
+  <wsdl:message name="esActivoSoapIn">
+    <wsdl:part name="parameters" element="tns:esActivo" />
+  </wsdl:message>
+  <wsdl:message name="esActivoSoapOut">
+    <wsdl:part name="parameters" element="tns:esActivoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceUbicacionProductorSoap">
+    <wsdl:operation name="retornaTodasUbicacionProductores">
+      <wsdl:input message="tns:retornaTodasUbicacionProductoresSoapIn" />
+      <wsdl:output message="tns:retornaTodasUbicacionProductoresSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="guardarUbicacionProductor">
+      <wsdl:input message="tns:guardarUbicacionProductorSoapIn" />
+      <wsdl:output message="tns:guardarUbicacionProductorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="posicionStock">
+      <wsdl:input message="tns:posicionStockSoapIn" />
+      <wsdl:output message="tns:posicionStockSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="buscaUbicacionProductor">
+      <wsdl:input message="tns:buscaUbicacionProductorSoapIn" />
+      <wsdl:output message="tns:buscaUbicacionProductorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="actualizaUbicacionProductor">
+      <wsdl:input message="tns:actualizaUbicacionProductorSoapIn" />
+      <wsdl:output message="tns:actualizaUbicacionProductorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="eliminaUbicacionProductor">
+      <wsdl:input message="tns:eliminaUbicacionProductorSoapIn" />
+      <wsdl:output message="tns:eliminaUbicacionProductorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="esActivo">
+      <wsdl:input message="tns:esActivoSoapIn" />
+      <wsdl:output message="tns:esActivoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceUbicacionProductorSoap" type="tns:WebServiceUbicacionProductorSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="retornaTodasUbicacionProductores">
+      <soap:operation soapAction="http://tempuri.org/retornaTodasUbicacionProductores" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="guardarUbicacionProductor">
+      <soap:operation soapAction="http://tempuri.org/guardarUbicacionProductor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="posicionStock">
+      <soap:operation soapAction="http://tempuri.org/posicionStock" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaUbicacionProductor">
+      <soap:operation soapAction="http://tempuri.org/buscaUbicacionProductor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizaUbicacionProductor">
+      <soap:operation soapAction="http://tempuri.org/actualizaUbicacionProductor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminaUbicacionProductor">
+      <soap:operation soapAction="http://tempuri.org/eliminaUbicacionProductor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="esActivo">
+      <soap:operation soapAction="http://tempuri.org/esActivo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceUbicacionProductorSoap12" type="tns:WebServiceUbicacionProductorSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="retornaTodasUbicacionProductores">
+      <soap12:operation soapAction="http://tempuri.org/retornaTodasUbicacionProductores" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="guardarUbicacionProductor">
+      <soap12:operation soapAction="http://tempuri.org/guardarUbicacionProductor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="posicionStock">
+      <soap12:operation soapAction="http://tempuri.org/posicionStock" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaUbicacionProductor">
+      <soap12:operation soapAction="http://tempuri.org/buscaUbicacionProductor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizaUbicacionProductor">
+      <soap12:operation soapAction="http://tempuri.org/actualizaUbicacionProductor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminaUbicacionProductor">
+      <soap12:operation soapAction="http://tempuri.org/eliminaUbicacionProductor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="esActivo">
+      <soap12:operation soapAction="http://tempuri.org/esActivo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebServiceUbicacionProductor">
+    <wsdl:port name="WebServiceUbicacionProductorSoap" binding="tns:WebServiceUbicacionProductorSoap">
+      <soap:address location="http://feriaweb.ddns.net:2095/WebServiceUbicacionProductor.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceUbicacionProductorSoap12" binding="tns:WebServiceUbicacionProductorSoap12">
+      <soap12:address location="http://feriaweb.ddns.net:2095/WebServiceUbicacionProductor.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
