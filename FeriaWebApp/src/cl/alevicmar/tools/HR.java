@@ -519,4 +519,8 @@ public class HR {
             return false;
         }
     }
+    
+    public static void mostrarErrorException(Exception e) {
+        HR.mostrarError("Ha ocurrido un error en tiempo de ejecución: "+e.getMessage());
+    }
 }

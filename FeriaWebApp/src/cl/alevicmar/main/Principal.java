@@ -5,6 +5,7 @@ import cl.alevicmar.login.Logon;
 import cl.alevicmar.menuArchivo.CambiarPassword;
 import cl.alevicmar.menuArchivo.Perfil;
 import cl.alevicmar.menuClientes.AdministrarClientes;
+import cl.alevicmar.menuClientes.CambiarPasswordCliente;
 import cl.alevicmar.menuClientes.RegistrarCliente;
 import cl.alevicmar.services.administrador.Administrador;
 import cl.alevicmar.services.administrador.WebServiceAdministrador;
@@ -296,9 +297,8 @@ public class Principal extends javax.swing.JFrame {
         clienteRegistrar = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        clienteCambiarPassword = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
@@ -391,17 +391,18 @@ public class Principal extends javax.swing.JFrame {
         jMenu2.add(jMenuItem2);
         jMenu2.add(jSeparator3);
 
-        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/key.png"))); // NOI18N
-        jMenuItem6.setText("Restaurar Contraseña de Cliente");
-        jMenu2.add(jMenuItem6);
+        clienteCambiarPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/key.png"))); // NOI18N
+        clienteCambiarPassword.setText("Cambiar Contraseña de Cliente");
+        clienteCambiarPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clienteCambiarPasswordActionPerformed(evt);
+            }
+        });
+        jMenu2.add(clienteCambiarPassword);
 
         jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/email_go.png"))); // NOI18N
         jMenuItem7.setText("Reenviar Correo de Confirmación");
         jMenu2.add(jMenuItem7);
-
-        jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/user_gray.png"))); // NOI18N
-        jMenuItem8.setText("Cuentas no activadas");
-        jMenu2.add(jMenuItem8);
 
         jMenuBar1.add(jMenu2);
 
@@ -501,6 +502,10 @@ public class Principal extends javax.swing.JFrame {
         new CambiarPassword(this, srvAdministrador, user).setVisible(true);
     }//GEN-LAST:event_archivoCambiarContrasenaActionPerformed
 
+    private void clienteCambiarPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteCambiarPasswordActionPerformed
+        new CambiarPasswordCliente(srvCliente, this).setVisible(true);
+    }//GEN-LAST:event_clienteCambiarPasswordActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -542,6 +547,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem archivoLogout;
     private javax.swing.JMenuItem archivoPerfil;
     private javax.swing.JMenuItem archivoSalir;
+    private javax.swing.JMenuItem clienteCambiarPassword;
     private javax.swing.JMenuItem clienteRegistrar;
     private javax.swing.JMenuItem clientesAdminClientes;
     private javax.swing.JLabel jLabel1;
@@ -555,9 +561,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;

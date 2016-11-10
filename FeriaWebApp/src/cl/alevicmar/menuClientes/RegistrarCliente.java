@@ -16,6 +16,7 @@ import cl.alevicmar.tools.HRut;
 import java.awt.Component;
 import java.awt.geom.Point2D;
 import java.util.List;
+import javax.swing.JFrame;
 import javax.swing.UIManager;
 import maps.java.Geocoding;
 
@@ -27,6 +28,8 @@ public class RegistrarCliente extends javax.swing.JFrame {
 
     WebServiceCliente srvCliente    = null;
     WebServiceComuna srvComuna      = null;
+    Clientes cliente;
+    boolean preview                 = false;
     /**
      * Creates new form RegistrarCliente
      */
@@ -46,6 +49,21 @@ public class RegistrarCliente extends javax.swing.JFrame {
         rellenarComunas();
         txtLongitud.setEditable(false);
         txtLatitud.setEditable(false);
+        this.setIconImage(((JFrame)com).getIconImage());
+    }
+    
+    public RegistrarCliente(Component com, WebServiceCliente srvCliente, WebServiceComuna srvComuna, Clientes cliente) {
+        initComponents();
+        this.setLocationRelativeTo(com);
+        this.srvCliente = srvCliente;
+        this.srvComuna = srvComuna;
+        this.cliente = cliente;
+        txtLongitud.setEditable(false);
+        txtLatitud.setEditable(false);
+        this.cargaInfoUsuario();
+        this.setTitle("Actualizar Cliente");
+        this.preview = true;
+        this.setIconImage(((JFrame)com).getIconImage());
     }
 
     public void rellenarDatosLatitudLongitud(String datos) {
@@ -70,6 +88,50 @@ public class RegistrarCliente extends javax.swing.JFrame {
         }catch(Exception e) {
             HR.mostrarError("Ocurrió un error cargar las comunas: "+e.getMessage());
         }
+    }
+    
+    public void cargaInfoUsuario(){
+        HR.insertarTexto(txtRun, cliente.getUsuario());
+        HR.insertarTexto(txtNombres, cliente.getNombres());
+        HR.insertarTexto(txtApaterno, cliente.getApaterno());
+        HR.insertarTexto(txtAmaterno, cliente.getAmaterno());
+        HR.insertarTexto(txtCorreo, cliente.getEmail());
+        HR.insertarTexto(txtTelefono, cliente.getTelefono());
+        HR.insertarTexto(txtCelular, cliente.getCelular());
+        HR.insertarTexto(txtFax, cliente.getFax());
+        HR.insertarTexto(txtDireccion, cliente.getDireccion());
+        HR.insertarTexto(txtLatitud, cliente.getLatitud());
+        HR.insertarTexto(txtLongitud, cliente.getLongitud());
+        //recuperando comuna
+        Comuna comu = srvComuna.getWebServiceComunaSoap().buscaComuna(cliente.getComuna());
+        if(comu != null) {
+            try {
+            List<Object> array = srvComuna.getWebServiceComunaSoap().retornaTodasLasComunas().getAnyType();
+            cmbComuna.removeAllItems();
+            HR.insertarTexto(cmbComuna, comu.getNombre());
+            for(Object o : array) {
+                Comuna c = ((Comuna)o);
+                HR.insertarTexto(cmbComuna, c.getNombre());
+            }
+        }catch(Exception e) {
+            HR.mostrarError("Ocurrió un error cargar las comunas: "+e.getMessage());
+        }
+        }
+    }
+    
+    public void vaciarCamposTexto() {
+        HR.insertarTexto(txtNombres, "");
+        HR.insertarTexto(txtApaterno, "");
+        HR.insertarTexto(txtAmaterno, "");
+        HR.insertarTexto(txtCorreo, "");
+        HR.insertarTexto(txtTelefono, "");
+        HR.insertarTexto(txtCelular, "");
+        HR.insertarTexto(txtFax, "");
+        HR.insertarTexto(txtDireccion, "");
+        HR.insertarTexto(txtLatitud, "");
+        HR.insertarTexto(txtLongitud, "");
+        rellenarComunas();
+        this.setTitle("Registrar Cliente");
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -376,6 +438,11 @@ public class RegistrarCliente extends javax.swing.JFrame {
         });
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -427,6 +494,20 @@ public class RegistrarCliente extends javax.swing.JFrame {
                 HR.mostrarError("Rut ingresado no es válido");
                 HR.seleccionarTodo(txtRun);
                 HR.focus(txtRun);
+            }else{
+                if(preview != true) {
+                    if(srvCliente.getWebServiceClienteSoap().buscaClientePorRun(HR.contenido(txtRun)).getId() != 0 ) {
+                        int valor = HR.preguntar("El cliente ya se encuentra registrado... ¿Desea actualizar sus datos?");
+                        if(valor == 0) {
+                            this.cliente = srvCliente.getWebServiceClienteSoap().buscaClientePorRun(HR.contenido(txtRun));
+                            this.setTitle("Actualizar Cliente");
+                            HR.insertarTexto(btnGuardar, "Actualizar");
+                            cargaInfoUsuario();
+                        }
+                    }else{
+                        this.vaciarCamposTexto();
+                    }
+                }
             }
         }
     }//GEN-LAST:event_txtRunFocusLost
@@ -595,21 +676,51 @@ public class RegistrarCliente extends javax.swing.JFrame {
                                                         String strComuna    = HR.contenido(cmbComuna);
                                                         String strLatitud   = HR.contenido(txtLatitud);
                                                         String strLongitud  = HR.contenido(txtLongitud);
-                                                        
-                                                        Comuna cm           = srvComuna.getWebServiceComunaSoap().buscaComunaPorNombre(strComuna);
-                                                        try {
-                                                            Clientes ca = new Clientes();
-                                                            ca.setUsuario(strRun);
-                                                            ca.setNombres(strNombres);
-                                                            ca.setApaterno(strApaterno);
-                                                            ca.setAmaterno(strAmaterno);
-                                                            ca.setEmail(strCorreo);
-                                                            ca.setTelefono(strTelefono);
-                                                            ca.setCelular(strCelular);
-                                                            ca.setFax(strFax);
-                                                            //srvCliente.getWebServiceClienteSoap().guardarCliente(cliente);
-                                                        }catch(Exception e) {
-                                                            
+
+                                                        if(srvCliente.getWebServiceClienteSoap().buscaClientePorRun(strRun).getId() == 0) {
+                                                            Comuna cm           = srvComuna.getWebServiceComunaSoap().buscaComunaPorNombre(strComuna);
+                                                            try {
+                                                                Clientes ca = new Clientes();
+                                                                ca.setId(0);
+                                                                ca.setUsuario(strRun);
+                                                                ca.setNombres(strNombres);
+                                                                ca.setApaterno(strApaterno);
+                                                                ca.setAmaterno(strAmaterno);
+                                                                ca.setEmail(strCorreo);
+                                                                ca.setTelefono(strTelefono);
+                                                                ca.setCelular(strCelular);
+                                                                ca.setFax(strFax);
+                                                                ca.setDireccion(strDireccion);
+                                                                ca.setComuna(cm.getId());
+                                                                ca.setLatitud(strLatitud);
+                                                                ca.setLongitud(strLongitud);
+                                                                
+                                                                if(HR.contenido(btnGuardar).compareToIgnoreCase("guardar") == 0) {
+                                                                    int password = ((int)(Math.random()*100000+0));
+                                                                    ca.setContrasena(password+"");
+                                                                    if(srvCliente.getWebServiceClienteSoap().guardarCliente(ca))
+                                                                    {
+                                                                        HR.mostrarMensaje("El cliente ha sido registrado.");
+                                                                        vaciarCamposTexto();
+                                                                        HR.insertarTexto(txtRun, "");
+                                                                    }else{
+                                                                        HR.mostrarError("Ocurrió un problema al registrar al cliente");
+                                                                    }
+                                                                }else{
+                                                                    if(srvCliente.getWebServiceClienteSoap().actualizaCliente(ca))
+                                                                    {
+                                                                        HR.mostrarMensaje("El cliente ha sido actualizado");
+                                                                        vaciarCamposTexto();
+                                                                        HR.insertarTexto(txtRun, "");
+                                                                    }else{
+                                                                        HR.mostrarError("Ocurrió un problema al actualizar al cliente");
+                                                                    }
+                                                                }
+                                                            }catch(Exception e) {
+                                                                HR.mostrarErrorException(e);
+                                                            }
+                                                        }else{
+                                                            HR.mostrarError("El cliente con RUN "+strRun+" ya está registrado!");
                                                         }
                                                     }
                                                 }
@@ -624,6 +735,11 @@ public class RegistrarCliente extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.dispose();
+        System.gc();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments

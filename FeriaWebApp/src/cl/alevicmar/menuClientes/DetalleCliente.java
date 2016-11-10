@@ -27,6 +27,7 @@ public class DetalleCliente extends javax.swing.JFrame {
     Clientes cli                    = null;
     WebServiceCliente srvCliente    = null;
     WebServiceComuna srvComuna      = null;
+    Component com                   = null;
     
     /**
      * Contructor por defecto: ¡NO Utilizar salvo para ejecución local!
@@ -72,6 +73,7 @@ public class DetalleCliente extends javax.swing.JFrame {
         this.srvCliente = srvCliente;
         this.srvComuna = srvComuna;
         this.cli = cli;
+        this.com = com;
         
         //seteando datos por defecto
         HR.insertarTexto(lblNombre, cli.getNombres()+" "+cli.getApaterno()+" "+cli.getAmaterno()+" (Usuario: "+cli.getUsuario()+")");
@@ -122,9 +124,9 @@ public class DetalleCliente extends javax.swing.JFrame {
         lblRegion = new javax.swing.JLabel();
         lblPais = new javax.swing.JLabel();
         btnMapa = new javax.swing.JButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
-        jToggleButton3 = new javax.swing.JToggleButton();
-        jToggleButton4 = new javax.swing.JToggleButton();
+        btnEliminar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        btnCerrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -295,11 +297,26 @@ public class DetalleCliente extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jToggleButton2.setText("Cerrar");
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
-        jToggleButton3.setText("Editar");
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
-        jToggleButton4.setText("Eliminar");
+        btnCerrar.setText("Cerrar");
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -312,11 +329,11 @@ public class DetalleCliente extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jToggleButton4)
+                        .addComponent(btnEliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jToggleButton3)
+                        .addComponent(btnEditar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jToggleButton2)))
+                        .addComponent(btnCerrar)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -328,9 +345,9 @@ public class DetalleCliente extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton2)
-                    .addComponent(jToggleButton3)
-                    .addComponent(jToggleButton4))
+                    .addComponent(btnEliminar)
+                    .addComponent(btnEditar)
+                    .addComponent(btnCerrar))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
@@ -346,6 +363,32 @@ public class DetalleCliente extends javax.swing.JFrame {
             HR.mostrarError("Error: "+err);
         }
     }//GEN-LAST:event_btnMapaActionPerformed
+
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCerrarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        new RegistrarCliente(this, srvCliente, srvComuna, cli).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        if(cli != null) {
+            int opcion = HR.preguntar("¿Esta seguro de eliminar este cliente? La operación es irreversible!");
+            if(opcion == 0) {
+                if(srvCliente.getWebServiceClienteSoap().eliminaCliente(cli.getId())) {
+                    HR.mostrarMensaje("Cliente eliminado exitosamente.");
+                    if(com != null) {
+                        if(com instanceof AdministrarClientes) {
+                            ((AdministrarClientes)com).rellenar();
+                            this.dispose();
+                        }
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -383,6 +426,9 @@ public class DetalleCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCerrar;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnMapa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
@@ -395,9 +441,6 @@ public class DetalleCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
-    private javax.swing.JToggleButton jToggleButton4;
     private javax.swing.JLabel lblCelular;
     private javax.swing.JLabel lblComuna;
     private javax.swing.JLabel lblCorreo;
