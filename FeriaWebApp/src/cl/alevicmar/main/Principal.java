@@ -298,8 +298,21 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
         clienteCambiarPassword = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
+        jSeparator7 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jSeparator4 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jSeparator5 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jSeparator6 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
@@ -399,14 +412,55 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         jMenu2.add(clienteCambiarPassword);
+        jMenu2.add(jSeparator7);
 
-        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/email_go.png"))); // NOI18N
-        jMenuItem7.setText("Reenviar Correo de Confirmación");
-        jMenu2.add(jMenuItem7);
+        jMenuItem10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/basket_put.png"))); // NOI18N
+        jMenuItem10.setText("Compras del Cliente");
+        jMenu2.add(jMenuItem10);
+
+        jMenuItem11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/basket.png"))); // NOI18N
+        jMenuItem11.setText("Última Canasta");
+        jMenu2.add(jMenuItem11);
 
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Productores");
+
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/book.png"))); // NOI18N
+        jMenuItem1.setText("Administrar Productores");
+        jMenu3.add(jMenuItem1);
+
+        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/book_add.png"))); // NOI18N
+        jMenuItem4.setText("Registrar Productor");
+        jMenu3.add(jMenuItem4);
+        jMenu3.add(jSeparator4);
+
+        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/book_key.png"))); // NOI18N
+        jMenuItem3.setText("Cambiar Contraseña de Productor");
+        jMenu3.add(jMenuItem3);
+        jMenu3.add(jSeparator5);
+
+        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/group.png"))); // NOI18N
+        jMenuItem5.setText("Datos de Agrupación Agrícola");
+        jMenu3.add(jMenuItem5);
+
+        jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/book_link.png"))); // NOI18N
+        jMenuItem8.setText("Asociar Productor a Agrupación Agrícola");
+        jMenu3.add(jMenuItem8);
+
+        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/book_error.png"))); // NOI18N
+        jMenuItem7.setText("Desvíncular Productor a Agrupación Agrícola");
+        jMenu3.add(jMenuItem7);
+        jMenu3.add(jSeparator6);
+
+        jMenuItem9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/book_open.png"))); // NOI18N
+        jMenuItem9.setText("Administrar Agrupaciones Agrícolas");
+        jMenu3.add(jMenuItem9);
+
+        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/book_next.png"))); // NOI18N
+        jMenuItem6.setText("Registrar Agrupación Agrícola");
+        jMenu3.add(jMenuItem6);
+
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Datos Geográficos");
@@ -560,10 +614,23 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JPopupMenu.Separator jSeparator4;
+    private javax.swing.JPopupMenu.Separator jSeparator5;
+    private javax.swing.JPopupMenu.Separator jSeparator6;
+    private javax.swing.JPopupMenu.Separator jSeparator7;
     // End of variables declaration//GEN-END:variables
 }

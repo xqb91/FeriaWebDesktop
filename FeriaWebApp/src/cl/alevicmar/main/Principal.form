@@ -127,12 +127,22 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clienteCambiarPasswordActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem7">
+            <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator7">
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem10">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/cl/alevicmar/icons/email_go.png"/>
+                  <Image iconType="3" name="/cl/alevicmar/icons/basket_put.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Reenviar Correo de Confirmaci&#xf3;n"/>
+                <Property name="text" type="java.lang.String" value="Compras del Cliente"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem11">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/cl/alevicmar/icons/basket.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="&#xda;ltima Canasta"/>
               </Properties>
             </MenuItem>
           </SubComponents>
@@ -141,6 +151,78 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Productores"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/cl/alevicmar/icons/book.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Administrar Productores"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/cl/alevicmar/icons/book_add.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Registrar Productor"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator4">
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/cl/alevicmar/icons/book_key.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Cambiar Contrase&#xf1;a de Productor"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator5">
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/cl/alevicmar/icons/group.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Datos de Agrupaci&#xf3;n Agr&#xed;cola"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem8">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/cl/alevicmar/icons/book_link.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Asociar Productor a Agrupaci&#xf3;n Agr&#xed;cola"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem7">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/cl/alevicmar/icons/book_error.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Desv&#xed;ncular Productor a Agrupaci&#xf3;n Agr&#xed;cola"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator6">
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem9">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/cl/alevicmar/icons/book_open.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Administrar Agrupaciones Agr&#xed;colas"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/cl/alevicmar/icons/book_next.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Registrar Agrupaci&#xf3;n Agr&#xed;cola"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu4">
           <Properties>
