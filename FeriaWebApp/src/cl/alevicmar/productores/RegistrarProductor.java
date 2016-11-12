@@ -327,7 +327,6 @@ public class RegistrarProductor extends javax.swing.JFrame {
                                         HR.focus(txtEmail);
                                     }else{
                                         //verificar si existe el productor
-                                        
                                     }
                                 }
                             }
