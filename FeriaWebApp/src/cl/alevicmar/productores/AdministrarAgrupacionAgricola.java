@@ -5,19 +5,80 @@
  */
 package cl.alevicmar.productores;
 
+import cl.alevicmar.main.Principal;
+import cl.alevicmar.services.agrupacion.AgrupacionAgricultores;
+import cl.alevicmar.services.agrupacion.WebServiceAgrupacion;
+import cl.alevicmar.services.comuna.Comuna;
+import cl.alevicmar.services.comuna.WebServiceComuna;
+import cl.alevicmar.tools.HR;
+import cl.alevicmar.tools.HRut;
+import java.awt.Component;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.UIManager;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Victor
  */
 public class AdministrarAgrupacionAgricola extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AdministrarAgrupacionAgricola
-     */
+    WebServiceAgrupacion srvAgrupacion          = null;
+    WebServiceComuna srvComuna                  = null;
+    Component componente                        = null;
+    
+    List<AgrupacionAgricultores> listado                     = new ArrayList<AgrupacionAgricultores>();
+    
+    
     public AdministrarAgrupacionAgricola() {
         initComponents();
+        this.srvAgrupacion  = new WebServiceAgrupacion();
+        this.srvComuna      = new WebServiceComuna();
+        this.setLocationRelativeTo(componente);
+        rellenarComunas();
+        rellenarTabla();
     }
 
+    public AdministrarAgrupacionAgricola(WebServiceAgrupacion srvAgrupacion, WebServiceAgrupacion srvComuna, Component componente) {
+        this.srvAgrupacion = srvAgrupacion;
+        this.srvComuna = this.srvComuna;
+        this.setLocationRelativeTo(componente);
+        if(componente instanceof Principal) {
+            this.setIconImage(((Principal)componente).getIconImage());
+        }
+        rellenarComunas();
+        rellenarTabla();
+    }
+    
+        public List<AgrupacionAgricultores> eliminarElementosListaXRun(String run, List<AgrupacionAgricultores> listado) {
+        if(listado != null) {
+            for(int i = 0; i < listado.size(); i++) {
+                AgrupacionAgricultores aux = listado.get(i);
+                if(aux.getRut().compareToIgnoreCase(run) != 0) {
+                    listado.remove(i);
+                    i = 0;
+                }
+            }
+        }
+        return listado;
+    }
+    
+    public List<AgrupacionAgricultores> eliminarElementosListaPorComuna(int comuna, List<AgrupacionAgricultores> listado) {
+        if(listado != null) {
+            Comuna agr = srvComuna.getWebServiceComunaSoap().buscaComuna(comuna);
+            for(int i=0; i<listado.size(); i++) {
+                if(listado.get(i).getComuna()!= agr.getId()) {
+                    listado.remove(i);
+                    i = 0;
+                }
+            }
+            return listado;
+        }else{
+            return listado;
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,27 +89,49 @@ public class AdministrarAgrupacionAgricola extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        lblRun = new javax.swing.JLabel();
+        txtRun = new javax.swing.JTextField();
+        lblComuna = new javax.swing.JLabel();
+        cmbComuna = new javax.swing.JComboBox<>();
+        btnBuscar = new javax.swing.JButton();
+        btnVerTodos = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaResultados = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Filtrar"));
 
-        jLabel1.setText("RUN / Razón Social");
+        lblRun.setText("RUT / Razón Social");
 
-        jLabel2.setText("Comuna");
+        txtRun.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtRunFocusLost(evt);
+            }
+        });
+        txtRun.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtRunKeyTyped(evt);
+            }
+        });
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/find.png"))); // NOI18N
+        lblComuna.setText("Comuna");
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/book.png"))); // NOI18N
-        jButton2.setText("Ver Todos");
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/find.png"))); // NOI18N
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        btnVerTodos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/book.png"))); // NOI18N
+        btnVerTodos.setText("Ver Todos");
+        btnVerTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerTodosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -58,19 +141,19 @@ public class AdministrarAgrupacionAgricola extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtRun, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(cmbComuna, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(lblRun)
                         .addGap(86, 86, 86)
-                        .addComponent(jLabel2)
-                        .addGap(0, 152, Short.MAX_VALUE))
+                        .addComponent(lblComuna)
+                        .addGap(0, 283, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton2)
+                        .addComponent(btnVerTodos)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1)))
+                        .addComponent(btnBuscar)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -78,20 +161,20 @@ public class AdministrarAgrupacionAgricola extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                    .addComponent(lblRun)
+                    .addComponent(lblComuna))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtRun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbComuna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVerTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaResultados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -99,7 +182,7 @@ public class AdministrarAgrupacionAgricola extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaResultados);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -120,6 +203,120 @@ public class AdministrarAgrupacionAgricola extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtRunKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRunKeyTyped
+        HR.ingresaCaracteresRut(evt);
+        HR.largoMaximo(txtRun, 12, evt);
+    }//GEN-LAST:event_txtRunKeyTyped
+
+    private void txtRunFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRunFocusLost
+        if(!HR.contenido(txtRun).isEmpty()) {
+            HR.insertarTexto(txtRun, HRut.formatear(HR.contenido(txtRun)));
+            if(!HRut.validar(HR.contenido(txtRun))) {
+                HR.mostrarError("El Rol Único Tributario ingresado no es válido");
+                HR.focus(txtRun);
+                HR.seleccionarTodo(txtRun);
+            }else{
+                HR.focus(cmbComuna);
+            }
+        }
+    }//GEN-LAST:event_txtRunFocusLost
+
+    private void btnVerTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerTodosActionPerformed
+        
+    }//GEN-LAST:event_btnVerTodosActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        //buscar por RUN
+        if(!HR.contenido(txtRun).isEmpty()) {
+            listado = this.eliminarElementosListaXRun(HR.contenido(txtRun), listado);
+            this.rellenarTabla(listado);
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    public void rellenarComunas() {
+        List<Object> com = srvComuna.getWebServiceComunaSoap().retornaTodasLasComunas().getAnyType();
+        cmbComuna.removeAllItems();
+        HR.insertarTexto(cmbComuna, "Seleccione Comuna...");
+        if(com != null) {
+            for(Object o : com) {
+                Comuna comu = ((Comuna)o);
+                HR.insertarTexto(cmbComuna, comu.getNombre());
+            }
+        }
+    }
+    
+     public void rellenarTabla() {
+        try {
+            DefaultTableModel modelo = new DefaultTableModel(new Object [][] { }, new String [] { "RUT", "Razón Social", "Dirección", "Comuna" });    
+
+            List<Object> array = srvAgrupacion.getWebServiceAgrupacionSoap().retornaTodasLasAgrupaciones().getAnyType();
+            if(array != null) {
+                for(Object o : array) {
+                    AgrupacionAgricultores p = ((AgrupacionAgricultores)o);
+                    listado.add(p);
+                    Object[] obj = new Object[4];
+                    obj[0] = p.getRut();
+                    obj[1] = p.getRazonSocial();
+                    obj[2] = p.getDireccion();
+                    obj[3] = srvComuna.getWebServiceComunaSoap().buscaComuna(p.getComuna()).getNombre();
+                    modelo.addRow(obj);
+                } 
+            }
+            tablaResultados.setModel(modelo);
+            tablaResultados.getColumnModel().getColumn(0).setResizable(false);
+            tablaResultados.getColumnModel().getColumn(0).setMaxWidth(75);
+            tablaResultados.getColumnModel().getColumn(0).setMinWidth(75);
+            tablaResultados.getColumnModel().getColumn(0).setWidth(85);
+            tablaResultados.getColumnModel().getColumn(1).setResizable(false);
+            tablaResultados.getColumnModel().getColumn(1).setMaxWidth(185);
+            tablaResultados.getColumnModel().getColumn(1).setMinWidth(185);
+            tablaResultados.getColumnModel().getColumn(1).setWidth(185);
+            tablaResultados.getColumnModel().getColumn(2).setResizable(false);
+            tablaResultados.getColumnModel().getColumn(2).setWidth(35);
+            tablaResultados.getColumnModel().getColumn(3).setResizable(false);
+            tablaResultados.getColumnModel().getColumn(3).setWidth(12);
+        }catch(Exception e) {
+            HR.mostrarError("Ocurrió un error cargar los datos de los clientes: "+e.getMessage());
+        }
+    }
+     
+     
+     public void rellenarTabla(List<AgrupacionAgricultores> array) {
+        try {
+            DefaultTableModel modelo = new DefaultTableModel(new Object [][] { }, new String [] { "RUT", "Razón Social", "Dirección", "Comuna" });    
+
+            if(array != null) {
+                for(Object o : array) {
+                    if(o != null) {
+                        AgrupacionAgricultores p = ((AgrupacionAgricultores)o);
+                        listado.add(p);
+                        Object[] obj = new Object[4];
+                        obj[0] = p.getRut();
+                        obj[1] = p.getRazonSocial();
+                        obj[2] = p.getDireccion();
+                        obj[3] = srvComuna.getWebServiceComunaSoap().buscaComuna(p.getComuna()).getNombre();
+                        modelo.addRow(obj);
+                    }
+                } 
+            }
+            tablaResultados.setModel(modelo);
+            tablaResultados.getColumnModel().getColumn(0).setResizable(false);
+            tablaResultados.getColumnModel().getColumn(0).setMaxWidth(75);
+            tablaResultados.getColumnModel().getColumn(0).setMinWidth(75);
+            tablaResultados.getColumnModel().getColumn(0).setWidth(85);
+            tablaResultados.getColumnModel().getColumn(1).setResizable(false);
+            tablaResultados.getColumnModel().getColumn(1).setMaxWidth(185);
+            tablaResultados.getColumnModel().getColumn(1).setMinWidth(185);
+            tablaResultados.getColumnModel().getColumn(1).setWidth(185);
+            tablaResultados.getColumnModel().getColumn(2).setResizable(false);
+            tablaResultados.getColumnModel().getColumn(2).setWidth(35);
+            tablaResultados.getColumnModel().getColumn(3).setResizable(false);
+            tablaResultados.getColumnModel().getColumn(3).setWidth(12);
+        }catch(Exception e) {
+            HR.mostrarError("Ocurrió un error cargar los datos de los clientes: "+e.getMessage());
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -132,7 +329,7 @@ public class AdministrarAgrupacionAgricola extends javax.swing.JFrame {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    javax.swing.UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
                     break;
                 }
             }
@@ -156,14 +353,14 @@ public class AdministrarAgrupacionAgricola extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnVerTodos;
+    private javax.swing.JComboBox<String> cmbComuna;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lblComuna;
+    private javax.swing.JLabel lblRun;
+    private javax.swing.JTable tablaResultados;
+    private javax.swing.JTextField txtRun;
     // End of variables declaration//GEN-END:variables
 }
