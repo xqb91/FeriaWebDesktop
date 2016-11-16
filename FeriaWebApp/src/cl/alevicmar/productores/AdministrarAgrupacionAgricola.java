@@ -57,8 +57,8 @@ public class AdministrarAgrupacionAgricola extends javax.swing.JFrame {
                 AgrupacionAgricultores aux = listado.get(i);
                 if(aux.getRut().compareToIgnoreCase(run) != 0) {
                     listado.remove(i);
-                    i = 0;
                 }
+                i = 0;
             }
         }
         return listado;
@@ -67,16 +67,14 @@ public class AdministrarAgrupacionAgricola extends javax.swing.JFrame {
     public List<AgrupacionAgricultores> eliminarElementosListaPorComuna(int comuna, List<AgrupacionAgricultores> listado) {
         if(listado != null) {
             Comuna agr = srvComuna.getWebServiceComunaSoap().buscaComuna(comuna);
-            for(int i=0; i<listado.size(); i++) {
-                if(listado.get(i).getComuna()!= agr.getId()) {
+            for(int i=listado.size()-1; i>=0; i--) {
+                if(listado.get(i).getComuna() != agr.getId()) {
                     listado.remove(i);
-                    i = 0;
                 }
+                i=listado.size();
             }
-            return listado;
-        }else{
-            return listado;
         }
+        return listado;
     }
     
     /**
@@ -99,6 +97,7 @@ public class AdministrarAgrupacionAgricola extends javax.swing.JFrame {
         tablaResultados = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Administrar Agrupación Agrícola");
         setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Filtrar"));
@@ -117,6 +116,12 @@ public class AdministrarAgrupacionAgricola extends javax.swing.JFrame {
         });
 
         lblComuna.setText("Comuna");
+
+        cmbComuna.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbComunaItemStateChanged(evt);
+            }
+        });
 
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/find.png"))); // NOI18N
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -215,6 +220,7 @@ public class AdministrarAgrupacionAgricola extends javax.swing.JFrame {
                 HR.mostrarError("El Rol Único Tributario ingresado no es válido");
                 HR.focus(txtRun);
                 HR.seleccionarTodo(txtRun);
+                btnBuscarActionPerformed(null);
             }else{
                 HR.focus(cmbComuna);
             }
@@ -222,16 +228,36 @@ public class AdministrarAgrupacionAgricola extends javax.swing.JFrame {
     }//GEN-LAST:event_txtRunFocusLost
 
     private void btnVerTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerTodosActionPerformed
-        
+        List<Object> aux = srvAgrupacion.getWebServiceAgrupacionSoap().retornaTodasLasAgrupaciones().getAnyType();
+        List<AgrupacionAgricultores> aux1 = new ArrayList<AgrupacionAgricultores>();
+        for(Object o : aux) {
+            AgrupacionAgricultores asd = ((AgrupacionAgricultores)o);
+            aux1.add(asd);
+        }
+        this.rellenarTabla(aux1);
+        listado = aux1;
+        HR.insertarTexto(txtRun, "");
+        this.rellenarComunas();
     }//GEN-LAST:event_btnVerTodosActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         //buscar por RUN
         if(!HR.contenido(txtRun).isEmpty()) {
-            listado = this.eliminarElementosListaXRun(HR.contenido(txtRun), listado);
+            listado = eliminarElementosListaXRun(HR.contenido(txtRun), listado);
+            this.rellenarTabla(listado);
+        }
+        
+        //buscar por RUN
+        if(HR.contenido(cmbComuna).compareToIgnoreCase("Seleccione Comuna...") != 0) {
+            Comuna com = srvComuna.getWebServiceComunaSoap().buscaComunaPorNombre(HR.contenido(cmbComuna));
+            listado = eliminarElementosListaPorComuna(com.getId(), listado);
             this.rellenarTabla(listado);
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void cmbComunaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbComunaItemStateChanged
+        
+    }//GEN-LAST:event_cmbComunaItemStateChanged
 
     public void rellenarComunas() {
         List<Object> com = srvComuna.getWebServiceComunaSoap().retornaTodasLasComunas().getAnyType();
@@ -289,7 +315,6 @@ public class AdministrarAgrupacionAgricola extends javax.swing.JFrame {
                 for(Object o : array) {
                     if(o != null) {
                         AgrupacionAgricultores p = ((AgrupacionAgricultores)o);
-                        listado.add(p);
                         Object[] obj = new Object[4];
                         obj[0] = p.getRut();
                         obj[1] = p.getRazonSocial();
