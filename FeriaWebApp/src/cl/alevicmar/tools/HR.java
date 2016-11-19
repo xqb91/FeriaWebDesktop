@@ -462,6 +462,32 @@ public class HR {
         }
     }
     
+    public static int buscarValorTabla(Integer posicion, JTable tabla, String aguja) {
+        DefaultTableModel modelo = (DefaultTableModel)tabla.getModel();
+        for(int i = 0; i<modelo.getRowCount(); i++) {
+            if(String.valueOf(modelo.getValueAt(i, posicion)).toLowerCase().compareToIgnoreCase(aguja.trim().toLowerCase()) == 0) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    
+    public static int buscarValorTabla(Integer posicion, JTable tabla, String aguja, boolean estricto) {
+        DefaultTableModel modelo = (DefaultTableModel)tabla.getModel();
+        for(int i = 0; i<modelo.getRowCount(); i++) {
+            if(estricto) {
+                if(String.valueOf(modelo.getValueAt(i, posicion)).toLowerCase().compareToIgnoreCase(aguja.trim().toLowerCase()) == 0) {
+                    return i;
+                }
+            }else{
+                if(String.valueOf(modelo.getValueAt(i, posicion)).toLowerCase().contains(aguja.trim().toLowerCase())) {
+                    return i;
+                }    
+            }
+        }
+        return -1;
+    }
+    
     /*public Date recuperarFecha(JCalendar obj) {
         try {
             return obj.getDate();
@@ -523,4 +549,21 @@ public class HR {
     public static void mostrarErrorException(Exception e) {
         HR.mostrarError("Ha ocurrido un error en tiempo de ejecución: "+e.getMessage());
     }
+    
+    public static boolean formatearYValidarRutCampo(JTextField campo) {
+        if(!contenido(campo).isEmpty()) {
+            insertarTexto(campo, HRut.formatear(contenido(campo)));
+            if(!HRut.validar(contenido(campo))) {
+                mostrarError("El RUN ingresado no es válido.");
+                focus(campo);
+                campo.selectAll();
+                return false;
+            }else{
+                return true;
+            }
+        }else{
+            return true;
+        }
+    }
+
 }

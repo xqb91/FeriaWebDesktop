@@ -7,6 +7,7 @@ import cl.alevicmar.menuArchivo.Perfil;
 import cl.alevicmar.menuClientes.AdministrarClientes;
 import cl.alevicmar.menuClientes.CambiarPasswordCliente;
 import cl.alevicmar.menuClientes.RegistrarCliente;
+import cl.alevicmar.productos.AdministrarProductos;
 import cl.alevicmar.services.administrador.Administrador;
 import cl.alevicmar.services.administrador.WebServiceAdministrador;
 import cl.alevicmar.services.agrupacion.WebServiceAgrupacion;
@@ -315,8 +316,8 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
-        jMenuItem12 = new javax.swing.JMenuItem();
-        jMenuItem13 = new javax.swing.JMenuItem();
+        productosAdministrarProductos = new javax.swing.JMenuItem();
+        productosRegistrarProducto = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenu7 = new javax.swing.JMenu();
         jMenu8 = new javax.swing.JMenu();
@@ -430,6 +431,11 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/book.png"))); // NOI18N
         jMenuItem1.setText("Administrar Productores");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem1);
 
         jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/book_add.png"))); // NOI18N
@@ -470,18 +476,23 @@ public class Principal extends javax.swing.JFrame {
 
         jMenu5.setText("Productos");
 
-        jMenuItem12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/wrench_orange.png"))); // NOI18N
-        jMenuItem12.setText("Administrar Productos");
-        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+        productosAdministrarProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/wrench_orange.png"))); // NOI18N
+        productosAdministrarProductos.setText("Administrar Productos");
+        productosAdministrarProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem12ActionPerformed(evt);
+                productosAdministrarProductosActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem12);
+        jMenu5.add(productosAdministrarProductos);
 
-        jMenuItem13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/add.png"))); // NOI18N
-        jMenuItem13.setText("Registrar Producto");
-        jMenu5.add(jMenuItem13);
+        productosRegistrarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/add.png"))); // NOI18N
+        productosRegistrarProducto.setText("Registrar Producto");
+        productosRegistrarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                productosRegistrarProductoActionPerformed(evt);
+            }
+        });
+        jMenu5.add(productosRegistrarProducto);
 
         jMenuBar1.add(jMenu5);
 
@@ -576,9 +587,19 @@ public class Principal extends javax.swing.JFrame {
         new CambiarPasswordCliente(srvCliente, this).setVisible(true);
     }//GEN-LAST:event_clienteCambiarPasswordActionPerformed
 
-    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+    private void productosAdministrarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productosAdministrarProductosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem12ActionPerformed
+        AdministrarProductos admProd = new AdministrarProductos();
+    }//GEN-LAST:event_productosAdministrarProductosActionPerformed
+
+    private void productosRegistrarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productosRegistrarProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_productosRegistrarProductoActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -637,8 +658,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
@@ -654,5 +673,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator5;
     private javax.swing.JPopupMenu.Separator jSeparator6;
     private javax.swing.JPopupMenu.Separator jSeparator7;
+    private javax.swing.JMenuItem productosAdministrarProductos;
+    private javax.swing.JMenuItem productosRegistrarProducto;
     // End of variables declaration//GEN-END:variables
 }
