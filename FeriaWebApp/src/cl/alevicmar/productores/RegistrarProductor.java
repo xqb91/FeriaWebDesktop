@@ -5,20 +5,64 @@
  */
 package cl.alevicmar.productores;
 
+import cl.alevicmar.main.Principal;
+import cl.alevicmar.services.productor.Productor;
+import cl.alevicmar.services.productor.WebServiceProductor;
 import cl.alevicmar.tools.HCorreo;
 import cl.alevicmar.tools.HR;
+import java.awt.Component;
 
 /**
  *
  * @author Victor
  */
 public class RegistrarProductor extends javax.swing.JFrame {
-
-    /**
-     * Creates new form RegistrarProductor
-     */
+    
+    WebServiceProductor srvProductor    = null;
+    Component           componente      = null;
+    Productor           productor       = null;
+    boolean             bandera         = false;
+    
     public RegistrarProductor() {
         initComponents();
+        this.srvProductor = new WebServiceProductor();
+        this.setLocationRelativeTo(componente);
+    }
+    
+    public RegistrarProductor(WebServiceProductor srvProductor, Component componente) {
+        initComponents();
+        this.srvProductor = srvProductor;
+        this.componente = componente;
+        this.setLocationRelativeTo(componente);
+        if(componente instanceof Principal) {
+            this.setIconImage(((Principal)componente).getIconImage());
+        }
+    }
+    
+    public RegistrarProductor(WebServiceProductor srvProductor, Component componente, Productor productor)
+    {
+        initComponents();
+        this.srvProductor = srvProductor;
+        this.componente = componente;
+        this.setLocationRelativeTo(componente);
+        if(componente instanceof Principal) {
+            this.setIconImage(((Principal)componente).getIconImage());
+        }
+        this.bandera = true;
+        this.productor = productor;
+        
+        this.setTitle("Editar Productor");
+        
+        //rellenado campos
+        HR.insertarTexto(txtRun, productor.getUsuario());
+        HR.insertarTexto(txtNombres, productor.getNombres());
+        HR.insertarTexto(txtApaterno, productor.getApaterno());
+        HR.insertarTexto(txtAmaterno, productor.getAmaterno());
+        
+        HR.insertarTexto(txtEmail, productor.getEmail());
+        HR.insertarTexto(txtTelefono, productor.getTelefono());
+        HR.insertarTexto(txtCelular, productor.getCelular());
+        HR.insertarTexto(txtFax, productor.getFax());
     }
 
     /**
@@ -326,7 +370,51 @@ public class RegistrarProductor extends javax.swing.JFrame {
                                         HR.mostrarError("El campo de fax esta vacío");
                                         HR.focus(txtEmail);
                                     }else{
-                                        //verificar si existe el productor
+                                        String run          = HR.contenido(txtRun);
+                                        String nombres      = HR.contenido(txtNombres);
+                                        String apaterno     = HR.contenido(txtApaterno);
+                                        String amaterno     = HR.contenido(txtAmaterno);
+
+                                        String email        = HR.contenido(txtEmail);
+                                        String telefono     = HR.contenido(txtTelefono);
+                                        String celular      = HR.contenido(txtCelular);
+                                        String fax          = HR.contenido(txtFax);
+                                        if(productor != null && bandera == true) {
+                                            //actualizacion
+                                            productor.setUsuario(run);
+                                            productor.setNombres(nombres);
+                                            productor.setApaterno(apaterno);
+                                            productor.setAmaterno(amaterno);
+                                            
+                                            productor.setEmail(email);
+                                            productor.setTelefono(telefono);
+                                            productor.setCelular(celular);
+                                            productor.setFax(fax);
+                                            
+                                            if(srvProductor.getWebServiceProductorSoap().actualizaProductor(productor)) {
+                                                HR.mostrarMensaje("Productor actualizado");
+                                            }else{
+                                                HR.mostrarError("El productor no pudo ser actualizado");
+                                            }
+                                        }else{
+                                            //registro
+                                            productor = new Productor();
+                                            productor.setUsuario(run);
+                                            productor.setNombres(nombres);
+                                            productor.setApaterno(apaterno);
+                                            productor.setAmaterno(amaterno);
+                                            
+                                            productor.setEmail(email);
+                                            productor.setTelefono(telefono);
+                                            productor.setCelular(celular);
+                                            productor.setFax(fax);
+                                            
+                                            if(srvProductor.getWebServiceProductorSoap().guardarProductor(productor)) {
+                                                HR.mostrarMensaje("Productor registrado");
+                                            }else{
+                                                HR.mostrarError("Productor no pudo ser creado");
+                                            }
+                                        }
                                     }
                                 }
                             }

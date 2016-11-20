@@ -79,6 +79,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="buscaAgrupacionPorRut">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rutAgrupacion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscaAgrupacionPorRutResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="buscaAgrupacionPorRutResult" type="tns:Agrupacion_Agricultores" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="buscaAgrupacionPorRazonSocial">
         <s:complexType>
           <s:sequence>
@@ -163,6 +177,12 @@
   <wsdl:message name="buscaAgrupacionSoapOut">
     <wsdl:part name="parameters" element="tns:buscaAgrupacionResponse" />
   </wsdl:message>
+  <wsdl:message name="buscaAgrupacionPorRutSoapIn">
+    <wsdl:part name="parameters" element="tns:buscaAgrupacionPorRut" />
+  </wsdl:message>
+  <wsdl:message name="buscaAgrupacionPorRutSoapOut">
+    <wsdl:part name="parameters" element="tns:buscaAgrupacionPorRutResponse" />
+  </wsdl:message>
   <wsdl:message name="buscaAgrupacionPorRazonSocialSoapIn">
     <wsdl:part name="parameters" element="tns:buscaAgrupacionPorRazonSocial" />
   </wsdl:message>
@@ -207,6 +227,10 @@
     <wsdl:operation name="buscaAgrupacion">
       <wsdl:input message="tns:buscaAgrupacionSoapIn" />
       <wsdl:output message="tns:buscaAgrupacionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="buscaAgrupacionPorRut">
+      <wsdl:input message="tns:buscaAgrupacionPorRutSoapIn" />
+      <wsdl:output message="tns:buscaAgrupacionPorRutSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="buscaAgrupacionPorRazonSocial">
       <wsdl:input message="tns:buscaAgrupacionPorRazonSocialSoapIn" />
@@ -265,6 +289,15 @@
     </wsdl:operation>
     <wsdl:operation name="buscaAgrupacion">
       <soap:operation soapAction="http://tempuri.org/buscaAgrupacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaAgrupacionPorRut">
+      <soap:operation soapAction="http://tempuri.org/buscaAgrupacionPorRut" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -349,6 +382,15 @@
     </wsdl:operation>
     <wsdl:operation name="buscaAgrupacion">
       <soap12:operation soapAction="http://tempuri.org/buscaAgrupacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaAgrupacionPorRut">
+      <soap12:operation soapAction="http://tempuri.org/buscaAgrupacionPorRut" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

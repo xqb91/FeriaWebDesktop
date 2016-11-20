@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.DefaultEditorKit;
 
 /**
  *
@@ -36,7 +37,6 @@ public class AdministrarAgrupacionAgricola extends javax.swing.JFrame {
         this.srvAgrupacion  = new WebServiceAgrupacion();
         this.srvComuna      = new WebServiceComuna();
         this.setLocationRelativeTo(componente);
-        rellenarComunas();
         rellenarTabla();
     }
 
@@ -47,35 +47,10 @@ public class AdministrarAgrupacionAgricola extends javax.swing.JFrame {
         if(componente instanceof Principal) {
             this.setIconImage(((Principal)componente).getIconImage());
         }
-        rellenarComunas();
         rellenarTabla();
     }
     
-        public List<AgrupacionAgricultores> eliminarElementosListaXRun(String run, List<AgrupacionAgricultores> listado) {
-        if(listado != null) {
-            for(int i = 0; i < listado.size(); i++) {
-                AgrupacionAgricultores aux = listado.get(i);
-                if(aux.getRut().compareToIgnoreCase(run) != 0) {
-                    listado.remove(i);
-                }
-                i = 0;
-            }
-        }
-        return listado;
-    }
     
-    public List<AgrupacionAgricultores> eliminarElementosListaPorComuna(int comuna, List<AgrupacionAgricultores> listado) {
-        if(listado != null) {
-            Comuna agr = srvComuna.getWebServiceComunaSoap().buscaComuna(comuna);
-            for(int i=listado.size()-1; i>=0; i--) {
-                if(listado.get(i).getComuna() != agr.getId()) {
-                    listado.remove(i);
-                }
-                i=listado.size();
-            }
-        }
-        return listado;
-    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -89,8 +64,6 @@ public class AdministrarAgrupacionAgricola extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         lblRun = new javax.swing.JLabel();
         txtRun = new javax.swing.JTextField();
-        lblComuna = new javax.swing.JLabel();
-        cmbComuna = new javax.swing.JComboBox<>();
         btnBuscar = new javax.swing.JButton();
         btnVerTodos = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -109,17 +82,17 @@ public class AdministrarAgrupacionAgricola extends javax.swing.JFrame {
                 txtRunFocusLost(evt);
             }
         });
-        txtRun.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtRunKeyTyped(evt);
+        txtRun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRunActionPerformed(evt);
             }
         });
-
-        lblComuna.setText("Comuna");
-
-        cmbComuna.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbComunaItemStateChanged(evt);
+        txtRun.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtRunKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtRunKeyTyped(evt);
             }
         });
 
@@ -145,38 +118,30 @@ public class AdministrarAgrupacionAgricola extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblRun)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(txtRun, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmbComuna, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblRun)
-                        .addGap(86, 86, 86)
-                        .addComponent(lblComuna)
-                        .addGap(0, 283, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnVerTodos)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnBuscar)))
-                .addContainerGap())
+                        .addComponent(btnBuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnVerTodos)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblRun)
-                    .addComponent(lblComuna))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtRun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbComuna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVerTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblRun)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnVerTodos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(txtRun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         tablaResultados.setModel(new javax.swing.table.DefaultTableModel(
@@ -194,7 +159,7 @@ public class AdministrarAgrupacionAgricola extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,7 +167,7 @@ public class AdministrarAgrupacionAgricola extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 10, Short.MAX_VALUE))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
         pack();
@@ -220,9 +185,8 @@ public class AdministrarAgrupacionAgricola extends javax.swing.JFrame {
                 HR.mostrarError("El Rol Único Tributario ingresado no es válido");
                 HR.focus(txtRun);
                 HR.seleccionarTodo(txtRun);
-                btnBuscarActionPerformed(null);
             }else{
-                HR.focus(cmbComuna);
+                btnBuscarActionPerformed(null);
             }
         }
     }//GEN-LAST:event_txtRunFocusLost
@@ -237,39 +201,33 @@ public class AdministrarAgrupacionAgricola extends javax.swing.JFrame {
         this.rellenarTabla(aux1);
         listado = aux1;
         HR.insertarTexto(txtRun, "");
-        this.rellenarComunas();
     }//GEN-LAST:event_btnVerTodosActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         //buscar por RUN
         if(!HR.contenido(txtRun).isEmpty()) {
-            listado = eliminarElementosListaXRun(HR.contenido(txtRun), listado);
-            this.rellenarTabla(listado);
-        }
-        
-        //buscar por RUN
-        if(HR.contenido(cmbComuna).compareToIgnoreCase("Seleccione Comuna...") != 0) {
-            Comuna com = srvComuna.getWebServiceComunaSoap().buscaComunaPorNombre(HR.contenido(cmbComuna));
-            listado = eliminarElementosListaPorComuna(com.getId(), listado);
-            this.rellenarTabla(listado);
+            //obteniendo registros
+            AgrupacionAgricultores ag = srvAgrupacion.getWebServiceAgrupacionSoap().buscaAgrupacionPorRut(HR.contenido(txtRun));
+            if(ag.getId() == 0) {
+                HR.mostrarError("El rut "+HR.contenido(txtRun)+" no ha retornado resultados!");
+                HR.focus(txtRun);
+                HR.seleccionarTodo(txtRun);
+            }else{
+                List<AgrupacionAgricultores> aux = new ArrayList<AgrupacionAgricultores>();
+                aux.add(ag);
+                this.rellenarTabla(aux);
+            }
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
-    private void cmbComunaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbComunaItemStateChanged
-        
-    }//GEN-LAST:event_cmbComunaItemStateChanged
+    private void txtRunKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRunKeyPressed
 
-    public void rellenarComunas() {
-        List<Object> com = srvComuna.getWebServiceComunaSoap().retornaTodasLasComunas().getAnyType();
-        cmbComuna.removeAllItems();
-        HR.insertarTexto(cmbComuna, "Seleccione Comuna...");
-        if(com != null) {
-            for(Object o : com) {
-                Comuna comu = ((Comuna)o);
-                HR.insertarTexto(cmbComuna, comu.getNombre());
-            }
-        }
-    }
+    }//GEN-LAST:event_txtRunKeyPressed
+
+    private void txtRunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRunActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRunActionPerformed
+
     
      public void rellenarTabla() {
         try {
@@ -380,10 +338,8 @@ public class AdministrarAgrupacionAgricola extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnVerTodos;
-    private javax.swing.JComboBox<String> cmbComuna;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblComuna;
     private javax.swing.JLabel lblRun;
     private javax.swing.JTable tablaResultados;
     private javax.swing.JTextField txtRun;
