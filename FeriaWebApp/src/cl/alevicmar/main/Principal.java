@@ -697,8 +697,9 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_clienteCambiarPasswordActionPerformed
 
     private void productosAdministrarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productosAdministrarProductosActionPerformed
-        // TODO add your handling code here:
-        AdministrarProductos admProd = new AdministrarProductos();
+        AdministrarProductos admProd = new AdministrarProductos(srvProducto, srvCategoria, srvFamilia, this);
+        admProd.setIconImage(this.getIconImage());
+        admProd.setVisible(true);
     }//GEN-LAST:event_productosAdministrarProductosActionPerformed
 
     private void productosRegistrarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productosRegistrarProductoActionPerformed
