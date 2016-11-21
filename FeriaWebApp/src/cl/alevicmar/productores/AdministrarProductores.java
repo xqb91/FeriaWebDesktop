@@ -212,6 +212,12 @@ public class AdministrarProductores extends javax.swing.JFrame {
             }
         ));
         tablaResultados.setAutoscrolls(false);
+        tablaResultados.setName("Administrador de Productores"); // NOI18N
+        tablaResultados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaResultadosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tablaResultados);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -512,6 +518,19 @@ public class AdministrarProductores extends javax.swing.JFrame {
             btnCancelarFiltroActionPerformed(null);
         }
     }//GEN-LAST:event_txtEmailFocusLost
+
+    private void tablaResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaResultadosMouseClicked
+        String identificador = HR.retornaValorTabla(0, tablaResultados);
+        identificador = identificador.trim();
+        Productor cli = srvProductor.getWebServiceProductorSoap().buscaProductor(identificador);
+        if(cli == null) {
+            HR.mostrarError("No pudo encontrarse la agrupación de productores con RUT "+identificador);
+        }else{
+        VerProductor detcli =  new VerProductor(srvProductor, componente, cli);
+        detcli.setIconImage(this.getIconImage());
+        detcli.setVisible(true);
+        }
+    }//GEN-LAST:event_tablaResultadosMouseClicked
 
     /**
      * @param args the command line arguments

@@ -59,7 +59,7 @@ public class VerAgrupacionAgricola extends javax.swing.JFrame {
         HR.insertarTexto(lblRut,         agrupacion.getRut());
         HR.insertarTexto(lblRazonSocial, agrupacion.getRazonSocial());
         HR.insertarTexto(lblDireccion,   agrupacion.getDireccion());
-        Comuna com = srvComuna.getWebServiceComunaSoap().buscaComuna(agrupacion.getId());
+        Comuna com = srvComuna.getWebServiceComunaSoap().buscaComuna(agrupacion.getComuna());
         HR.insertarTexto(lblComuna,      com.getNombre());
         HR.insertarTexto(lblTelefono,    agrupacion.getTelefono());
     }
@@ -85,7 +85,7 @@ public class VerAgrupacionAgricola extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setResizable(false);
+        setTitle("Ver Agrupación Agrícola");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Información de la Agrupación"));
 
@@ -125,10 +125,10 @@ public class VerAgrupacionAgricola extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblComuna)
                     .addComponent(lblDireccion)
-                    .addComponent(lblRazonSocial)
                     .addComponent(lblRut)
-                    .addComponent(lblTelefono))
-                .addContainerGap(204, Short.MAX_VALUE))
+                    .addComponent(lblTelefono)
+                    .addComponent(lblRazonSocial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,7 +183,7 @@ public class VerAgrupacionAgricola extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(164, Short.MAX_VALUE)
                 .addComponent(btnEliminar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEditar)

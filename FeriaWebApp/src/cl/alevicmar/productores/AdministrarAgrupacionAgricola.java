@@ -152,6 +152,11 @@ public class AdministrarAgrupacionAgricola extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tablaResultados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaResultadosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tablaResultados);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -227,6 +232,19 @@ public class AdministrarAgrupacionAgricola extends javax.swing.JFrame {
     private void txtRunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRunActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtRunActionPerformed
+
+    private void tablaResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaResultadosMouseClicked
+        String identificador = HR.retornaValorTabla(0, tablaResultados);
+        identificador = identificador.trim();
+        AgrupacionAgricultores cli = srvAgrupacion.getWebServiceAgrupacionSoap().buscaAgrupacionPorRut(identificador);
+        if(cli == null) {
+            HR.mostrarError("No pudo encontrarse la agrupación de productores con RUT "+identificador);
+        }else{
+        VerAgrupacionAgricola detcli =  new VerAgrupacionAgricola(srvAgrupacion, componente, cli, srvComuna);
+        detcli.setIconImage(this.getIconImage());
+        detcli.setVisible(true);
+        }
+    }//GEN-LAST:event_tablaResultadosMouseClicked
 
     
      public void rellenarTabla() {
