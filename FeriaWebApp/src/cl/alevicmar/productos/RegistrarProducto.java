@@ -301,7 +301,7 @@ public class RegistrarProducto extends javax.swing.JFrame {
                                 Producto pro = new Producto();
                                 pro.setId(0);
                                 pro.setNombre(strNombre);
-                                pro.setFamilia(strFamilia);
+                                //pro.setFamilia(strFamilia);
                                 //pro.setCategoria(strCategoria);
                                 //pro.setDescripcion(strDescripcion);
                                 pro.setFotografia(strFoto);
