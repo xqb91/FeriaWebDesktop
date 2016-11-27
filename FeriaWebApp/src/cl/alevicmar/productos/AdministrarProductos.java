@@ -59,25 +59,27 @@ public class AdministrarProductos extends javax.swing.JFrame {
 
     public void rellenarTabla() {
         try {
-            DefaultTableModel modelo = new DefaultTableModel(new Object [][] { }, new String [] { "Nombre", "Descripcion", "Categoria", "Familia" });    
+            DefaultTableModel modelo = new DefaultTableModel(new Object [][] { }, new String [] {"Id", "Nombre", "Descripcion", "Precio por Kg", "Categoria", "Familia" });    
 
             List<Object> array = srvProducto.getWebServiceProductoSoap().retornaTodosLosProductos().getAnyType();
             if(array != null) {
                 for(Object o : array) {
                     Producto p = ((Producto)o);
                     listado.add(p);
-                    Object[] obj = new Object[4];
-                    obj[0] = p.getNombre();
-                    obj[1] = p.getDescripcion();
+                    Object[] obj = new Object[6];
+                    obj[0] = p.getId();
+                    obj[1] = p.getNombre();
+                    obj[2] = p.getDescripcion();
+                    obj[3] = p.getPrecio();
                     if(p.getCategoria()== 0) {
-                        obj[2] = "Sin Categoria";
+                        obj[4] = "Sin Categoria";
                     }else{
-                        obj[2] = srvCategoria.getWebServiceCategoriaSoap().buscaCategoria(p.getCategoria()).getNombre();
+                        obj[4] = srvCategoria.getWebServiceCategoriaSoap().buscaCategoria(p.getCategoria()).getNombre();
                     }
                     if(p.getFamilia()== 0) {
-                        obj[3] = "Sin Familia";
+                        obj[5] = "Sin Familia";
                     }else{
-                        obj[3] = srvFamilia.getWebServiceFamiliaSoap().buscaFamilia(p.getFamilia()).getNombre();
+                        obj[5] = srvFamilia.getWebServiceFamiliaSoap().buscaFamilia(p.getFamilia()).getNombre();
                     }
                     modelo.addRow(obj);
                 } 
@@ -154,9 +156,14 @@ public class AdministrarProductos extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nombre", "Descripcion", "Categoria", "Familia"
+                "Id", "Nombre", "Descripcion", "Precio por Kg", "Categoría", "Familia"
             }
         ));
+        tablaResultados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaResultadosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tablaResultados);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -219,7 +226,7 @@ public class AdministrarProductos extends javax.swing.JFrame {
                 .addComponent(cmbFamilia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(81, 81, 81)
                 .addComponent(btnFiltrar)
-                .addContainerGap(250, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -238,8 +245,8 @@ public class AdministrarProductos extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -272,6 +279,18 @@ public class AdministrarProductos extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnFiltrarActionPerformed
+
+    private void tablaResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaResultadosMouseClicked
+        // TODO add your handling code here:
+        String aux = HR.retornaValorTabla(0, tablaResultados);
+        Producto pro = srvProducto.getWebServiceProductoSoap().buscaProducto(Integer.parseInt(aux));
+        if(pro.getId() == 0)
+        {
+            HR.mostrarError("No se encontro el producto");
+        }else{
+            new DetalleProducto(srvProducto, srvCategoria, srvFamilia, componente, pro).setVisible(true);
+        }
+    }//GEN-LAST:event_tablaResultadosMouseClicked
 
     /**
      * @param args the command line arguments

@@ -24,6 +24,7 @@ public class RegistrarProducto extends javax.swing.JFrame {
     WebServiceProducto  srvProdcuto  = null;
     WebServiceFamilia   srvFamilia   = null;
     WebServiceCategoria srvCategoria = null;
+    Producto            pro          = null;
     Component           componente   = null;
     
     
@@ -45,6 +46,27 @@ public class RegistrarProducto extends javax.swing.JFrame {
         this.srvFamilia = new WebServiceFamilia();
         this.rellenarCategoria();
         this.rellenarFamilia();
+    }
+    
+    public RegistrarProducto(WebServiceProducto srvProdcuto, WebServiceFamilia srvFamilia, WebServiceCategoria srvCategoria, Component com, Producto pro) {
+        initComponents();
+        HR.insertarTexto(btnRegistrar, "Actualizar");
+        this.setTitle("Feria Web Desktop  ::  Editar Producto");
+        this.setLocationRelativeTo(com);
+        this.srvProdcuto = srvProdcuto;
+        this.srvCategoria = srvCategoria;
+        this.srvFamilia = srvFamilia;
+        this.rellenarCategoria();
+        this.rellenarFamilia();
+        this.pro = pro;
+        HR.insertarTexto(txtNombre, pro.getNombre());
+        Familia fam = srvFamilia.getWebServiceFamiliaSoap().buscaFamilia(pro.getFamilia());
+        HR.insertarTexto(cmbFamilia, fam.getNombre());
+        Categoria cat = srvCategoria.getWebServiceCategoriaSoap().buscaCategoria(pro.getCategoria());
+        HR.insertarTexto(cmbCategoria, cat.getNombre());
+        HR.insertarTexto(txtPrecio, pro.getPrecio()+"");
+        HR.insertarTexto(txtAreaDescripcion, pro.getDescripcion());
+        HR.insertarTexto(txtUrlFoto, pro.getFotografia());
     }
 
     public void rellenarCategoria()
@@ -127,7 +149,7 @@ public class RegistrarProducto extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(txtAreaDescripcion);
 
-        jLabel6.setText("Precio");
+        jLabel6.setText("Precio en Kg");
 
         txtPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -249,8 +271,8 @@ public class RegistrarProducto extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnCancelar)
+                            .addComponent(btnRegistrar))
                         .addGap(47, 47, 47))))
         );
 
@@ -297,6 +319,11 @@ public class RegistrarProducto extends javax.swing.JFrame {
                             String strFoto = HR.contenido(txtUrlFoto);
                             String strPrecio = HR.contenido(txtPrecio);
                             
+                            //SIGUE AQUI
+                            if(HR.contenido(btnRegistrar).compareToIgnoreCase("Actualizar")==0)
+                            {
+                                
+                            }
                             try {
                                 Producto pro = new Producto();
                                 pro.setId(0);
