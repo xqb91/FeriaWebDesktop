@@ -44,6 +44,7 @@ public class VerProductor extends javax.swing.JFrame {
             this.setIconImage(((Principal)componente).getIconImage());
         }
         rellenarCampos(productor);
+        this.setLocationRelativeTo(componente);
     }
     
     public void rellenarCampos(Productor productor) {

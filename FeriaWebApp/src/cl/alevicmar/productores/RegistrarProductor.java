@@ -96,6 +96,7 @@ public class RegistrarProductor extends javax.swing.JFrame {
         btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Registrar Productor");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos Personales"));
 
@@ -107,6 +108,11 @@ public class RegistrarProductor extends javax.swing.JFrame {
 
         jLabel4.setText("Apellido Materno");
 
+        txtRun.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtRunFocusLost(evt);
+            }
+        });
         txtRun.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtRunKeyTyped(evt);
@@ -424,6 +430,17 @@ public class RegistrarProductor extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void txtRunFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRunFocusLost
+        if(!HR.contenido(txtRun).isEmpty()) {
+            if(HR.formatearYValidarRutCampo(txtRun)) {
+                HR.focus(txtNombres);
+            }else{
+                HR.insertarTexto(txtRun, "");
+                HR.focus(txtRun);
+            }
+        }
+    }//GEN-LAST:event_txtRunFocusLost
 
     /**
      * @param args the command line arguments

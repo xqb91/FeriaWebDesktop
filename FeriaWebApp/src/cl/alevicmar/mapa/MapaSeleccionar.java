@@ -6,6 +6,7 @@
 package cl.alevicmar.mapa;
 
 import cl.alevicmar.menuClientes.RegistrarCliente;
+import cl.alevicmar.productores.RegistrarUbicacion;
 import com.teamdev.jxbrowser.chromium.Browser;
 import com.teamdev.jxbrowser.chromium.swing.BrowserView;
  
@@ -71,6 +72,9 @@ public class MapaSeleccionar {
                    if(com instanceof RegistrarCliente) {
                        ((RegistrarCliente)com).rellenarDatosLatitudLongitud(valor1.getStringValue().toString());
                        frame.dispose();
+                   }else if(com instanceof RegistrarUbicacion) {
+                       ((RegistrarUbicacion)com).rellenarDatosLatitudLongitud(valor1.getStringValue().toString());
+                       frame.dispose();
                    }
                }
            }
@@ -97,7 +101,7 @@ public class MapaSeleccionar {
        toolBar.add(determinarUbicacion);
 
        frame = new JFrame("Feria Web Desktop Client - Mapa");
-       frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+       frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
        frame.add(toolBar, BorderLayout.SOUTH);
        frame.add(browserView, BorderLayout.CENTER);
        frame.setSize(900, 500);

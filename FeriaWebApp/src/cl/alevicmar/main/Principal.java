@@ -8,6 +8,17 @@ import cl.alevicmar.menuAyuda.AcercaDe;
 import cl.alevicmar.menuClientes.AdministrarClientes;
 import cl.alevicmar.menuClientes.CambiarPasswordCliente;
 import cl.alevicmar.menuClientes.RegistrarCliente;
+import cl.alevicmar.productores.AdministrarAgrupacionAgricola;
+import cl.alevicmar.productores.AdministrarProductores;
+import cl.alevicmar.productores.AdministrarUbicacion;
+import cl.alevicmar.productores.AsociarProductorAgrupacion;
+import cl.alevicmar.productores.AsociarUbicacionProduccion;
+import cl.alevicmar.productores.CambiarPasswordProductor;
+import cl.alevicmar.productores.DesvincularProductorAgrupacion;
+import cl.alevicmar.productores.DesvincularUbicacionProduccion;
+import cl.alevicmar.productores.RegistrarAgrupacionAgricola;
+import cl.alevicmar.productores.RegistrarProductor;
+import cl.alevicmar.productores.RegistrarUbicacion;
 import cl.alevicmar.productos.AdministrarProductos;
 import cl.alevicmar.services.administrador.Administrador;
 import cl.alevicmar.services.administrador.WebServiceAdministrador;
@@ -306,23 +317,23 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenuItem11 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        productoresAdminProductores = new javax.swing.JMenuItem();
+        productoresRegistrarProductor = new javax.swing.JMenuItem();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        productorCambiarPassword = new javax.swing.JMenuItem();
         jSeparator6 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        productoresAdminAgrupacion = new javax.swing.JMenuItem();
+        productoresRegistrarAgrupacion = new javax.swing.JMenuItem();
         jSeparator8 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem12 = new javax.swing.JMenuItem();
-        jMenuItem13 = new javax.swing.JMenuItem();
+        productoresAdminUbicacion = new javax.swing.JMenuItem();
+        productoresRegistrarUbicacion = new javax.swing.JMenuItem();
         jSeparator9 = new javax.swing.JPopupMenu.Separator();
         jMenu9 = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem14 = new javax.swing.JMenuItem();
+        productorVincularAgrupacion = new javax.swing.JMenuItem();
+        productoresVincularUbicacion = new javax.swing.JMenuItem();
         jMenu10 = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem15 = new javax.swing.JMenuItem();
+        productoresDesvincularAgrupacion = new javax.swing.JMenuItem();
+        productoresDesvincularUbicacion = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
         productosAdministrarProductos = new javax.swing.JMenuItem();
@@ -455,66 +466,116 @@ public class Principal extends javax.swing.JFrame {
 
         jMenu3.setText("Productores");
 
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/book.png"))); // NOI18N
-        jMenuItem1.setText("Administrar Productores");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        productoresAdminProductores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/book.png"))); // NOI18N
+        productoresAdminProductores.setText("Administrar Productores");
+        productoresAdminProductores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                productoresAdminProductoresActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem1);
+        jMenu3.add(productoresAdminProductores);
 
-        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/book_add.png"))); // NOI18N
-        jMenuItem4.setText("Registrar Productor");
-        jMenu3.add(jMenuItem4);
+        productoresRegistrarProductor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/book_add.png"))); // NOI18N
+        productoresRegistrarProductor.setText("Registrar Productor");
+        productoresRegistrarProductor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                productoresRegistrarProductorActionPerformed(evt);
+            }
+        });
+        jMenu3.add(productoresRegistrarProductor);
         jMenu3.add(jSeparator4);
 
-        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/book_key.png"))); // NOI18N
-        jMenuItem3.setText("Cambiar Contraseña de Productor");
-        jMenu3.add(jMenuItem3);
+        productorCambiarPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/book_key.png"))); // NOI18N
+        productorCambiarPassword.setText("Cambiar Contraseña de Productor");
+        productorCambiarPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                productorCambiarPasswordActionPerformed(evt);
+            }
+        });
+        jMenu3.add(productorCambiarPassword);
         jMenu3.add(jSeparator6);
 
-        jMenuItem9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/book_open.png"))); // NOI18N
-        jMenuItem9.setText("Administrar Agrupaciones Agrícolas");
-        jMenu3.add(jMenuItem9);
+        productoresAdminAgrupacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/book_open.png"))); // NOI18N
+        productoresAdminAgrupacion.setText("Administrar Agrupaciones Agrícolas");
+        productoresAdminAgrupacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                productoresAdminAgrupacionActionPerformed(evt);
+            }
+        });
+        jMenu3.add(productoresAdminAgrupacion);
 
-        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/book_next.png"))); // NOI18N
-        jMenuItem6.setText("Registrar Agrupación Agrícola");
-        jMenu3.add(jMenuItem6);
+        productoresRegistrarAgrupacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/book_next.png"))); // NOI18N
+        productoresRegistrarAgrupacion.setText("Registrar Agrupación Agrícola");
+        productoresRegistrarAgrupacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                productoresRegistrarAgrupacionActionPerformed(evt);
+            }
+        });
+        jMenu3.add(productoresRegistrarAgrupacion);
         jMenu3.add(jSeparator8);
 
-        jMenuItem12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/map.png"))); // NOI18N
-        jMenuItem12.setText("Administrar Ubicación de Producción");
-        jMenu3.add(jMenuItem12);
+        productoresAdminUbicacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/map.png"))); // NOI18N
+        productoresAdminUbicacion.setText("Administrar Ubicación de Producción");
+        productoresAdminUbicacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                productoresAdminUbicacionActionPerformed(evt);
+            }
+        });
+        jMenu3.add(productoresAdminUbicacion);
 
-        jMenuItem13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/map_add.png"))); // NOI18N
-        jMenuItem13.setText("Registrar Ubicación de Ubicación");
-        jMenu3.add(jMenuItem13);
+        productoresRegistrarUbicacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/map_add.png"))); // NOI18N
+        productoresRegistrarUbicacion.setText("Registrar Ubicación de Ubicación");
+        productoresRegistrarUbicacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                productoresRegistrarUbicacionActionPerformed(evt);
+            }
+        });
+        jMenu3.add(productoresRegistrarUbicacion);
         jMenu3.add(jSeparator9);
 
         jMenu9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/link.png"))); // NOI18N
         jMenu9.setText("Vincular Productor");
 
-        jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/book_link.png"))); // NOI18N
-        jMenuItem8.setText("a Agrupación Agrícola");
-        jMenu9.add(jMenuItem8);
+        productorVincularAgrupacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/book_link.png"))); // NOI18N
+        productorVincularAgrupacion.setText("a Agrupación Agrícola Existente");
+        productorVincularAgrupacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                productorVincularAgrupacionActionPerformed(evt);
+            }
+        });
+        jMenu9.add(productorVincularAgrupacion);
 
-        jMenuItem14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/map_go.png"))); // NOI18N
-        jMenuItem14.setText("a Ubicación de Producción");
-        jMenu9.add(jMenuItem14);
+        productoresVincularUbicacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/map_go.png"))); // NOI18N
+        productoresVincularUbicacion.setText("a Ubicación de Producción Existente");
+        productoresVincularUbicacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                productoresVincularUbicacionActionPerformed(evt);
+            }
+        });
+        jMenu9.add(productoresVincularUbicacion);
 
         jMenu3.add(jMenu9);
 
         jMenu10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/link_break.png"))); // NOI18N
         jMenu10.setText("Desvincular Productor");
 
-        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/book_error.png"))); // NOI18N
-        jMenuItem7.setText("de Agrupación Agrícola");
-        jMenu10.add(jMenuItem7);
+        productoresDesvincularAgrupacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/book_error.png"))); // NOI18N
+        productoresDesvincularAgrupacion.setText("de Agrupación Agrícola");
+        productoresDesvincularAgrupacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                productoresDesvincularAgrupacionActionPerformed(evt);
+            }
+        });
+        jMenu10.add(productoresDesvincularAgrupacion);
 
-        jMenuItem15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/map_delete.png"))); // NOI18N
-        jMenuItem15.setText("de Ubicación de Producción");
-        jMenu10.add(jMenuItem15);
+        productoresDesvincularUbicacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/map_delete.png"))); // NOI18N
+        productoresDesvincularUbicacion.setText("de Ubicación de Producción");
+        productoresDesvincularUbicacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                productoresDesvincularUbicacionActionPerformed(evt);
+            }
+        });
+        jMenu10.add(productoresDesvincularUbicacion);
 
         jMenu3.add(jMenu10);
 
@@ -698,18 +759,16 @@ public class Principal extends javax.swing.JFrame {
 
     private void productosAdministrarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productosAdministrarProductosActionPerformed
         AdministrarProductos admProd = new AdministrarProductos(srvProducto, srvCategoria, srvFamilia, this);
-        admProd.setIconImage(this.getIconImage());
         admProd.setVisible(true);
     }//GEN-LAST:event_productosAdministrarProductosActionPerformed
 
     private void productosRegistrarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productosRegistrarProductoActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_productosRegistrarProductoActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    private void productoresAdminProductoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productoresAdminProductoresActionPerformed
+        new AdministrarProductores(srvProductor, srvUbicacionProductor, srvAgrupacion, this).setVisible(true);
+    }//GEN-LAST:event_productoresAdminProductoresActionPerformed
 
     private void jMenuItem20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem20ActionPerformed
         // TODO add your handling code here:
@@ -718,6 +777,46 @@ public class Principal extends javax.swing.JFrame {
     private void ayudaAcercaDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ayudaAcercaDeActionPerformed
         new AcercaDe(this).setVisible(true);
     }//GEN-LAST:event_ayudaAcercaDeActionPerformed
+
+    private void productoresVincularUbicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productoresVincularUbicacionActionPerformed
+        new AsociarUbicacionProduccion(srvProductor, srvUbicacionProductor, srvComuna, this).setVisible(true);
+    }//GEN-LAST:event_productoresVincularUbicacionActionPerformed
+
+    private void productoresRegistrarProductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productoresRegistrarProductorActionPerformed
+        new RegistrarProductor(srvProductor, this).setVisible(true);
+    }//GEN-LAST:event_productoresRegistrarProductorActionPerformed
+
+    private void productorCambiarPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productorCambiarPasswordActionPerformed
+        new CambiarPasswordProductor(srvProductor, this).setVisible(true);
+    }//GEN-LAST:event_productorCambiarPasswordActionPerformed
+
+    private void productoresAdminAgrupacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productoresAdminAgrupacionActionPerformed
+        new AdministrarAgrupacionAgricola(srvAgrupacion, srvAgrupacion, this).setVisible(true);
+    }//GEN-LAST:event_productoresAdminAgrupacionActionPerformed
+
+    private void productoresRegistrarAgrupacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productoresRegistrarAgrupacionActionPerformed
+        new RegistrarAgrupacionAgricola(srvAgrupacion, srvComuna, this).setVisible(true);
+    }//GEN-LAST:event_productoresRegistrarAgrupacionActionPerformed
+
+    private void productoresAdminUbicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productoresAdminUbicacionActionPerformed
+        new AdministrarUbicacion().setVisible(true);
+    }//GEN-LAST:event_productoresAdminUbicacionActionPerformed
+
+    private void productoresRegistrarUbicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productoresRegistrarUbicacionActionPerformed
+        new RegistrarUbicacion(srvProductor, srvUbicacionProductor, srvComuna, this).setVisible(true);
+    }//GEN-LAST:event_productoresRegistrarUbicacionActionPerformed
+
+    private void productorVincularAgrupacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productorVincularAgrupacionActionPerformed
+        new AsociarProductorAgrupacion(srvProductor, srvAgrupacion, this, srvComuna).setVisible(true);
+    }//GEN-LAST:event_productorVincularAgrupacionActionPerformed
+
+    private void productoresDesvincularAgrupacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productoresDesvincularAgrupacionActionPerformed
+        new DesvincularProductorAgrupacion().setVisible(true);
+    }//GEN-LAST:event_productoresDesvincularAgrupacionActionPerformed
+
+    private void productoresDesvincularUbicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productoresDesvincularUbicacionActionPerformed
+        new DesvincularUbicacionProduccion().setVisible(true);
+    }//GEN-LAST:event_productoresDesvincularUbicacionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -776,13 +875,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem13;
-    private javax.swing.JMenuItem jMenuItem14;
-    private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem18;
@@ -796,13 +890,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem25;
     private javax.swing.JMenuItem jMenuItem26;
     private javax.swing.JMenuItem jMenuItem27;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
@@ -816,6 +904,17 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator7;
     private javax.swing.JPopupMenu.Separator jSeparator8;
     private javax.swing.JPopupMenu.Separator jSeparator9;
+    private javax.swing.JMenuItem productorCambiarPassword;
+    private javax.swing.JMenuItem productorVincularAgrupacion;
+    private javax.swing.JMenuItem productoresAdminAgrupacion;
+    private javax.swing.JMenuItem productoresAdminProductores;
+    private javax.swing.JMenuItem productoresAdminUbicacion;
+    private javax.swing.JMenuItem productoresDesvincularAgrupacion;
+    private javax.swing.JMenuItem productoresDesvincularUbicacion;
+    private javax.swing.JMenuItem productoresRegistrarAgrupacion;
+    private javax.swing.JMenuItem productoresRegistrarProductor;
+    private javax.swing.JMenuItem productoresRegistrarUbicacion;
+    private javax.swing.JMenuItem productoresVincularUbicacion;
     private javax.swing.JMenuItem productosAdministrarProductos;
     private javax.swing.JMenuItem productosRegistrarProducto;
     // End of variables declaration//GEN-END:variables

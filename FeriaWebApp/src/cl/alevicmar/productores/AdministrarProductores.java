@@ -523,12 +523,12 @@ public class AdministrarProductores extends javax.swing.JFrame {
         String identificador = HR.retornaValorTabla(0, tablaResultados);
         identificador = identificador.trim();
         Productor cli = srvProductor.getWebServiceProductorSoap().buscaProductor(identificador);
-        if(cli == null) {
+        if(cli.getId() == 0) {
             HR.mostrarError("No pudo encontrarse la agrupación de productores con RUT "+identificador);
         }else{
-        VerProductor detcli =  new VerProductor(srvProductor, componente, cli);
-        detcli.setIconImage(this.getIconImage());
-        detcli.setVisible(true);
+            VerProductor detcli =  new VerProductor(srvProductor, componente, cli);
+            detcli.setIconImage(this.getIconImage());
+            detcli.setVisible(true);
         }
     }//GEN-LAST:event_tablaResultadosMouseClicked
 
