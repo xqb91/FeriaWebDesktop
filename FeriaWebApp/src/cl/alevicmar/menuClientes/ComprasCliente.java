@@ -110,7 +110,7 @@ public class ComprasCliente extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Fecha", "Producto", "Cantidad", "Metodo de Pago", "SubTotal", "Total"
+                "Fecha", "Producto", "Cantidad", "Metodo de Pago", "Total"
             }
         ));
         jScrollPane1.setViewportView(tableCompraCliente);
@@ -194,11 +194,10 @@ public class ComprasCliente extends javax.swing.JFrame {
 
     private void txtRunKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRunKeyPressed
         // TODO add your handling code here:
-        /*if(HR.haPresionadoEnter(evt))
+        if(HR.haPresionadoEnter(evt))
         {
-            btnBuscarActionPerformed(evt);
-                    
-        }*/
+            btnBuscarActionPerformed(null);
+        }
     }//GEN-LAST:event_txtRunKeyPressed
 
     private void txtRunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRunActionPerformed

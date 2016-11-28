@@ -25,6 +25,7 @@ public class DetalleProducto extends javax.swing.JFrame {
     WebServiceFamilia       srvFamilia      = null;
     Producto                pro             = null;
     Component               componente      = null;
+    AdministrarProductos    ap              = null;
     
     public DetalleProducto() {
         initComponents();
@@ -34,7 +35,7 @@ public class DetalleProducto extends javax.swing.JFrame {
         this.srvCategoria = new WebServiceCategoria();
     }
     
-    public DetalleProducto(WebServiceProducto srvProducto,WebServiceCategoria srvCategoria, WebServiceFamilia srvFamilia, Component componente, Producto pro) {
+    public DetalleProducto(WebServiceProducto srvProducto,WebServiceCategoria srvCategoria, WebServiceFamilia srvFamilia, Component componente, Producto pro, AdministrarProductos ap) {
         initComponents();
         this.setLocationRelativeTo(componente);
         this.srvProducto = srvProducto;
@@ -48,6 +49,7 @@ public class DetalleProducto extends javax.swing.JFrame {
         HR.insertarTexto(lblResultadoCategoria, cat.getNombre());
         HR.insertarTexto(lblResultadoPrecio, "$"+pro.getPrecio()+" ");
         HR.insertarTexto(lblResultadoDescripccion, "<html><body><div width='200px' align='justify'>"+pro.getDescripcion()+"</div></body></html>");
+        this.ap = ap;
     }
 
     
@@ -106,6 +108,11 @@ public class DetalleProducto extends javax.swing.JFrame {
 
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/delete.png"))); // NOI18N
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/pencil.png"))); // NOI18N
         btnEditar.setText("Editar");
@@ -196,8 +203,29 @@ public class DetalleProducto extends javax.swing.JFrame {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
-        new RegistrarProducto(srvProducto, srvFamilia, srvCategoria, componente, pro).setVisible(true);
+        new RegistrarProducto(srvProducto, srvFamilia, srvCategoria, componente, pro,ap).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        if(pro != null) {
+            int opcion = HR.preguntar("¿Esta seguro de eliminar este producto? La operación es irreversible!");
+            if(opcion == 0) {
+                if(srvProducto.getWebServiceProductoSoap().eliminaProducto(pro.getId())) {
+                    HR.mostrarMensaje("Producto eliminado exitosamente.");
+                    if(ap != null) {
+                        if(ap instanceof AdministrarProductos) {
+                            ((AdministrarProductos)ap).rellenarTabla();
+                            this.dispose();
+                        }
+                    }
+                }else{
+                    HR.mostrarError("No se pudo eliminar el producto");
+                }
+            }
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
      * @param args the command line arguments

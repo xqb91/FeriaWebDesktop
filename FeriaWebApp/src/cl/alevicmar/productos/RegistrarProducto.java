@@ -14,6 +14,7 @@ import cl.alevicmar.services.producto.WebServiceProducto;
 import cl.alevicmar.tools.HR;
 import java.awt.Component;
 import java.util.List;
+import javax.swing.UIManager;
 
 /**
  *
@@ -21,11 +22,12 @@ import java.util.List;
  */
 public class RegistrarProducto extends javax.swing.JFrame {
 
-    WebServiceProducto  srvProdcuto  = null;
-    WebServiceFamilia   srvFamilia   = null;
-    WebServiceCategoria srvCategoria = null;
-    Producto            pro          = null;
-    Component           componente   = null;
+    WebServiceProducto      srvProdcuto  = null;
+    WebServiceFamilia       srvFamilia   = null;
+    WebServiceCategoria     srvCategoria = null;
+    Producto                pro          = null;
+    Component               componente   = null;
+    AdministrarProductos    ap           = null;
     
     
     public RegistrarProducto() {
@@ -48,7 +50,7 @@ public class RegistrarProducto extends javax.swing.JFrame {
         this.rellenarFamilia();
     }
     
-    public RegistrarProducto(WebServiceProducto srvProdcuto, WebServiceFamilia srvFamilia, WebServiceCategoria srvCategoria, Component com, Producto pro) {
+    public RegistrarProducto(WebServiceProducto srvProdcuto, WebServiceFamilia srvFamilia, WebServiceCategoria srvCategoria, Component com, Producto pro, AdministrarProductos ap) {
         initComponents();
         HR.insertarTexto(btnRegistrar, "Actualizar");
         this.setTitle("Feria Web Desktop  ::  Editar Producto");
@@ -67,6 +69,7 @@ public class RegistrarProducto extends javax.swing.JFrame {
         HR.insertarTexto(txtPrecio, pro.getPrecio()+"");
         HR.insertarTexto(txtAreaDescripcion, pro.getDescripcion());
         HR.insertarTexto(txtUrlFoto, pro.getFotografia());
+        this.ap = ap;
     }
 
     public void rellenarCategoria()
@@ -77,7 +80,7 @@ public class RegistrarProducto extends javax.swing.JFrame {
             HR.insertarTexto(cmbCategoria, "Seleccione...");
             for(Object o : cate)
             {
-                HR.insertarTexto(cmbCategoria, ((Categoria)o).getNombre());
+                HR.insertarTexto(cmbCategoria, ((Categoria)o).getId()+":"+((Categoria)o).getNombre());
             }
         }
     }
@@ -90,7 +93,7 @@ public class RegistrarProducto extends javax.swing.JFrame {
             HR.insertarTexto(cmbFamilia, "Seleccione...");
             for(Object o : fami)
             {
-                HR.insertarTexto(cmbFamilia, ((Familia)o).getNombre());
+                HR.insertarTexto(cmbFamilia, ((Familia)o).getId()+":"+((Familia)o).getNombre()); 
             }
         }
     }
@@ -234,6 +237,11 @@ public class RegistrarProducto extends javax.swing.JFrame {
 
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/cancel.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         btnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/add.png"))); // NOI18N
         btnRegistrar.setText("Registrar");
@@ -320,21 +328,59 @@ public class RegistrarProducto extends javax.swing.JFrame {
                             String strPrecio = HR.contenido(txtPrecio);
                             
                             //SIGUE AQUI
-                            if(HR.contenido(btnRegistrar).compareToIgnoreCase("Actualizar")==0)
+                            if(HR.contenido(btnRegistrar).compareToIgnoreCase("Registrar")==0)
                             {
-                                
-                            }
-                            try {
-                                Producto pro = new Producto();
-                                pro.setId(0);
-                                pro.setNombre(strNombre);
-                                //pro.setFamilia(strFamilia);
-                                //pro.setCategoria(strCategoria);
-                                //pro.setDescripcion(strDescripcion);
-                                pro.setFotografia(strFoto);
-                                //pro.setPrecio(strPrecio);
-                                
-                            } catch (Exception e) {
+                                try {
+                                    Producto prod = new Producto();
+                                    prod.setNombre(strNombre);
+                                    prod.setFamilia(Integer.parseInt(strFamilia.split(":")[0]));
+                                    prod.setCategoria(Integer.parseInt(strCategoria.split(":")[0]));
+                                    prod.setDescripcion(strDescripcion);
+                                    prod.setFotografia(strFoto);
+                                    prod.setPrecio(Integer.parseInt(strPrecio));
+                                    
+                                    if(srvProdcuto.getWebServiceProductoSoap().guardarProducto(prod))
+                                    {
+                                        HR.mostrarMensaje("Se registro el producto de forma exitosa");
+                                        this.dispose();
+                                    }else{
+                                        HR.mostrarError("Ocurrio un error al registrar el Producto");
+                                        this.dispose();
+                                    }
+                                    
+                                } catch (Exception e) {
+                                    HR.mostrarErrorException(e);
+                                }
+                            }else{
+                                try {
+                                    if(pro == null)
+                                    {
+                                        HR.mostrarError("No se encuentra definido el producto en el sistema");
+                                        this.dispose();
+                                    }else
+                                    {
+                                        pro.setNombre(strNombre);
+                                        pro.setFamilia(Integer.parseInt(strFamilia.split(":")[0]));
+                                        pro.setCategoria(Integer.parseInt(strCategoria.split(":")[0]));
+                                        pro.setDescripcion(strDescripcion);
+                                        pro.setFotografia(strFoto);
+                                        pro.setPrecio(Integer.parseInt(strPrecio));
+                                        
+                                        if(srvProdcuto.getWebServiceProductoSoap().actualizaProducto(pro))
+                                        {
+                                            HR.mostrarMensaje("Se actualizo el producto de forma exitosa");
+                                            if(ap != null)
+                                            {
+                                                ap.refrescarTabla();
+                                            }
+                                            btnCancelarActionPerformed(evt);
+                                        }else{
+                                            HR.mostrarError("Ocurrio un error al intentar actualizar el Producto");
+                                        }
+                                    }
+                                } catch (Exception e) {
+                                    HR.mostrarErrorException(e);
+                                }
                             }
                         }
                     }
@@ -364,6 +410,12 @@ public class RegistrarProducto extends javax.swing.JFrame {
         HR.ingresaSoloNumeros(evt);
     }//GEN-LAST:event_txtPrecioKeyTyped
 
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        System.gc();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -376,7 +428,7 @@ public class RegistrarProducto extends javax.swing.JFrame {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    javax.swing.UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
                     break;
                 }
             }

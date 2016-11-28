@@ -127,6 +127,11 @@ public class AdministrarProductos extends javax.swing.JFrame {
             }
         }
     }
+    
+    public void refrescarTabla()
+    {
+        this.rellenarTabla();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -257,7 +262,7 @@ public class AdministrarProductos extends javax.swing.JFrame {
         //Buscar por Categoria
         if(HR.contenido(cmbCategoria).compareToIgnoreCase("Seleccione...") != 0)
         {
-            int valor = HR.buscarValorTabla(2, tablaResultados, HR.contenido(cmbCategoria), true);
+            int valor = HR.buscarValorTabla(4, tablaResultados, HR.contenido(cmbCategoria), true);
             
             if(valor == -1)
             {
@@ -269,7 +274,7 @@ public class AdministrarProductos extends javax.swing.JFrame {
         //Buscar por Familia
         if(HR.contenido(cmbFamilia).compareToIgnoreCase("Seleccione...") != 0)
         {
-            int valor = HR.buscarValorTabla(2, tablaResultados, HR.contenido(cmbFamilia), true);
+            int valor = HR.buscarValorTabla(5, tablaResultados, HR.contenido(cmbFamilia), true);
             
             if(valor == -1)
             {
@@ -288,7 +293,7 @@ public class AdministrarProductos extends javax.swing.JFrame {
         {
             HR.mostrarError("No se encontro el producto");
         }else{
-            new DetalleProducto(srvProducto, srvCategoria, srvFamilia, componente, pro).setVisible(true);
+            new DetalleProducto(srvProducto, srvCategoria, srvFamilia, componente, pro,this).setVisible(true);
         }
     }//GEN-LAST:event_tablaResultadosMouseClicked
 
