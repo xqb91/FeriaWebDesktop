@@ -334,7 +334,6 @@ public class Principal extends javax.swing.JFrame {
         jMenu10 = new javax.swing.JMenu();
         productoresDesvincularAgrupacion = new javax.swing.JMenuItem();
         productoresDesvincularUbicacion = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
         productosAdministrarProductos = new javax.swing.JMenuItem();
         productosRegistrarProducto = new javax.swing.JMenuItem();
@@ -342,12 +341,8 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem17 = new javax.swing.JMenuItem();
         jMenuItem18 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
-        jMenuItem19 = new javax.swing.JMenuItem();
-        jMenuItem20 = new javax.swing.JMenuItem();
         jMenuItem22 = new javax.swing.JMenuItem();
         jSeparator5 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem16 = new javax.swing.JMenuItem();
         jMenuItem21 = new javax.swing.JMenuItem();
         jSeparator10 = new javax.swing.JPopupMenu.Separator();
         jMenuItem23 = new javax.swing.JMenuItem();
@@ -581,9 +576,6 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setText("Datos Geográficos");
-        jMenuBar1.add(jMenu4);
-
         jMenu5.setText("Productos");
 
         productosAdministrarProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/wrench_orange.png"))); // NOI18N
@@ -618,28 +610,11 @@ public class Principal extends javax.swing.JFrame {
 
         jMenu7.setText("Finanzas");
 
-        jMenuItem19.setText("Egresos este mes");
-        jMenu7.add(jMenuItem19);
-
-        jMenuItem20.setText("Egresos por Productor");
-        jMenuItem20.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem20ActionPerformed(evt);
-            }
-        });
-        jMenu7.add(jMenuItem20);
-
-        jMenuItem22.setText("Egresos Históricos");
+        jMenuItem22.setText("Egresos");
         jMenu7.add(jMenuItem22);
         jMenu7.add(jSeparator5);
 
-        jMenuItem5.setText("Ingresos este mes");
-        jMenu7.add(jMenuItem5);
-
-        jMenuItem16.setText("Ingresos por Productor");
-        jMenu7.add(jMenuItem16);
-
-        jMenuItem21.setText("Ingresos Históricos");
+        jMenuItem21.setText("Ingresos");
         jMenu7.add(jMenuItem21);
         jMenu7.add(jSeparator10);
 
@@ -770,10 +745,6 @@ public class Principal extends javax.swing.JFrame {
         new AdministrarProductores(srvProductor, srvUbicacionProductor, srvAgrupacion, this).setVisible(true);
     }//GEN-LAST:event_productoresAdminProductoresActionPerformed
 
-    private void jMenuItem20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem20ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem20ActionPerformed
-
     private void ayudaAcercaDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ayudaAcercaDeActionPerformed
         new AcercaDe(this).setVisible(true);
     }//GEN-LAST:event_ayudaAcercaDeActionPerformed
@@ -868,7 +839,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
@@ -877,12 +847,9 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem18;
-    private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem20;
     private javax.swing.JMenuItem jMenuItem21;
     private javax.swing.JMenuItem jMenuItem22;
     private javax.swing.JMenuItem jMenuItem23;
@@ -890,7 +857,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem25;
     private javax.swing.JMenuItem jMenuItem26;
     private javax.swing.JMenuItem jMenuItem27;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
