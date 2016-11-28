@@ -11,6 +11,7 @@ import cl.alevicmar.services.productor.WebServiceProductor;
 import cl.alevicmar.tools.HCorreo;
 import cl.alevicmar.tools.HR;
 import java.awt.Component;
+import javax.swing.UIManager;
 
 /**
  *
@@ -188,6 +189,11 @@ public class RegistrarProductor extends javax.swing.JFrame {
 
         jLabel8.setText("Fax");
 
+        txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtEmailFocusLost(evt);
+            }
+        });
         txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtEmailKeyTyped(evt);
@@ -316,11 +322,6 @@ public class RegistrarProductor extends javax.swing.JFrame {
 
     private void txtEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyTyped
         HR.largoMaximo(txtEmail, 600, evt);
-        if(!HCorreo.validarEmail(HR.contenido(txtEmail))) {
-            HR.mostrarError("La dirección de correo electrónico que ha ingresado es inválida");
-            HR.focus(txtEmail);
-            HR.seleccionarTodo(txtEmail);
-        }
     }//GEN-LAST:event_txtEmailKeyTyped
 
     private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
@@ -442,6 +443,14 @@ public class RegistrarProductor extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtRunFocusLost
 
+    private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
+        if(!HCorreo.validarEmail(HR.contenido(txtEmail))) {
+            HR.mostrarError("La dirección de correo electrónico que ha ingresado es inválida");
+            HR.focus(txtEmail);
+            HR.seleccionarTodo(txtEmail);
+        }
+    }//GEN-LAST:event_txtEmailFocusLost
+
     /**
      * @param args the command line arguments
      */
@@ -454,7 +463,7 @@ public class RegistrarProductor extends javax.swing.JFrame {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    javax.swing.UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
                     break;
                 }
             }

@@ -40,9 +40,10 @@ public class AdministrarAgrupacionAgricola extends javax.swing.JFrame {
         rellenarTabla();
     }
 
-    public AdministrarAgrupacionAgricola(WebServiceAgrupacion srvAgrupacion, WebServiceAgrupacion srvComuna, Component componente) {
+    public AdministrarAgrupacionAgricola(WebServiceAgrupacion srvAgrupacion, WebServiceComuna srvComuna, Component componente) {
+        initComponents();
         this.srvAgrupacion = srvAgrupacion;
-        this.srvComuna = this.srvComuna;
+        this.srvComuna = srvComuna;
         this.setLocationRelativeTo(componente);
         if(componente instanceof Principal) {
             this.setIconImage(((Principal)componente).getIconImage());
@@ -278,7 +279,7 @@ public class AdministrarAgrupacionAgricola extends javax.swing.JFrame {
             tablaResultados.getColumnModel().getColumn(3).setResizable(false);
             tablaResultados.getColumnModel().getColumn(3).setWidth(12);
         }catch(Exception e) {
-            HR.mostrarError("Ocurrió un error cargar los datos de los clientes: "+e.getMessage());
+            HR.mostrarError("Ocurrió un error cargar los datos de los clientes en rellenarTabla(): "+e.getMessage()+" - "+e.getLocalizedMessage());
         }
     }
      
@@ -314,7 +315,7 @@ public class AdministrarAgrupacionAgricola extends javax.swing.JFrame {
             tablaResultados.getColumnModel().getColumn(3).setResizable(false);
             tablaResultados.getColumnModel().getColumn(3).setWidth(12);
         }catch(Exception e) {
-            HR.mostrarError("Ocurrió un error cargar los datos de los clientes: "+e.getMessage());
+            HR.mostrarError("Ocurrió un error cargar los datos de los clientes en rellenarTabla(params): "+e.getMessage());
         }
     }
     

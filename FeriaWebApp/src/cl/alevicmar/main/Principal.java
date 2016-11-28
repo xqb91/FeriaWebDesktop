@@ -791,7 +791,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_productorCambiarPasswordActionPerformed
 
     private void productoresAdminAgrupacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productoresAdminAgrupacionActionPerformed
-        new AdministrarAgrupacionAgricola(srvAgrupacion, srvAgrupacion, this).setVisible(true);
+        new AdministrarAgrupacionAgricola(srvAgrupacion, srvComuna, this).setVisible(true);
     }//GEN-LAST:event_productoresAdminAgrupacionActionPerformed
 
     private void productoresRegistrarAgrupacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productoresRegistrarAgrupacionActionPerformed
