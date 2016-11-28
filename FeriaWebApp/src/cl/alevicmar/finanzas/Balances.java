@@ -54,7 +54,8 @@ public class Balances extends javax.swing.JFrame {
         lblA = new javax.swing.JLabel();
         cmbMetodoPago = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Balances Financieros");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Balances"));
 
@@ -72,6 +73,11 @@ public class Balances extends javax.swing.JFrame {
 
         chkTodo.setSelected(true);
         chkTodo.setText("Todo");
+        chkTodo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                chkTodoMouseClicked(evt);
+            }
+        });
 
         chkPorFecha.setText("Por Fecha");
         chkPorFecha.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -177,9 +183,8 @@ public class Balances extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -231,6 +236,18 @@ public class Balances extends javax.swing.JFrame {
     private void txtFechaHastaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFechaHastaFocusLost
         txtFechaDesde.setMaxSelectableDate(txtFechaHasta.getDate());
     }//GEN-LAST:event_txtFechaHastaFocusLost
+
+    private void chkTodoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkTodoMouseClicked
+        if(chkTodo.isSelected()) {
+            chkMetodoPago.setSelected(false);
+            chkPorFecha.setSelected(false);
+            txtFechaDesde.setVisible(false);
+            txtFechaHasta.setVisible(false);
+            lblA.setVisible(false);
+            lblDesde.setVisible(false);
+            cmbMetodoPago.setVisible(false);
+        }
+    }//GEN-LAST:event_chkTodoMouseClicked
 
     /**
      * @param args the command line arguments

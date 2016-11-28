@@ -5,6 +5,8 @@
  */
 package cl.alevicmar.finanzas;
 
+import cl.alevicmar.tools.HR;
+
 /**
  *
  * @author Janno
@@ -31,13 +33,15 @@ public class EgresosHistoricos extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaResultados = new javax.swing.JTable();
         btnSalir = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jCheckBox3 = new javax.swing.JCheckBox();
+        chkEsteMes = new javax.swing.JCheckBox();
+        chkProductor = new javax.swing.JCheckBox();
+        txtRunProductor = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
+        chkTodos = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Finanzas de Egresos Históricos");
+        setResizable(false);
 
         panel.setBorder(javax.swing.BorderFactory.createTitledBorder("Egresos históricos"));
 
@@ -52,15 +56,41 @@ public class EgresosHistoricos extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tablaResultados);
 
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
-        jCheckBox1.setText("Mostrar Egresos de Este Mes");
+        chkEsteMes.setText("Mostrar Egresos de Este Mes");
+        chkEsteMes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                chkEsteMesMouseClicked(evt);
+            }
+        });
 
-        jCheckBox2.setText("Por Productor");
+        chkProductor.setText("Por Productor");
+        chkProductor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                chkProductorMouseClicked(evt);
+            }
+        });
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/find.png"))); // NOI18N
+        txtRunProductor.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtRunProductorFocusLost(evt);
+            }
+        });
 
-        jCheckBox3.setSelected(true);
-        jCheckBox3.setText("Todos");
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/find.png"))); // NOI18N
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        chkTodos.setSelected(true);
+        chkTodos.setText("Todos");
 
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
@@ -74,28 +104,28 @@ public class EgresosHistoricos extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelLayout.createSequentialGroup()
-                        .addComponent(jCheckBox2)
+                        .addComponent(chkProductor)
                         .addGap(83, 83, 83)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtRunProductor, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jCheckBox1)
-                    .addComponent(jCheckBox3))
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(chkEsteMes)
+                    .addComponent(chkTodos))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jCheckBox1)
+                .addComponent(chkEsteMes)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jCheckBox2)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addComponent(chkProductor)
+                        .addComponent(txtRunProductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox3)
+                .addComponent(chkTodos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -121,6 +151,59 @@ public class EgresosHistoricos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void chkProductorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkProductorMouseClicked
+        if(chkProductor.isSelected()) {
+            chkTodos.setSelected(false);
+            chkEsteMes.setSelected(false);
+            
+            txtRunProductor.setVisible(true);
+            btnBuscar.setVisible(true);
+        }else{
+            chkTodos.setSelected(true);
+            chkEsteMes.setSelected(false);
+            
+            txtRunProductor.setVisible(false);
+            btnBuscar.setVisible(false);
+        }
+    }//GEN-LAST:event_chkProductorMouseClicked
+
+    private void chkEsteMesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkEsteMesMouseClicked
+        if(chkEsteMes.isSelected()) {
+            chkTodos.setSelected(false);
+            chkProductor.setSelected(false);
+            
+            txtRunProductor.setVisible(false);
+            btnBuscar.setVisible(false);
+        }else{
+            chkTodos.setSelected(true);
+            chkProductor.setSelected(false);
+            
+            txtRunProductor.setVisible(false);
+            btnBuscar.setVisible(false);
+        }
+    }//GEN-LAST:event_chkEsteMesMouseClicked
+
+    private void txtRunProductorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRunProductorFocusLost
+        if(HR.contenido(txtRunProductor).isEmpty()) {
+            if(HR.formatearYValidarRutCampo(txtRunProductor)) {
+                btnBuscarActionPerformed(null);
+            }else{
+                HR.mostrarError("El rut ingresado es erroneo");
+                HR.insertarTexto(txtRunProductor, "");
+                HR.focus(txtRunProductor);
+            }
+        }
+    }//GEN-LAST:event_txtRunProductorFocusLost
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        this.dispose();
+        System.gc();
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,14 +241,14 @@ public class EgresosHistoricos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
+    private javax.swing.JCheckBox chkEsteMes;
+    private javax.swing.JCheckBox chkProductor;
+    private javax.swing.JCheckBox chkTodos;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel panel;
     private javax.swing.JTable tablaResultados;
+    private javax.swing.JTextField txtRunProductor;
     // End of variables declaration//GEN-END:variables
 }
