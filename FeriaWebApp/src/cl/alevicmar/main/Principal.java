@@ -519,7 +519,7 @@ public class Principal extends javax.swing.JFrame {
         jMenu3.add(productoresAdminUbicacion);
 
         productoresRegistrarUbicacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/map_add.png"))); // NOI18N
-        productoresRegistrarUbicacion.setText("Registrar Ubicación de Ubicación");
+        productoresRegistrarUbicacion.setText("Registrar Ubicación de Producción");
         productoresRegistrarUbicacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 productoresRegistrarUbicacionActionPerformed(evt);
@@ -600,9 +600,11 @@ public class Principal extends javax.swing.JFrame {
 
         jMenu6.setText("Transacciones");
 
+        jMenuItem17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/coins.png"))); // NOI18N
         jMenuItem17.setText("Ordenes de Compra");
         jMenu6.add(jMenuItem17);
 
+        jMenuItem18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/package.png"))); // NOI18N
         jMenuItem18.setText("Stock de Productos");
         jMenu6.add(jMenuItem18);
 
@@ -610,27 +612,34 @@ public class Principal extends javax.swing.JFrame {
 
         jMenu7.setText("Finanzas");
 
+        jMenuItem22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/table.png"))); // NOI18N
         jMenuItem22.setText("Egresos");
         jMenu7.add(jMenuItem22);
         jMenu7.add(jSeparator5);
 
+        jMenuItem21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/table_go.png"))); // NOI18N
         jMenuItem21.setText("Ingresos");
         jMenu7.add(jMenuItem21);
         jMenu7.add(jSeparator10);
 
+        jMenuItem23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/coins_add.png"))); // NOI18N
         jMenuItem23.setText("Ordenes de Venta Confirmadas");
         jMenu7.add(jMenuItem23);
 
+        jMenuItem24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/coins_delete.png"))); // NOI18N
         jMenuItem24.setText("Ordenes de Venta No Confirmadas");
         jMenu7.add(jMenuItem24);
         jMenu7.add(jSeparator11);
 
+        jMenuItem25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/shape_align_left.png"))); // NOI18N
         jMenuItem25.setText("Balance");
         jMenu7.add(jMenuItem25);
 
+        jMenuItem26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/calendar_view_week.png"))); // NOI18N
         jMenuItem26.setText("Balance por Fecha");
         jMenu7.add(jMenuItem26);
 
+        jMenuItem27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/application.png"))); // NOI18N
         jMenuItem27.setText("Balance por Método de Pago");
         jMenu7.add(jMenuItem27);
 
@@ -738,7 +747,8 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_productosAdministrarProductosActionPerformed
 
     private void productosRegistrarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productosRegistrarProductoActionPerformed
-        
+        RegistrarCliente regCli = new RegistrarCliente(this, srvCliente, srvComuna);
+        regCli.setVisible(true);
     }//GEN-LAST:event_productosRegistrarProductoActionPerformed
 
     private void productoresAdminProductoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productoresAdminProductoresActionPerformed

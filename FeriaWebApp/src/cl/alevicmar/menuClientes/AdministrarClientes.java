@@ -229,6 +229,7 @@ public class AdministrarClientes extends javax.swing.JFrame {
         cmbComuna = new javax.swing.JComboBox<>();
         btnFiltrar = new javax.swing.JButton();
         btnCancelarFiltro = new javax.swing.JButton();
+        btnEliminarFiltros = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Administrador de Clientes");
@@ -330,6 +331,13 @@ public class AdministrarClientes extends javax.swing.JFrame {
             }
         });
 
+        btnEliminarFiltros.setText("Eliminar Filtros");
+        btnEliminarFiltros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarFiltrosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -346,10 +354,11 @@ public class AdministrarClientes extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4))
-                        .addGap(0, 154, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(cmbComuna, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnEliminarFiltros)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnCancelarFiltro)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnFiltrar)))
@@ -376,7 +385,8 @@ public class AdministrarClientes extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnFiltrar)
-                    .addComponent(btnCancelarFiltro))
+                    .addComponent(btnCancelarFiltro)
+                    .addComponent(btnEliminarFiltros))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -484,6 +494,15 @@ public class AdministrarClientes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tablaResultadosMouseClicked
 
+    private void btnEliminarFiltrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarFiltrosActionPerformed
+        // TODO add your handling code here:
+        rellenar();
+        HR.insertarTexto(txtUsuario, "");
+        HR.insertarTexto(txtCorreo, "");
+        HR.insertarTexto(txtNombres, "");
+        HR.insertarTexto(cmbComuna, "");
+    }//GEN-LAST:event_btnEliminarFiltrosActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -518,6 +537,7 @@ public class AdministrarClientes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelarFiltro;
+    private javax.swing.JButton btnEliminarFiltros;
     private javax.swing.JButton btnFiltrar;
     private javax.swing.JComboBox<String> cmbComuna;
     private javax.swing.JLabel jLabel1;

@@ -70,6 +70,11 @@ public class Balances extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tablaResultados);
 
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         chkTodo.setSelected(true);
         chkTodo.setText("Todo");
@@ -248,6 +253,12 @@ public class Balances extends javax.swing.JFrame {
             cmbMetodoPago.setVisible(false);
         }
     }//GEN-LAST:event_chkTodoMouseClicked
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        System.gc();
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments

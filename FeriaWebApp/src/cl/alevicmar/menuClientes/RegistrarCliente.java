@@ -26,10 +26,11 @@ import maps.java.Geocoding;
  */
 public class RegistrarCliente extends javax.swing.JFrame {
 
-    WebServiceCliente srvCliente    = null;
-    WebServiceComuna srvComuna      = null;
+    WebServiceCliente srvCliente = null;
+    WebServiceComuna srvComuna = null;
     Clientes cliente;
-    boolean preview                 = false;
+    boolean preview = false;
+
     /**
      * Creates new form RegistrarCliente
      */
@@ -40,7 +41,7 @@ public class RegistrarCliente extends javax.swing.JFrame {
         this.srvComuna = new WebServiceComuna();
         rellenarComunas();
     }
-    
+
     public RegistrarCliente(Component com, WebServiceCliente srvCliente, WebServiceComuna srvComuna) {
         initComponents();
         this.setLocationRelativeTo(com);
@@ -49,9 +50,9 @@ public class RegistrarCliente extends javax.swing.JFrame {
         rellenarComunas();
         txtLongitud.setEditable(false);
         txtLatitud.setEditable(false);
-        this.setIconImage(((JFrame)com).getIconImage());
+        this.setIconImage(((JFrame) com).getIconImage());
     }
-    
+
     public RegistrarCliente(Component com, WebServiceCliente srvCliente, WebServiceComuna srvComuna, Clientes cliente) {
         initComponents();
         this.setLocationRelativeTo(com);
@@ -63,34 +64,36 @@ public class RegistrarCliente extends javax.swing.JFrame {
         this.cargaInfoUsuario();
         this.setTitle("Actualizar Cliente");
         this.preview = true;
-        this.setIconImage(((JFrame)com).getIconImage());
+        this.setIconImage(((JFrame) com).getIconImage());
+        HR.insertarTexto(btnGuardar, "Actualizar");
     }
 
     public void rellenarDatosLatitudLongitud(String datos) {
         HR.insertarTexto(txtLatitud, datos.split(",")[0].substring(0, 10));
         HR.insertarTexto(txtLongitud, datos.split(",")[1].substring(0, 10));
     }
-    
+
     /**
      * Rellena el combobox con las comunas en la base de datos
-     * 
-     * @return void (Rellena el combobox de la ventana con los datos retornados desde el webservice)
+     *
+     * @return void (Rellena el combobox de la ventana con los datos retornados
+     * desde el webservice)
      */
     public void rellenarComunas() {
         try {
             List<Object> array = srvComuna.getWebServiceComunaSoap().retornaTodasLasComunas().getAnyType();
             cmbComuna.removeAllItems();
             HR.insertarTexto(cmbComuna, "Seleccione...");
-            for(Object o : array) {
-                Comuna c = ((Comuna)o);
+            for (Object o : array) {
+                Comuna c = ((Comuna) o);
                 HR.insertarTexto(cmbComuna, c.getNombre());
             }
-        }catch(Exception e) {
-            HR.mostrarError("Ocurrió un error cargar las comunas: "+e.getMessage());
+        } catch (Exception e) {
+            HR.mostrarError("Ocurrió un error cargar las comunas: " + e.getMessage());
         }
     }
-    
-    public void cargaInfoUsuario(){
+
+    public void cargaInfoUsuario() {
         HR.insertarTexto(txtRun, cliente.getUsuario());
         HR.insertarTexto(txtNombres, cliente.getNombres());
         HR.insertarTexto(txtApaterno, cliente.getApaterno());
@@ -104,21 +107,21 @@ public class RegistrarCliente extends javax.swing.JFrame {
         HR.insertarTexto(txtLongitud, cliente.getLongitud());
         //recuperando comuna
         Comuna comu = srvComuna.getWebServiceComunaSoap().buscaComuna(cliente.getComuna());
-        if(comu != null) {
+        if (comu != null) {
             try {
-            List<Object> array = srvComuna.getWebServiceComunaSoap().retornaTodasLasComunas().getAnyType();
-            cmbComuna.removeAllItems();
-            HR.insertarTexto(cmbComuna, comu.getNombre());
-            for(Object o : array) {
-                Comuna c = ((Comuna)o);
-                HR.insertarTexto(cmbComuna, c.getNombre());
+                List<Object> array = srvComuna.getWebServiceComunaSoap().retornaTodasLasComunas().getAnyType();
+                cmbComuna.removeAllItems();
+                HR.insertarTexto(cmbComuna, comu.getNombre());
+                for (Object o : array) {
+                    Comuna c = ((Comuna) o);
+                    HR.insertarTexto(cmbComuna, c.getNombre());
+                }
+            } catch (Exception e) {
+                HR.mostrarError("Ocurrió un error cargar las comunas: " + e.getMessage());
             }
-        }catch(Exception e) {
-            HR.mostrarError("Ocurrió un error cargar las comunas: "+e.getMessage());
-        }
         }
     }
-    
+
     public void vaciarCamposTexto() {
         HR.insertarTexto(txtNombres, "");
         HR.insertarTexto(txtApaterno, "");
@@ -133,6 +136,7 @@ public class RegistrarCliente extends javax.swing.JFrame {
         rellenarComunas();
         this.setTitle("Registrar Cliente");
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -488,25 +492,23 @@ public class RegistrarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtRunKeyTyped
 
     private void txtRunFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRunFocusLost
-        if(!HR.contenido(txtRun).isEmpty()) {
+        if (!HR.contenido(txtRun).isEmpty()) {
             HR.insertarTexto(txtRun, HRut.formatear(HR.contenido(txtRun)));
-            if(!HRut.validar(HR.contenido(txtRun))) {
+            if (!HRut.validar(HR.contenido(txtRun))) {
                 HR.mostrarError("Rut ingresado no es válido");
                 HR.seleccionarTodo(txtRun);
                 HR.focus(txtRun);
-            }else{
-                if(preview != true) {
-                    if(srvCliente.getWebServiceClienteSoap().buscaClientePorRun(HR.contenido(txtRun)).getId() != 0 ) {
-                        int valor = HR.preguntar("El cliente ya se encuentra registrado... ¿Desea actualizar sus datos?");
-                        if(valor == 0) {
-                            this.cliente = srvCliente.getWebServiceClienteSoap().buscaClientePorRun(HR.contenido(txtRun));
-                            this.setTitle("Actualizar Cliente");
-                            HR.insertarTexto(btnGuardar, "Actualizar");
-                            cargaInfoUsuario();
-                        }
-                    }else{
-                        this.vaciarCamposTexto();
+            } else if (preview != true) {
+                if (srvCliente.getWebServiceClienteSoap().buscaClientePorRun(HR.contenido(txtRun)).getId() != 0) {
+                    int valor = HR.preguntar("El cliente ya se encuentra registrado... ¿Desea actualizar sus datos?");
+                    if (valor == 0) {
+                        this.cliente = srvCliente.getWebServiceClienteSoap().buscaClientePorRun(HR.contenido(txtRun));
+                        this.setTitle("Actualizar Cliente");
+                        HR.insertarTexto(btnGuardar, "Actualizar");
+                        cargaInfoUsuario();
                     }
+                } else {
+                    this.vaciarCamposTexto();
                 }
             }
         }
@@ -529,8 +531,8 @@ public class RegistrarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCorreoKeyTyped
 
     private void txtCorreoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCorreoFocusLost
-        if(!HR.contenido(txtCorreo).isEmpty()) {
-            if(!HCorreo.validarEmail(HR.contenido(txtCorreo))) {
+        if (!HR.contenido(txtCorreo).isEmpty()) {
+            if (!HCorreo.validarEmail(HR.contenido(txtCorreo))) {
                 HR.mostrarError("La dirección de correo electrónico no es vaálida");
                 HR.seleccionarTodo(txtCorreo);
                 HR.focus(txtCorreo);
@@ -568,41 +570,38 @@ public class RegistrarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtLongitudKeyTyped
 
     private void btnMapasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMapasActionPerformed
-        if(HR.contenido(txtDireccion).isEmpty()) {
-           HR.mostrarError("Debe completar el campo de dirección para determinar la latitud y lóngitud");
-           HR.focus(txtDireccion);
-        }else{
-            if(HR.contenido(cmbComuna).compareToIgnoreCase("Seleccione...") == 0) {
-                HR.mostrarError("Seleccione la comuna para poder determinar la latitud y longitud");
-                HR.focus(cmbComuna);
-            }else{
-                //determinando
-                String direccion = HR.contenido(txtDireccion);
-                String comuna    = HR.contenido(cmbComuna);
-                Geocoding mapa = new Geocoding();
-                try {
-                    Point2D.Double resultado = mapa.getCoordinates(direccion+", "+comuna+", Chile");
-                    HR.insertarTexto(txtLatitud, resultado.getX()+"");
-                    HR.insertarTexto(txtLongitud, resultado.getY()+"");
-                    if((resultado.getX() == 0.0) && (resultado.getY() == 0.0)) {
-                        HR.mostrarError("La dirección no pudo ser encontrada");
-                        MapaSeleccionar mapaSel = new MapaSeleccionar(this);
-                        /*HR.seleccionarTodo(txtDireccion);
+        if (HR.contenido(txtDireccion).isEmpty()) {
+            HR.mostrarError("Debe completar el campo de dirección para determinar la latitud y lóngitud");
+            HR.focus(txtDireccion);
+        } else if (HR.contenido(cmbComuna).compareToIgnoreCase("Seleccione...") == 0) {
+            HR.mostrarError("Seleccione la comuna para poder determinar la latitud y longitud");
+            HR.focus(cmbComuna);
+        } else {
+            //determinando
+            String direccion = HR.contenido(txtDireccion);
+            String comuna = HR.contenido(cmbComuna);
+            Geocoding mapa = new Geocoding();
+            try {
+                Point2D.Double resultado = mapa.getCoordinates(direccion + ", " + comuna + ", Chile");
+                HR.insertarTexto(txtLatitud, resultado.getX() + "");
+                HR.insertarTexto(txtLongitud, resultado.getY() + "");
+                if ((resultado.getX() == 0.0) && (resultado.getY() == 0.0)) {
+                    HR.mostrarError("La dirección no pudo ser encontrada");
+                    MapaSeleccionar mapaSel = new MapaSeleccionar(this);
+                    /*HR.seleccionarTodo(txtDireccion);
                         HR.focus(txtDireccion);*/
-                    }else{
-                        String url = "https://www.google.cl/maps/place/"+resultado.getX()+","+resultado.getY()+"";
-                        try {
-                            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + url);
-                        }catch(Exception err)
-                        {
-                            HR.mostrarError("Error: "+err);
-                        }
+                } else {
+                    String url = "https://www.google.cl/maps/place/" + resultado.getX() + "," + resultado.getY() + "";
+                    try {
+                        Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + url);
+                    } catch (Exception err) {
+                        HR.mostrarError("Error: " + err);
                     }
-                }catch(Exception e) {
-                    HR.mostrarError("Imposible determinar las coordenadas con la información proporcionada: "+direccion+", "+comuna+", Chile");
                 }
-                //
+            } catch (Exception e) {
+                HR.mostrarError("Imposible determinar las coordenadas con la información proporcionada: " + direccion + ", " + comuna + ", Chile");
             }
+            //
         }
     }//GEN-LAST:event_btnMapasActionPerformed
 
@@ -615,123 +614,114 @@ public class RegistrarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbComunaFocusLost
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        if(HR.contenido(txtRun).isEmpty()) {
+        if (HR.contenido(txtRun).isEmpty()) {
             HR.mostrarError("El run del cliente no ha sido ingresado");
             HR.focus(txtRun);
-        }else{
-            if(HR.contenido(txtNombres).isEmpty()) {
-                HR.mostrarError("Los nombres del cliente no han sido ingresados");
-                HR.focus(txtNombres);
-            }else{
-                if(HR.contenido(txtApaterno).isEmpty()) {
-                    HR.mostrarError("El apellido paterno del cliente no ha sido ingresado");
-                    HR.focus(txtApaterno); 
-                }else{
-                    if(HR.contenido(txtAmaterno).isEmpty()) {
-                        HR.mostrarError("El apellido materno del cliente no ha sido ingresado");
-                        HR.focus(txtAmaterno); 
-                    }else{
-                        if(HR.contenido(txtCorreo).isEmpty()) {
-                            HR.mostrarError("El correo electrónico del cliente no ha sido ingresado");
-                            HR.focus(txtCorreo); 
-                        }else{
-                            if(HR.contenido(txtTelefono).isEmpty()) {
-                                HR.mostrarError("El teléfono del cliente no ha sido ingresado");
-                                HR.focus(txtTelefono); 
-                            }else{
-                                if(HR.contenido(txtCelular).isEmpty()) {
-                                    HR.mostrarError("El celular del cliente no ha sido ingresado");
-                                    HR.focus(txtCelular); 
-                                }else{
-                                    if(HR.contenido(txtFax).isEmpty()) {
-                                        HR.mostrarError("El fax del cliente no ha sido ingresado");
-                                        HR.focus(txtFax); 
-                                    }else{
-                                        if(HR.contenido(txtDireccion).isEmpty()) {
-                                            HR.mostrarError("La dirección del cliente no ha sido ingresada");
-                                            HR.focus(txtFax); 
-                                        }else{
-                                            if(HR.contenido(cmbComuna).compareToIgnoreCase("Seleccione...") == 0) {
-                                                HR.mostrarError("Seleccione la comuna del cliente puesto que no ha sido ingresada");
-                                                HR.focus(cmbComuna); 
-                                            }else{
-                                                if(HR.contenido(txtLatitud).isEmpty()) {
-                                                    HR.mostrarError("No se ha logrado obtener la dirección ingresada para el cliente");
-                                                    HR.focus(txtLatitud); 
-                                                }else{
-                                                    if(HR.contenido(txtLongitud).isEmpty()) {
-                                                        HR.mostrarError("No se ha logrado obtener la dirección ingresada para el cliente");
-                                                        HR.focus(txtLongitud); 
-                                                    }else{
-                                                        //guardar cliente
-                                                        String strRun       = HR.contenido(txtRun);
-                                                        String strNombres   = HR.contenido(txtNombres);
-                                                        String strApaterno  = HR.contenido(txtApaterno);
-                                                        String strAmaterno  = HR.contenido(txtAmaterno);
-                                                        String strCorreo    = HR.contenido(txtCorreo);
-                                                        String strTelefono  = HR.contenido(txtTelefono);
-                                                        String strCelular   = HR.contenido(txtCelular);
-                                                        String strFax       = HR.contenido(txtFax);
-                                                        String strDireccion = HR.contenido(txtDireccion);
-                                                        String strComuna    = HR.contenido(cmbComuna);
-                                                        String strLatitud   = HR.contenido(txtLatitud);
-                                                        String strLongitud  = HR.contenido(txtLongitud);
+        } else if (HR.contenido(txtNombres).isEmpty()) {
+            HR.mostrarError("Los nombres del cliente no han sido ingresados");
+            HR.focus(txtNombres);
+        } else if (HR.contenido(txtApaterno).isEmpty()) {
+            HR.mostrarError("El apellido paterno del cliente no ha sido ingresado");
+            HR.focus(txtApaterno);
+        } else if (HR.contenido(txtAmaterno).isEmpty()) {
+            HR.mostrarError("El apellido materno del cliente no ha sido ingresado");
+            HR.focus(txtAmaterno);
+        } else if (HR.contenido(txtCorreo).isEmpty()) {
+            HR.mostrarError("El correo electrónico del cliente no ha sido ingresado");
+            HR.focus(txtCorreo);
+        } else if (HR.contenido(txtTelefono).isEmpty()) {
+            HR.mostrarError("El teléfono del cliente no ha sido ingresado");
+            HR.focus(txtTelefono);
+        } else if (HR.contenido(txtCelular).isEmpty()) {
+            HR.mostrarError("El celular del cliente no ha sido ingresado");
+            HR.focus(txtCelular);
+        } else if (HR.contenido(txtFax).isEmpty()) {
+            HR.mostrarError("El fax del cliente no ha sido ingresado");
+            HR.focus(txtFax);
+        } else if (HR.contenido(txtDireccion).isEmpty()) {
+            HR.mostrarError("La dirección del cliente no ha sido ingresada");
+            HR.focus(txtFax);
+        } else if (HR.contenido(cmbComuna).compareToIgnoreCase("Seleccione...") == 0) {
+            HR.mostrarError("Seleccione la comuna del cliente puesto que no ha sido ingresada");
+            HR.focus(cmbComuna);
+        } else if (HR.contenido(txtLatitud).isEmpty()) {
+            HR.mostrarError("No se ha logrado obtener la dirección ingresada para el cliente");
+            HR.focus(txtLatitud);
+        } else if (HR.contenido(txtLongitud).isEmpty()) {
+            HR.mostrarError("No se ha logrado obtener la dirección ingresada para el cliente");
+            HR.focus(txtLongitud);
+        } else {
+            //guardar cliente
+            String strRun = HR.contenido(txtRun);
+            String strNombres = HR.contenido(txtNombres);
+            String strApaterno = HR.contenido(txtApaterno);
+            String strAmaterno = HR.contenido(txtAmaterno);
+            String strCorreo = HR.contenido(txtCorreo);
+            String strTelefono = HR.contenido(txtTelefono);
+            String strCelular = HR.contenido(txtCelular);
+            String strFax = HR.contenido(txtFax);
+            String strDireccion = HR.contenido(txtDireccion);
+            String strComuna = HR.contenido(cmbComuna);
+            String strLatitud = HR.contenido(txtLatitud);
+            String strLongitud = HR.contenido(txtLongitud);
 
-                                                        if(srvCliente.getWebServiceClienteSoap().buscaClientePorRun(strRun).getId() == 0) {
-                                                            Comuna cm           = srvComuna.getWebServiceComunaSoap().buscaComunaPorNombre(strComuna);
-                                                            try {
-                                                                Clientes ca = new Clientes();
-                                                                ca.setId(0);
-                                                                ca.setUsuario(strRun);
-                                                                ca.setNombres(strNombres);
-                                                                ca.setApaterno(strApaterno);
-                                                                ca.setAmaterno(strAmaterno);
-                                                                ca.setEmail(strCorreo);
-                                                                ca.setTelefono(strTelefono);
-                                                                ca.setCelular(strCelular);
-                                                                ca.setFax(strFax);
-                                                                ca.setDireccion(strDireccion);
-                                                                ca.setComuna(cm.getId());
-                                                                ca.setLatitud(strLatitud);
-                                                                ca.setLongitud(strLongitud);
-                                                                
-                                                                if(HR.contenido(btnGuardar).compareToIgnoreCase("guardar") == 0) {
-                                                                    int password = ((int)(Math.random()*100000+0));
-                                                                    ca.setContrasena(password+"");
-                                                                    if(srvCliente.getWebServiceClienteSoap().guardarCliente(ca))
-                                                                    {
-                                                                        HR.mostrarMensaje("El cliente ha sido registrado.");
-                                                                        vaciarCamposTexto();
-                                                                        HR.insertarTexto(txtRun, "");
-                                                                    }else{
-                                                                        HR.mostrarError("Ocurrió un problema al registrar al cliente");
-                                                                    }
-                                                                }else{
-                                                                    if(srvCliente.getWebServiceClienteSoap().actualizaCliente(ca))
-                                                                    {
-                                                                        HR.mostrarMensaje("El cliente ha sido actualizado");
-                                                                        vaciarCamposTexto();
-                                                                        HR.insertarTexto(txtRun, "");
-                                                                    }else{
-                                                                        HR.mostrarError("Ocurrió un problema al actualizar al cliente");
-                                                                    }
-                                                                }
-                                                            }catch(Exception e) {
-                                                                HR.mostrarErrorException(e);
-                                                            }
-                                                        }else{
-                                                            HR.mostrarError("El cliente con RUN "+strRun+" ya está registrado!");
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
+            if (srvCliente.getWebServiceClienteSoap().buscaClientePorRun(strRun).getId() == 0) {
+                Comuna cm = srvComuna.getWebServiceComunaSoap().buscaComunaPorNombre(strComuna);
+                try {
+                    Clientes ca = new Clientes();
+                    ca.setId(0);
+                    ca.setUsuario(strRun);
+                    ca.setNombres(strNombres);
+                    ca.setApaterno(strApaterno);
+                    ca.setAmaterno(strAmaterno);
+                    ca.setEmail(strCorreo);
+                    ca.setTelefono(strTelefono);
+                    ca.setCelular(strCelular);
+                    ca.setFax(strFax);
+                    ca.setDireccion(strDireccion);
+                    ca.setComuna(cm.getId());
+                    ca.setLatitud(strLatitud);
+                    ca.setLongitud(strLongitud);
+
+                    if (HR.contenido(btnGuardar).compareToIgnoreCase("guardar") == 0) {
+                        int password = ((int) (Math.random() * 100000 + 0));
+                        ca.setContrasena(password + "");
+                        if (srvCliente.getWebServiceClienteSoap().guardarCliente(ca)) {
+                            HR.mostrarMensaje("El cliente ha sido registrado.");
+                            vaciarCamposTexto();
+                            this.dispose();
+                        } else {
+                            HR.mostrarError("Ocurrió un problema al registrar al cliente");
                         }
                     }
+                } catch (Exception e) {
+                    HR.mostrarErrorException(e);
                 }
+            } else if (HR.contenido(btnGuardar).compareToIgnoreCase("Actualizar") == 0) {
+                
+                    Comuna cm = srvComuna.getWebServiceComunaSoap().buscaComunaPorNombre(strComuna);
+                    cliente.setUsuario(strRun);
+                    cliente.setNombres(strNombres);
+                    cliente.setApaterno(strApaterno);
+                    cliente.setAmaterno(strAmaterno);
+                    cliente.setEmail(strCorreo);
+                    cliente.setTelefono(strTelefono);
+                    cliente.setCelular(strCelular);
+                    cliente.setFax(strFax);
+                    cliente.setDireccion(strDireccion);
+                    cliente.setComuna(cm.getId());
+                    cliente.setLatitud(strLatitud);
+                    cliente.setLongitud(strLongitud);
+                    
+                if (srvCliente.getWebServiceClienteSoap().actualizaCliente(cliente)) {
+                    HR.mostrarMensaje("El cliente ha sido actualizado");
+                    vaciarCamposTexto();
+                    this.dispose();
+                } else {
+                    HR.mostrarError("Ocurrió un problema al actualizar al cliente");
+                }
+            } else {
+                HR.mostrarError("El cliente con RUN " + strRun + " ya está registrado!");
             }
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
