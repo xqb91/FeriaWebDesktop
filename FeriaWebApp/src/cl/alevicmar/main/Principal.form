@@ -382,12 +382,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem23">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Ordenes de Venta Confirmadas"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem24">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Ordenes de Venta No Confirmadas"/>
+                <Property name="text" type="java.lang.String" value="Ordenes de Venta Confirmadas / No Confirmadas"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator11">
@@ -395,16 +390,6 @@
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem25">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Balance"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem26">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Balance por Fecha"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem27">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Balance por M&#xe9;todo de Pago"/>
               </Properties>
             </MenuItem>
           </SubComponents>

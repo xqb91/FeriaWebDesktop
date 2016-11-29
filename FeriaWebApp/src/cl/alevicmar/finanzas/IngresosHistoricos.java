@@ -5,6 +5,8 @@
  */
 package cl.alevicmar.finanzas;
 
+import cl.alevicmar.tools.HR;
+
 /**
  *
  * @author Janno
@@ -16,6 +18,22 @@ public class IngresosHistoricos extends javax.swing.JFrame {
      */
     public IngresosHistoricos() {
         initComponents();
+        this.inicializar();
+    }
+    
+    public void inicializar() {
+        lblDesde.setVisible(false);
+            txtFechaDesde.setVisible(false);
+            lblHasta.setVisible(false);
+            txtFechaHasta.setVisible(false);
+            
+            //foraneos
+            chkPorFecha.setSelected(false);
+            chkProductor.setSelected(false);
+            
+            txtRunProductor.setVisible(false);
+            btnBuscarProductor.setVisible(false);
+            chkTodos.setSelected(true);
     }
 
     /**
@@ -31,15 +49,15 @@ public class IngresosHistoricos extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaResultados = new javax.swing.JTable();
         btnSalir = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        chkTodos = new javax.swing.JCheckBox();
+        chkPorFecha = new javax.swing.JCheckBox();
+        lblDesde = new javax.swing.JLabel();
+        lblHasta = new javax.swing.JLabel();
+        txtFechaDesde = new com.toedter.calendar.JDateChooser();
+        txtFechaHasta = new com.toedter.calendar.JDateChooser();
+        chkProductor = new javax.swing.JCheckBox();
+        txtRunProductor = new javax.swing.JTextField();
+        btnBuscarProductor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Finanzas de Ingresos Históricos");
@@ -58,19 +76,71 @@ public class IngresosHistoricos extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tablaResultados);
 
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
-        jCheckBox1.setSelected(true);
-        jCheckBox1.setText("Todos");
+        chkTodos.setSelected(true);
+        chkTodos.setText("Todos");
+        chkTodos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                chkTodosMouseClicked(evt);
+            }
+        });
 
-        jCheckBox2.setText("por fecha");
+        chkPorFecha.setText("por fecha");
+        chkPorFecha.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                chkPorFechaMouseClicked(evt);
+            }
+        });
 
-        jLabel1.setText("desde");
+        lblDesde.setText("desde");
 
-        jLabel2.setText("hasta");
+        lblHasta.setText("hasta");
 
-        jCheckBox3.setText("por Productor");
+        txtFechaDesde.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtFechaDesdeFocusLost(evt);
+            }
+        });
+        txtFechaDesde.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                txtFechaDesdePropertyChange(evt);
+            }
+        });
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/find.png"))); // NOI18N
+        chkProductor.setText("por Productor");
+        chkProductor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                chkProductorMouseClicked(evt);
+            }
+        });
+
+        txtRunProductor.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtRunProductorFocusLost(evt);
+            }
+        });
+        txtRunProductor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRunProductorActionPerformed(evt);
+            }
+        });
+        txtRunProductor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtRunProductorKeyTyped(evt);
+            }
+        });
+
+        btnBuscarProductor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/find.png"))); // NOI18N
+        btnBuscarProductor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarProductorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -81,57 +151,52 @@ public class IngresosHistoricos extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 474, Short.MAX_VALUE)
+                        .addGap(0, 523, Short.MAX_VALUE)
                         .addComponent(btnSalir))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jCheckBox1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chkTodos)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jCheckBox3)
+                                .addComponent(chkProductor)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtRunProductor, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jCheckBox2)
-                                .addGap(48, 48, 48)
-                                .addComponent(jLabel1)
+                                .addComponent(btnBuscarProductor))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(chkPorFecha)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblDesde)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(txtFechaDesde, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblHasta)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtFechaHasta, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jCheckBox1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jCheckBox2)
-                                .addComponent(jLabel1)
-                                .addComponent(jLabel2))
-                            .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jCheckBox3)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(chkTodos)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSalir))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(chkPorFecha)
+                            .addComponent(lblDesde)))
+                    .addComponent(lblHasta)
+                    .addComponent(txtFechaDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFechaHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chkProductor)
+                    .addComponent(txtRunProductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscarProductor))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSalir)
                 .addContainerGap())
         );
 
@@ -154,6 +219,134 @@ public class IngresosHistoricos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtRunProductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRunProductorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRunProductorActionPerformed
+
+    private void chkPorFechaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkPorFechaMouseClicked
+        if(chkPorFecha.isSelected()) {
+            //local elements
+            lblDesde.setVisible(true);
+            txtFechaDesde.setVisible(true);
+            lblHasta.setVisible(true);
+            txtFechaHasta.setVisible(true);
+            
+            //foraneos
+            chkTodos.setSelected(false);
+            chkProductor.setSelected(false);
+            
+            txtRunProductor.setVisible(false);
+            btnBuscarProductor.setVisible(false);
+        }else{
+            //local elements
+            lblDesde.setVisible(false);
+            txtFechaDesde.setVisible(false);
+            lblHasta.setVisible(false);
+            txtFechaHasta.setVisible(false);
+            
+            //foraneos
+            chkTodos.setSelected(true);
+            chkProductor.setSelected(false);
+            
+            txtRunProductor.setVisible(false);
+            btnBuscarProductor.setVisible(false);
+        }
+    }//GEN-LAST:event_chkPorFechaMouseClicked
+
+    private void chkProductorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkProductorMouseClicked
+        if(chkProductor.isSelected()) {
+            //local elements
+            chkPorFecha.setSelected(false);
+            lblDesde.setVisible(false);
+            txtFechaDesde.setVisible(false);
+            lblHasta.setVisible(false);
+            txtFechaHasta.setVisible(false);
+            
+            //foraneos
+            chkTodos.setSelected(false);
+            
+            txtRunProductor.setVisible(true);
+            btnBuscarProductor.setVisible(true);
+            HR.focus(txtRunProductor);
+        }else{
+            //local elements
+            lblDesde.setVisible(false);
+            txtFechaDesde.setVisible(false);
+            lblHasta.setVisible(false);
+            txtFechaHasta.setVisible(false);
+            
+            //foraneos
+            chkTodos.setSelected(true);
+            chkPorFecha.setSelected(false);
+            
+            txtRunProductor.setVisible(false);
+            btnBuscarProductor.setVisible(false);
+        }
+    }//GEN-LAST:event_chkProductorMouseClicked
+
+    private void chkTodosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkTodosMouseClicked
+        if(chkTodos.isSelected()) {
+            //desmarcar y ocultar todo
+            lblDesde.setVisible(false);
+            txtFechaDesde.setVisible(false);
+            lblHasta.setVisible(false);
+            txtFechaHasta.setVisible(false);
+            
+            //foraneos
+            chkPorFecha.setSelected(false);
+            chkProductor.setSelected(false);
+            
+            txtRunProductor.setVisible(false);
+            btnBuscarProductor.setVisible(false);
+        }else{
+            lblDesde.setVisible(false);
+            txtFechaDesde.setVisible(false);
+            lblHasta.setVisible(false);
+            txtFechaHasta.setVisible(false);
+            
+            //foraneos
+            chkPorFecha.setSelected(false);
+            chkProductor.setSelected(false);
+            
+            txtRunProductor.setVisible(false);
+            btnBuscarProductor.setVisible(false);
+            chkTodos.setSelected(true);
+        }
+    }//GEN-LAST:event_chkTodosMouseClicked
+
+    private void txtRunProductorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRunProductorKeyTyped
+        HR.largoMaximo(txtRunProductor, 12, evt);
+        HR.ingresaCaracteresRut(evt);
+    }//GEN-LAST:event_txtRunProductorKeyTyped
+
+    private void txtRunProductorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRunProductorFocusLost
+        if(!HR.contenido(txtRunProductor).isEmpty()) {
+            if(HR.formatearYValidarRutCampo(txtRunProductor)) {
+                btnBuscarProductorActionPerformed(null);
+            }else{
+                HR.insertarTexto(txtRunProductor, "");
+                HR.focus(txtRunProductor);
+            }
+        }
+    }//GEN-LAST:event_txtRunProductorFocusLost
+
+    private void btnBuscarProductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProductorActionPerformed
+        HR.mostrarMensaje("Exito.... ejeecutando webservice");
+    }//GEN-LAST:event_btnBuscarProductorActionPerformed
+
+    private void txtFechaDesdeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFechaDesdeFocusLost
+
+    }//GEN-LAST:event_txtFechaDesdeFocusLost
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+       this.dispose();
+       System.gc();
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void txtFechaDesdePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txtFechaDesdePropertyChange
+        txtFechaHasta.setMinSelectableDate(txtFechaDesde.getDate());
+    }//GEN-LAST:event_txtFechaDesdePropertyChange
 
     /**
      * @param args the command line arguments
@@ -191,18 +384,18 @@ public class IngresosHistoricos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscarProductor;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JCheckBox chkPorFecha;
+    private javax.swing.JCheckBox chkProductor;
+    private javax.swing.JCheckBox chkTodos;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lblDesde;
+    private javax.swing.JLabel lblHasta;
     private javax.swing.JTable tablaResultados;
+    private com.toedter.calendar.JDateChooser txtFechaDesde;
+    private com.toedter.calendar.JDateChooser txtFechaHasta;
+    private javax.swing.JTextField txtRunProductor;
     // End of variables declaration//GEN-END:variables
 }

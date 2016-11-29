@@ -39,8 +39,8 @@ public class VerOrdenesCompra extends javax.swing.JFrame {
         txtRun = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        cmbMetodoPago = new javax.swing.JComboBox<>();
-        cmbConfirmacion = new javax.swing.JComboBox<>();
+        cmbMetodoPago = new javax.swing.JComboBox<String>();
+        cmbConfirmacion = new javax.swing.JComboBox<String>();
         btnFiltrar = new javax.swing.JButton();
         txtFecha = new com.toedter.calendar.JDateChooser();
         jPanel2 = new javax.swing.JPanel();
@@ -70,16 +70,32 @@ public class VerOrdenesCompra extends javax.swing.JFrame {
                 txtRunFocusLost(evt);
             }
         });
+        txtRun.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtRunKeyTyped(evt);
+            }
+        });
 
         jLabel4.setText("Método de Pago");
 
         jLabel5.setText("Confirmación");
 
-        cmbMetodoPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbMetodoPago.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        cmbConfirmacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbConfirmacion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnFiltrar.setText("Filtrar");
+        btnFiltrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFiltrarActionPerformed(evt);
+            }
+        });
+
+        txtFecha.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                txtFechaPropertyChange(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -212,6 +228,19 @@ public class VerOrdenesCompra extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_txtRunFocusLost
+
+    private void txtFechaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txtFechaPropertyChange
+        
+    }//GEN-LAST:event_txtFechaPropertyChange
+
+    private void txtRunKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRunKeyTyped
+        HR.largoMaximo(txtRun, 12, evt);
+        HR.ingresaCaracteresRut(evt);
+    }//GEN-LAST:event_txtRunKeyTyped
+
+    private void btnFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarActionPerformed
+        
+    }//GEN-LAST:event_btnFiltrarActionPerformed
 
     /**
      * @param args the command line arguments

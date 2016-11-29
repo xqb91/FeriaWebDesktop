@@ -346,11 +346,8 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem21 = new javax.swing.JMenuItem();
         jSeparator10 = new javax.swing.JPopupMenu.Separator();
         jMenuItem23 = new javax.swing.JMenuItem();
-        jMenuItem24 = new javax.swing.JMenuItem();
         jSeparator11 = new javax.swing.JPopupMenu.Separator();
         jMenuItem25 = new javax.swing.JMenuItem();
-        jMenuItem26 = new javax.swing.JMenuItem();
-        jMenuItem27 = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
         ayudaAcercaDe = new javax.swing.JMenuItem();
 
@@ -618,21 +615,12 @@ public class Principal extends javax.swing.JFrame {
         jMenu7.add(jMenuItem21);
         jMenu7.add(jSeparator10);
 
-        jMenuItem23.setText("Ordenes de Venta Confirmadas");
+        jMenuItem23.setText("Ordenes de Venta Confirmadas / No Confirmadas");
         jMenu7.add(jMenuItem23);
-
-        jMenuItem24.setText("Ordenes de Venta No Confirmadas");
-        jMenu7.add(jMenuItem24);
         jMenu7.add(jSeparator11);
 
         jMenuItem25.setText("Balance");
         jMenu7.add(jMenuItem25);
-
-        jMenuItem26.setText("Balance por Fecha");
-        jMenu7.add(jMenuItem26);
-
-        jMenuItem27.setText("Balance por Método de Pago");
-        jMenu7.add(jMenuItem27);
 
         jMenuBar1.add(jMenu7);
 
@@ -853,10 +841,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem21;
     private javax.swing.JMenuItem jMenuItem22;
     private javax.swing.JMenuItem jMenuItem23;
-    private javax.swing.JMenuItem jMenuItem24;
     private javax.swing.JMenuItem jMenuItem25;
-    private javax.swing.JMenuItem jMenuItem26;
-    private javax.swing.JMenuItem jMenuItem27;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
