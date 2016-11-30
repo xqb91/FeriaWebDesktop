@@ -1,5 +1,9 @@
 package cl.alevicmar.main;
 
+import cl.alevicmar.finanzas.Balances;
+import cl.alevicmar.finanzas.EgresosHistoricos;
+import cl.alevicmar.finanzas.IngresosHistoricos;
+import cl.alevicmar.finanzas.OrdenesVentaConfirmadas;
 import cl.alevicmar.login.LockWindow;
 import cl.alevicmar.login.Logon;
 import cl.alevicmar.menuArchivo.CambiarPassword;
@@ -341,16 +345,13 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem17 = new javax.swing.JMenuItem();
         jMenuItem18 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
-        jMenuItem22 = new javax.swing.JMenuItem();
+        finanzasEgresos = new javax.swing.JMenuItem();
         jSeparator5 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem21 = new javax.swing.JMenuItem();
+        finanzasIngresos = new javax.swing.JMenuItem();
         jSeparator10 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem23 = new javax.swing.JMenuItem();
-        jMenuItem24 = new javax.swing.JMenuItem();
+        finanzasOrdenVenta = new javax.swing.JMenuItem();
         jSeparator11 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem25 = new javax.swing.JMenuItem();
-        jMenuItem26 = new javax.swing.JMenuItem();
-        jMenuItem27 = new javax.swing.JMenuItem();
+        finanzasBalances = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
         ayudaAcercaDe = new javax.swing.JMenuItem();
 
@@ -612,36 +613,44 @@ public class Principal extends javax.swing.JFrame {
 
         jMenu7.setText("Finanzas");
 
-        jMenuItem22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/table.png"))); // NOI18N
-        jMenuItem22.setText("Egresos");
-        jMenu7.add(jMenuItem22);
+        finanzasEgresos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/table.png"))); // NOI18N
+        finanzasEgresos.setText("Egresos");
+        finanzasEgresos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                finanzasEgresosActionPerformed(evt);
+            }
+        });
+        jMenu7.add(finanzasEgresos);
         jMenu7.add(jSeparator5);
 
-        jMenuItem21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/table_go.png"))); // NOI18N
-        jMenuItem21.setText("Ingresos");
-        jMenu7.add(jMenuItem21);
+        finanzasIngresos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/table_go.png"))); // NOI18N
+        finanzasIngresos.setText("Ingresos");
+        finanzasIngresos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                finanzasIngresosActionPerformed(evt);
+            }
+        });
+        jMenu7.add(finanzasIngresos);
         jMenu7.add(jSeparator10);
 
-        jMenuItem23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/coins_add.png"))); // NOI18N
-        jMenuItem23.setText("Ordenes de Venta Confirmadas");
-        jMenu7.add(jMenuItem23);
-
-        jMenuItem24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/coins_delete.png"))); // NOI18N
-        jMenuItem24.setText("Ordenes de Venta No Confirmadas");
-        jMenu7.add(jMenuItem24);
+        finanzasOrdenVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/coins_add.png"))); // NOI18N
+        finanzasOrdenVenta.setText("Ordenes de Venta con/sin confirmar");
+        finanzasOrdenVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                finanzasOrdenVentaActionPerformed(evt);
+            }
+        });
+        jMenu7.add(finanzasOrdenVenta);
         jMenu7.add(jSeparator11);
 
-        jMenuItem25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/shape_align_left.png"))); // NOI18N
-        jMenuItem25.setText("Balance");
-        jMenu7.add(jMenuItem25);
-
-        jMenuItem26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/calendar_view_week.png"))); // NOI18N
-        jMenuItem26.setText("Balance por Fecha");
-        jMenu7.add(jMenuItem26);
-
-        jMenuItem27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/application.png"))); // NOI18N
-        jMenuItem27.setText("Balance por Método de Pago");
-        jMenu7.add(jMenuItem27);
+        finanzasBalances.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cl/alevicmar/icons/shape_align_left.png"))); // NOI18N
+        finanzasBalances.setText("Balances");
+        finanzasBalances.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                finanzasBalancesActionPerformed(evt);
+            }
+        });
+        jMenu7.add(finanzasBalances);
 
         jMenuBar1.add(jMenu7);
 
@@ -799,6 +808,30 @@ public class Principal extends javax.swing.JFrame {
         new DesvincularUbicacionProduccion().setVisible(true);
     }//GEN-LAST:event_productoresDesvincularUbicacionActionPerformed
 
+    private void finanzasOrdenVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finanzasOrdenVentaActionPerformed
+        // TODO add your handling code here:
+        OrdenesVentaConfirmadas ovc = new OrdenesVentaConfirmadas();
+        ovc.setVisible(true);
+    }//GEN-LAST:event_finanzasOrdenVentaActionPerformed
+
+    private void finanzasBalancesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finanzasBalancesActionPerformed
+        // TODO add your handling code here:
+        Balances bb = new Balances();
+        bb.setVisible(true);
+    }//GEN-LAST:event_finanzasBalancesActionPerformed
+
+    private void finanzasEgresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finanzasEgresosActionPerformed
+        // TODO add your handling code here:
+        EgresosHistoricos eh = new EgresosHistoricos();
+        eh.setVisible(true);
+    }//GEN-LAST:event_finanzasEgresosActionPerformed
+
+    private void finanzasIngresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finanzasIngresosActionPerformed
+        // TODO add your handling code here:
+        IngresosHistoricos ih = new IngresosHistoricos();
+        ih.setVisible(true);
+    }//GEN-LAST:event_finanzasIngresosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -844,6 +877,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem clienteCambiarPassword;
     private javax.swing.JMenuItem clienteRegistrar;
     private javax.swing.JMenuItem clientesAdminClientes;
+    private javax.swing.JMenuItem finanzasBalances;
+    private javax.swing.JMenuItem finanzasEgresos;
+    private javax.swing.JMenuItem finanzasIngresos;
+    private javax.swing.JMenuItem finanzasOrdenVenta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
@@ -860,13 +897,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem18;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem21;
-    private javax.swing.JMenuItem jMenuItem22;
-    private javax.swing.JMenuItem jMenuItem23;
-    private javax.swing.JMenuItem jMenuItem24;
-    private javax.swing.JMenuItem jMenuItem25;
-    private javax.swing.JMenuItem jMenuItem26;
-    private javax.swing.JMenuItem jMenuItem27;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
